@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-06-29 15:56:31
+  maintenance_task: MyString
+  mileage: 1
+  image: MyString
+  category: MyString
+  reciepts: MyString
+  vehicle: one
+
+two:
+  date: 2020-06-29 15:56:31
+  maintenance_task: MyString
+  mileage: 1
+  image: MyString
+  category: MyString
+  reciepts: MyString
+  vehicle: two
