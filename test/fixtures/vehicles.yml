@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Make: MyString
+  Model: MyString
+  Year: 1
+  Color: MyString
+  Type: MyString
+  VIN: MyString
+  Roadside_Assistance: false
+  Insured_by: MyString
+  Policy_Number: MyString
+  Image: MyString
+  User: 
+
+two:
+  Make: MyString
+  Model: MyString
+  Year: 1
+  Color: MyString
+  Type: MyString
+  VIN: MyString
+  Roadside_Assistance: false
+  Insured_by: MyString
+  Policy_Number: MyString
+  Image: MyString
+  User: 
