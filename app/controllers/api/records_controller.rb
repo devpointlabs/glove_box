@@ -21,10 +21,11 @@ class Api::RecordsController < ApplicationController
             render json: @record
         else 
             render json: {errors: @record.errors, status: 422}
-        
+        end 
     end 
 
     def destroy
+        render json: @record.destroy
     end 
 
     private
