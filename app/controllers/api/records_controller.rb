@@ -4,7 +4,7 @@ class Api::RecordsController < ApplicationController
 
 
     def index
-        render json: records = @vehicle.records
+        render json: @vehicle.records
     end
 
     def create
@@ -17,7 +17,7 @@ class Api::RecordsController < ApplicationController
     end 
 
     def update
-        if @record.update
+        if @record.update(record_params)
             render json: @record
         else 
             render json: {errors: @record.errors, status: 422}
