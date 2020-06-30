@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   devise_for :users 
 
   namespace :api do
@@ -9,3 +10,6 @@ Rails.application.routes.draw do
       end
     end
 end
+
+# random note so i can push again
+# random notes so i can push 
