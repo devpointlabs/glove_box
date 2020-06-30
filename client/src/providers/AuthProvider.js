@@ -8,12 +8,26 @@ class AuthProvider extends React.Component {
 
   state = {user: null}
 
-  handleRegister = () => {
-
+  handleRegister = (user, history) => {
+    axios.post('/api/auth', user)
+    .then(res => {
+      this.setState({user: res.data.data})
+      history.push('/')
+    })
+    .catch (res => {
+      console.log(res)
+    })
   }
 
-  handleLogin = () => {
-
+  handleLogin = (user, history) => {
+    axios.post('/api/auth', user)
+    .then(res => {
+      this.setState({user: res.data.data})
+      history.push('/')
+    })
+    .catch (res => {
+      console.log(res)
+    })
   }
 
   handleLogout = () => {
