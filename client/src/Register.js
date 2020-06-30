@@ -34,7 +34,6 @@ const styles = {
     vertForm: {
         display: 'flex',
         flexDirection: 'column',
-        // maxWidth:'70%',
     },
     formDiv: {
         display: 'flex',
