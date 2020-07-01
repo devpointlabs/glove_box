@@ -13,7 +13,7 @@ export default function Login() {
     return (
         <div style={styles.formDiv}>
         <form title='Register' onSubmit={handleSubmit} style={styles.vertForm}>
-            <h1>Register</h1>
+            <h1>Login</h1>
             <label for='email'>Email</label>
             <input type='text' label='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
             <label for='password'>Password</label>
