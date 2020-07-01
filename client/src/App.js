@@ -12,7 +12,6 @@ function App() {
       <switch>
         <Register/>
         <Login/>
-        <Dashboard/>
       </switch>
     </div>
   );
