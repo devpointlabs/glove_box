@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import AuthProvider from './providers/AuthProvider';
 
+import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
   <AuthProvider>
