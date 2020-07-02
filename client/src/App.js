@@ -8,6 +8,7 @@ import { Switch, Route, } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute'
 import { Container } from 'semantic-ui-react';
 
+
 function App() {
   return (
     <div className="App">
