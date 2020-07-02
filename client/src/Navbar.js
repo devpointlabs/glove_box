@@ -5,16 +5,36 @@ import { Link, withRouter, } from 'react-router-dom'
 
 class Navbar extends React.Component {
 
-  rightNavItems = () => {
+  NavItems = () => {
     const { auth: { user, handleLogout, }, location, } = this.props;
 
     if (user) {
       return (
+        <>
+         <Menu.Menu position='left'>
+          <Link to='/dashboard'>
+            <Menu.Item
+              id='dashboard'
+              name='dashboard'
+              active={location.pathname === '/dashboard'}
+            />
+          </Link>
+          <Link to='/documents'>
+            <Menu.Item
+              id='documents'
+              name='documents'
+              active={location.pathname === '/documents'}
+            />
+          </Link>
+        </Menu.Menu>
         <Menu.Menu position='right'>
-          <Menu.Item
-            name='logout'
-            onClick={() => handleLogout(this.props.history)}
-          />
+         <Link to='/profile'>
+            <Menu.Item
+              id='profile'
+              name='profile'
+              active={location.pathname === '/profile'}
+            />
+          </Link>
           <Link to='/contact_us'>
             <Menu.Item
               id='contact us'
@@ -22,7 +42,13 @@ class Navbar extends React.Component {
               active={location.pathname === '/contact_us'}
             />
           </Link>
+          <Menu.Item
+            name='logout'
+            onClick={() => handleLogout(this.props.history)}
+          />
         </Menu.Menu>
+       
+        </>
       )
     } else {
       return (
@@ -34,13 +60,13 @@ class Navbar extends React.Component {
               active={location.pathname === '/login'}
             />
           </Link>
-          {/* <Link to='/register'>
+          <Link to='/'>
             <Menu.Item
               id='register'
               name='register'
               active={location.pathname === '/register'}
             />
-          </Link> */}
+          </Link>
           <Link to='/contact_us'>
             <Menu.Item
               id='contact us'
@@ -53,32 +79,12 @@ class Navbar extends React.Component {
     }
   }
 
+
   render() {
     return (
       <div>
-        <Menu pointing secondary>
-          <Link to='/'>
-            <Menu.Item
-              name='dashboard'
-              id='dashboard'
-              active={this.props.location.pathname === '/'}
-            />
-          </Link>
-          <Link to='/documents'>
-            <Menu.Item
-              name='documents'
-              id='documents'
-              active={this.props.location.pathname === '/documents'}
-            />
-          </Link>
-          <Link to='/profile'>
-            <Menu.Item
-              name='profile'
-              id='profile'
-              active={this.props.location.pathname === '/profile'}
-            />
-          </Link>
-          { this.rightNavItems() }
+        <Menu>
+          { this.NavItems() }
         </Menu>
       </div>
     );
