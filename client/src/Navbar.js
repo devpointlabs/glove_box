@@ -74,6 +74,15 @@ class Navbar extends React.Component {
               active={location.pathname === '/contact_us'}
             />
           </Link>
+          {/* TO BE DELETED */}
+          <Link to='/Profile'>
+            <Menu.Item
+              id='profile'
+              name='profile'
+              active={location.pathname === '/profile'}
+            />
+          </Link>
+          {/* TO BE DELETED */}
         </Menu.Menu>
       )
     }
