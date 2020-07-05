@@ -7,6 +7,7 @@ import FetchUser from './components/FetchUser'
 import { Switch, Route, } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute'
 import { Container } from 'semantic-ui-react';
+import Profile from './components/Profile'
 
 
 function App() {
@@ -19,8 +20,10 @@ function App() {
           <Switch>
             <Route exact path='/' component={Register} />
             {/* <ProtectedRoute exact path='/dashboard' component={Dashboard} />
-            <ProtectedRoute exact path='/documents' component={Documents} />
-            <ProtectedRoute exact path='/profile' component={Profile} /> */}
+            <ProtectedRoute exact path='/documents' component={Documents} /> */}
+            {/* <ProtectedRoute exact path='/profile' component={Profile} />  */}
+             {/*Will need to replace profile with protected route after design  */}
+            <Route exact path='/profile' component={Profile} /> 
             <Route exact path='/login' component={Login}/>
             {/* <Route exact path='/contact_us' component={ContactUs}/> */}
           </Switch>
@@ -31,3 +34,5 @@ function App() {
 }
 
 export default App;
+
+
