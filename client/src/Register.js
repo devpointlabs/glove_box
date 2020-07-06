@@ -37,7 +37,7 @@ class Register extends React.Component {
             required
             autoFocus
             name="name"
-            value={email}
+            value={name}
             placeholder="Name"
             onChange={this.handleChange}
           />
