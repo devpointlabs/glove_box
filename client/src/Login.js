@@ -42,7 +42,7 @@ class Login extends React.Component {
           />
           <Segment textAlign="center" basic>
             <Button primary type="submit">
-              Submit
+              Sign Up
             </Button>
           </Segment>
         </Form>
