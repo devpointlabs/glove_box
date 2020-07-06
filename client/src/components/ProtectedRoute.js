@@ -1,26 +1,20 @@
-import React from "react";
-import { AuthConsumer, } from "../providers/AuthProvider";
+import React, { useContext } from "react";
+import { AuthContext, } from "../providers/AuthProvider";
 import { Route, Redirect, } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component, ...rest }) => (
-  <AuthConsumer>
-    { auth =>
-      <Route
-        {...rest}
-        render={props => (
-          auth.authenticated ?
-            <Component {...props} />
-            :
-            <Redirect
-              to={{
-                pathname: "/register",
-                state: { from: props.location, },
-              }}
-            />
-        )}
-      />
-    }
-  </AuthConsumer>
-);
+export default function ProtectedRoute({ component: Component, ...rest }) {
+  const { authenticated } = useContext(AuthContext);
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        authenticated ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/" }} />
+        )
+      }
+    />
+  );
+}
 
-export default ProtectedRoute;

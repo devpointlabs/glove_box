@@ -20,7 +20,7 @@ function App() {
             <Route exact path='/' component={Register} />
             {/* <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             <ProtectedRoute exact path='/documents' component={Documents} />
-            <ProtectedRoute exact path='/profile' component={Profile} /> */}
+            <Route exact path='/profile' component={Profile} /> */}
             <Route exact path='/login' component={Login}/>
             {/* <Route exact path='/contact_us' component={ContactUs}/> */}
           </Switch>

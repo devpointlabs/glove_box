@@ -42,9 +42,9 @@ class Register extends React.Component {
                         required
                         type="text" 
                         placeholder="First Name" 
-                        label="Name"
-                        name="name"
-                        value={window.name}
+                        label="fname"
+                        name="fname"
+                        value={fname}
                         onChange={this.handleChange}
                     />
                     </Form.Group>
@@ -52,9 +52,12 @@ class Register extends React.Component {
                     <Form.Group controlId="formGridLastName">
                     <Form.Label>Last Name</Form.Label>
                     <Form.Control 
-                        required
-                        type="text" 
-                        placeholder="Last Name" 
+                         type="text" 
+                         placeholder="Last Name" 
+                         label="lname"
+                         name="lname"
+                         value={lname}
+                         onChange={this.handleChange}
                     />
                     </Form.Group>
                 </Form.Row>   
