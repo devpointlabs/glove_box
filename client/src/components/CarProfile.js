@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { AuthConsumer } from './providers/AuthProvider';
+// import { AuthConsumer } from './providers/AuthProvider';
 import axios from 'axios';
 
 const CarProfile = (props) => {
@@ -21,31 +20,35 @@ const CarProfile = (props) => {
       .then((res) => props.history.goBack())
       .catch((e) => console.log(e))
   };
-  
+
   return (
     <div>
-      <h1>Car Profile</h1>
+      <h1 align='left'>Car Profile</h1>
       <hr />
       <h2 align='center'>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
+      <br />
       <Button style={{float: 'right'}}>edit</Button>
       <br />
-      <h3 align='center'>image goes here</h3>
-
+      <br /> 
       {/* correct way to import photos? */}
       <img align='center'src={vehicle.image} alt='user_vehicle' /> 
-   
-
+      <br />
+      <br />
+      
       {/* <Table style={styles.Table}> */}
-      <Table>
+    <Table>
   <thead>
     <tr>
       <th>License Plate<p>{vehicle.license_plate}</p></th> 
       <th>VIN<p>{vehicle.vin}</p></th>
-      {/* <th>Mileage<p>{record.mileage}</p></th> */}
+      <th>Mileage<p>mileage</p></th> 
+      {/* <th>Mileage<p>{record.mileage}</p></th>  */}
     </tr>
-  </thead>
-   </Table>
-   <hr/>
+    </thead>
+    </Table>
+   {/* <hr/> */}
+   <Table>
+  <thead>
    <tr>
       <th>Insurance Provider<p>{vehicle.insured_by}</p></th>
       <th>Policy Expiry<p>{vehicle.policy_exp}</p></th>
@@ -53,6 +56,8 @@ const CarProfile = (props) => {
       <th>Roadside Assistance<p>{vehicle.roadside_assistance}</p></th>
       <th>Insurance Provider Number<p>{vehicle.insurance_prov_num}</p></th>
     </tr>
+    </thead>
+    </Table>
    </div>
   )
 }
