@@ -8,16 +8,16 @@ const CarProfile = (props) => {
   const [vehicle, setVehicle] = useState({});
 
   useEffect(() => {
-    axios.get(`/api/vehicles/${id}`)                                                                                                  
+    axios.get(`/api/vehicles/`)                                                                                                  
       .then((res) => {
-        setCar(res.data)
+        setVehicle(res.data)
       }).catch((e) => {
         console.log(e)
       })
     }, [])
 
   const deleteVehicle = () => {
-    axios.delete(`/api/vehicles/${id}`)
+    axios.delete(`/api/vehicles/`)
       .then((res) => props.history.goBack())
       .catch((e) => console.log(e))
   };
@@ -41,7 +41,7 @@ const CarProfile = (props) => {
     <tr>
       <th>License Plate<p>{vehicle.license_plate}</p></th> 
       <th>VIN<p>{vehicle.vin}</p></th>
-      <th>Mileage<p>{record.mileage}</p></th>
+      {/* <th>Mileage<p>{record.mileage}</p></th> */}
     </tr>
   </thead>
    </Table>
