@@ -9,6 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import { Container } from 'semantic-ui-react';
 import Dashboard from './Dashboard';
 import Profile from './components/Profile'
+import Profile2 from './components/Profile2'
 
 
 function App() {
@@ -22,7 +23,9 @@ function App() {
             <Route exact path='/' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             {/* <ProtectedRoute exact path='/documents' component={Documents} />
-            <Route exact path='/profile' component={Profile} /> */} 
+            {/* <ProtectedRoute exact path='/profile' component={Profile} />  */}
+             {/*Will need to replace profile with protected route after design  */}
+            <Route exact path='/profile2' component={Profile2} /> 
             <Route exact path='/login' component={Login}/>
             {/* <Route exact path='/contact_us' component={ContactUs}/> */}
           </Switch>
