@@ -21,7 +21,7 @@ class Register extends React.Component {
     this.setState({[name]: value})
   }
   render() {
-    const { email, password, passwordConfirmation, fname, lname } = this.state;
+    const { email, password, passwordConfirmation, name, } = this.state;
 
     return (
         <>
@@ -33,39 +33,24 @@ class Register extends React.Component {
 
         <Card style ={{width: '36rem'}}>
             <Card.Body>
-            <Form>
-                <Form.Row>
-                    <Form.Group  controlId="formGridFirstName">
-                    <Form.Label>First Name</Form.Label>
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Group  controlId="formGridFirstName">
+                    <Form.Label>Name</Form.Label>
                     <Form.Control 
-                        autoFocus
+                        label="Name"
                         required
-                        type="text" 
-                        placeholder="First Name" 
-                        label="fname"
-                        name="fname"
-                        value={fname}
+                        autoFocus
+                        name="name"
+                        value={name}
+                        placeholder="Name"
                         onChange={this.handleChange}
                     />
-                    </Form.Group>
-
-                    <Form.Group controlId="formGridLastName">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control 
-                         type="text" 
-                         placeholder="Last Name" 
-                         label="lname"
-                         name="lname"
-                         value={lname}
-                         onChange={this.handleChange}
-                    />
-                    </Form.Group>
-                </Form.Row>   
+                </Form.Group>  
 
                 <Form.Group controlId="formGroupEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control 
-                        label="Email"
+                        label="email"
                         required
                         name="email"
                         value={email}
@@ -76,7 +61,7 @@ class Register extends React.Component {
                 <Form.Group controlId="formGroupPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control 
-                        label="Password"
+                        label="password"
                         required
                         name="password"
                         value={password}
@@ -93,7 +78,7 @@ class Register extends React.Component {
                         name="passwordConfirmation"
                         value={passwordConfirmation}
                         placeholder="Re-type Password"
-                        type="password"
+                        type="passwordConfirmation"
                         onChange={this.handleChange}
                     />
                 </Form.Group>

@@ -12,10 +12,11 @@ class AuthProvider extends React.Component {
     axios.post('/api/auth', user)
     .then(res => {
       this.setState({user: res.data.data})
-      history.push('/')
+      history.push('/dashboard')
     })
     .catch (res => {
       console.log(res)
+      alert('Invalid login attempt')
     })
   }
 
@@ -23,10 +24,11 @@ class AuthProvider extends React.Component {
     axios.post('/api/auth', user)
     .then(res => {
       this.setState({user: res.data.data})
-      history.push('/')
+      history.push('/dashboard')
     })
     .catch (res => {
       console.log(res)
+      alert('Invalid login attempt')
     })
   }
 
