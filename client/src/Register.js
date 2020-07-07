@@ -33,7 +33,7 @@ class Register extends React.Component {
 
         <Card style ={{width: '36rem'}}>
             <Card.Body>
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
                 <Form.Row>
                     <Form.Group  controlId="formGridFirstName">
                     <Form.Label>First Name</Form.Label>
@@ -104,9 +104,6 @@ class Register extends React.Component {
             </Card.Body>
         </Card>
         </>
-
-
-
 
     //   <Segment basic>
     //     <Header as="h1" textAlign="center">
