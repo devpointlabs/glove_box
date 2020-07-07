@@ -8,6 +8,7 @@ import { Switch, Route, } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute'
 import { Container } from 'semantic-ui-react';
 import Dashboard from './Dashboard';
+import Profile from './components/Profile'
 
 
 function App() {
@@ -32,3 +33,5 @@ function App() {
 }
 
 export default App;
+
+
