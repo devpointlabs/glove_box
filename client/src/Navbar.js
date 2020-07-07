@@ -75,11 +75,11 @@ class Navbar extends React.Component {
             />
           </Link>
           {/* TO BE DELETED */}
-          <Link to='/Profile'>
+          <Link to='/Profile2'>
             <Menu.Item
-              id='profile'
+              id='profile2'
               name='profile'
-              active={location.pathname === '/profile'}
+              active={location.pathname === '/profile2'}
             />
           </Link>
           {/* TO BE DELETED */}
