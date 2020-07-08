@@ -1,41 +1,52 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react"
 import { Button, Form, } from "react-bootstrap"
-import axios from "axios";
+import axios from "axios"
 
-const ProfileForm = (props) => {
+import {AuthContext} from '../providers/AuthProvider'
+
+
+const ProfileForm = () => {
+  const user = useContext(AuthContext) //This gives us global access to the user
+
   const [first_name, setFirstName] = useState("")
   const [last_name, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [birthday, setBirthday] = useState("")
   const [postal_code, setPostal] = useState("")
   const [password, setPassword] = useState("")
-  const profile = { first_name: first_name, last_name: last_name, email: email, 
-    birthday: birthday, postal_code: postal_code, password: password  }
+
+  const profile = {
+    first_name,
+    last_name,
+    email,
+    birthday,
+    postal_code,
+    password,
+  }
 
   useEffect(() => {
-    if (props.id) {
-      setFirstName(props.first_name)
-      setLastName(props.last_name)
-      setEmail(props.email)
-      setBirthday(props.birthday)
-      setPostal(props.postal)
-      setPassword(props.password)
+    if (user.id) {
+      setFirstName(user.first_name)
+      setLastName(user.last_name)
+      setEmail(user.email)
+      setBirthday(user.birthday)
+      setPostal(user.postal)
+      setPassword(user.password)
     }
-  }, [])
+  }, [user.id, user.first_name, user.last_name, user.email, user.birthday, user.postal, user.password])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (props.editProfile) {
-      props.editProfile(props.id, profile)
-      props.toggleEdit()
-    } else {
-    axios.post("/api/profile", { first_name, last_name, email, birthday, postal_code, password })
+    // prevent refresh
+    e.preventDefault()
+
+    // TODO: Make sure endpoint is correct
+    // end point that should update user info
+    axios.put("/api/profile", {id: user.id, first_name, last_name, email, birthday, postal_code, password}) //Post = create new, Put = replaces known values
       .then(res => {
-        props.addProfile(res.data)
-        props.toggleForm();
+        // update auth context means update global state
+        user.handleUpdatePersonalInfo(profile)
       })
-    }
-  };
+  }
 
   return (
     <>
@@ -61,7 +72,7 @@ const ProfileForm = (props) => {
         <Form.Control
           placeholder="Email"
           name="email"
-          required
+
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -69,7 +80,7 @@ const ProfileForm = (props) => {
         <Form.Control
           placeholder="Date of Birth"
           name="Date of Birth"
-          required
+
           value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
         />
@@ -79,7 +90,7 @@ const ProfileForm = (props) => {
         <Form.Control
           placeholder="Postal Code"
           name="Postal Code"
-          required
+
           value={postal_code}
           onChange={(e) => setPostal(e.target.value)}
         />
@@ -89,7 +100,7 @@ const ProfileForm = (props) => {
         <Form.Control
           placeholder="Current Password"
           name="Current Password"
-        //   required
+        
         //   value={password}
         //   onChange={(e) => setPassword(e.target.value)}
         />
@@ -97,12 +108,16 @@ const ProfileForm = (props) => {
         <Form.Control
           placeholder="Type New Password"
           name="Type New Password"
-          required
+
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <Button type="submit">Save Changes</Button>
+        <Button type="submit" > 
+          Save Changes</Button>
+        
+    
+          
         <br />
         <br />
       </Form>
@@ -112,3 +127,13 @@ const ProfileForm = (props) => {
 
 export default ProfileForm;
 
+
+
+// onClick={this.toggleEdit}>
+// <div>
+{/* <Button icon color="blue" onClick={this.toggleEdit}>
+<Icon name="pencil" />
+</Button>
+<Button icon color="red">
+<Icon name="trash" />
+</Button> */}
