@@ -16,14 +16,14 @@ class Navbar extends React.Component {
             <Menu.Item
               id='dashboard'
               name='dashboard'
-              active={location.pathname === '/dashboard'}
+              active={this.props.location.pathname === '/dashboard'}
             />
           </Link>
           <Link to='/documents'>
             <Menu.Item
               id='documents'
               name='documents'
-              active={location.pathname === '/documents'}
+              active={this.props.location.pathname === '/documents'}
             />
           </Link>
         </Menu.Menu>
@@ -32,14 +32,14 @@ class Navbar extends React.Component {
             <Menu.Item
               id='profile'
               name='profile'
-              active={location.pathname === '/profile'}
+              active={this.props.location.pathname === '/profile'}
             />
           </Link>
           <Link to='/contact_us'>
             <Menu.Item
               id='contact us'
               name='contact us'
-              active={location.pathname === '/contact_us'}
+              active={this.props.location.pathname === '/contact_us'}
             />
           </Link>
           <Menu.Item

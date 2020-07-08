@@ -9,13 +9,15 @@ class AuthProvider extends React.Component {
   state = {user: null} // {user: {id: '1', first_name: 'bob', last_name....}}
 
   handleRegister = (user, history) => {
+    debugger
     axios.post('/api/auth', user)
     .then(res => {
       this.setState({user: res.data.data})
-      history.push('/')
+      history.push('/dashboard')
     })
     .catch (res => {
       console.log(res)
+      alert('Invalid login attempt')
     })
   }
   
