@@ -28,10 +28,8 @@ const CarProfile = (props) => {
       <h2 align='center'>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
       <br />
       <Button style={{float: 'right'}}>edit</Button>
-      <br />
-      <br /> 
       {/* correct way to import photos? */}
-      <img align='center'src={vehicle.image} alt='user_vehicle' /> 
+      <img align='center'src={vehicle.image} alt='user_vehicle'/> 
       <br />
       <br />
       
@@ -41,7 +39,7 @@ const CarProfile = (props) => {
     <tr>
       <th>License Plate<p>{vehicle.license_plate}</p></th> 
       <th>VIN<p>{vehicle.vin}</p></th>
-      <th>Mileage<p>mileage</p></th> 
+      <th>Mileage<p>{}</p></th> 
       {/* <th>Mileage<p>{record.mileage}</p></th>  */}
     </tr>
     </thead>
@@ -58,7 +56,7 @@ const CarProfile = (props) => {
     </tr>
     </thead>
     </Table>
-   </div>
+  </div>
   )
 }
 
