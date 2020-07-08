@@ -6,32 +6,29 @@ export const AuthConsumer = AuthContext.Consumer
 
 class AuthProvider extends React.Component {
 
-  state = {user: null}
+  state = {user: null} // {user: {id: '1', first_name: 'bob', last_name....}}
 
   handleRegister = (user, history) => {
     debugger
     axios.post('/api/auth', user)
     .then(res => {
-      debugger
       this.setState({user: res.data.data})
       history.push('/dashboard')
     })
     .catch (res => {
       console.log(res)
-      debugger
       alert('Invalid login attempt')
     })
   }
-
+  
   handleLogin = (user, history) => {
-    axios.post('/api/auth/sign_in', user)
+    axios.post('/api/auth', user)
     .then(res => {
       this.setState({user: res.data.data})
-      history.push('/dashboard')
+      history.push('/')
     })
     .catch (res => {
       console.log(res)
-      alert('Invalid login attempt')
     })
   }
 
@@ -46,6 +43,10 @@ class AuthProvider extends React.Component {
     })
   }
 
+  handleUpdatePersonalInfo = (newUserData) => { //Added a new function to handle updated information
+    this.setState({ user: {...this.state.user, ...newUserData}})    
+  }
+
   render (){
     return(
       <AuthContext.Provider 
@@ -55,7 +56,8 @@ class AuthProvider extends React.Component {
           handleLogin: this.handleLogin,
           handleRegister: this.handleRegister,
           handleLogout: this.handleLogout,
-          setUser: (user) => this.setState({user,}),
+          setUser: (user) => this.setState({user}),
+          handleUpdatePersonalInfo: this.handleUpdatePersonalInfo
         }}
       >
         {this.props.children}
