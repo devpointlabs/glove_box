@@ -19,7 +19,7 @@ function App() {
       <Navbar/>
       <FetchUser>
         {/* <Register/> */}
-        <Container>
+
           <Switch>
             <Route exact path='/' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
@@ -30,7 +30,7 @@ function App() {
             <Route exact path='/login' component={Login}/>
             <Route exact path='/contact_us' component={ContactUs}/>
           </Switch>
-        </Container>
+
       </FetchUser>
     </div>
   );
