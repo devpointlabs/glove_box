@@ -11,16 +11,16 @@ import Dashboard from './Dashboard';
 import Profile from './components/Profile'
 import Profile2 from './components/Profile2'
 import ContactUs from './components/ContactUs';
+import Footer from './components/Footer';
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
       <FetchUser>
-        {/* <Register/> */}
-
-          <Switch>
+        <Navbar/>
+        <div style={{minHeight:'86vh'}}>
+        <Switch >
             <Route exact path='/' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             {/* <ProtectedRoute exact path='/documents' component={Documents} />
@@ -29,8 +29,9 @@ function App() {
             <Route exact path='/profile2' component={Profile2} /> 
             <Route exact path='/login' component={Login}/>
             <Route exact path='/contact_us' component={ContactUs}/>
-          </Switch>
-
+        </Switch>
+        </div>
+        <Footer/>   
       </FetchUser>
     </div>
   );
