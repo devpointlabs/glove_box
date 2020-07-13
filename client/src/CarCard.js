@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import Axios from 'axios'
-import CarCard from './CarCard'
+import React from 'react'
 
-export default function Dashboard() {
-    const [vehicles, setVehicles] = useState([])
-   
-    const getVehicles = () => {
-        Axios.get(`/api/vehicles`)
-        .then(res => {
-            console.log(res)
-            setVehicles(res.data)
-        })
-        .catch(err => console.log(err))
-    }
-
-    useEffect(()=> {
-        getVehicles()
-    }, [])
-    
+export default function CarCard(props) {
+    const defaultImage = 'https://lh3.googleusercontent.com/proxy/pBC2-MR-kzg4iZ5V20cIW587JBKPTLsVmJdOn2_r0uGz4HW9-RydVgiBArCoFJNkbErN3vhINBcG6ig0TsicqMSbZeLno75L_7-423rpeZA56mhgSMtzqRWi'
     return (
-        <div style={styles.page}>
-            <div style={styles.contain}>
-                <h1 style={{textAlign:'left', fontSize:'50px'}}>Dashboard</h1>
-
-                <h3 style={{textAlign:'left', color:'#A7AAB2', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
-               {vehicles.map(v => <CarCard {...v} />) }
-            </div>
+        <div style={styles.card}>
+        <img src={defaultImage} style={{width:'50%'}}/>
+        <div style={styles.right}>
+            <h1 style={{fontSize:'30px'}}><strong>{props.model} {props.make}</strong></h1>
+            <h3 style={{fontSize:'20px'}}>Unlock your vehicles estimated trade-in value and up-to-date recalls when you add your liscense plate.</h3>
+            <button style={styles.buttonStyle}><strong>ADD LISCENSE PLATE</strong></button>
         </div>
+    </div>
     )
 }
 
@@ -37,7 +21,7 @@ const styles = {
     },
      page: {
         width: '100%',
-        minHeight: '100vh',
+        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -50,6 +34,7 @@ const styles = {
         borderRadius: '10px',
         boxShadow: '1px 1px 6px 5px #eeeeee',
         minHeight: '300px',
+        margin:'50px',
      },
      right: {
          display: 'flex',
