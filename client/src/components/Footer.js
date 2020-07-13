@@ -12,9 +12,10 @@ const styles = {
     bar: {
         backgroundColor:'black',
         color:'white',
-        minHeight:'40px',
+        minHeight:'50px',
         display: 'flex',
         justifyContent:'center',
         alignItems: 'center',
+        width:'100%',
     }
 }

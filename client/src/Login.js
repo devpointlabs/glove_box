@@ -1,6 +1,6 @@
 import React from "react";
 import { AuthConsumer } from "./providers/AuthProvider";
-import { Button, Form, Segment, Header } from "semantic-ui-react";
+import { Button, Form, Segment, Header, Container } from "semantic-ui-react";
 
 class Login extends React.Component {
   state = { email: "", password: "" };
@@ -17,6 +17,7 @@ class Login extends React.Component {
   render() {
     const { email, password } = this.state;
     return (
+      <Container>
       <Segment basic>
         <Header as="h1" textAlign="center">
           Login
@@ -47,6 +48,7 @@ class Login extends React.Component {
           </Segment>
         </Form>
       </Segment>
+      </Container>
     );
   }
 }

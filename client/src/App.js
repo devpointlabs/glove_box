@@ -17,10 +17,10 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
-      
       <FetchUser>
         <Navbar/>
-        <Switch>
+        <div style={{minHeight:'86vh'}}>
+        <Switch >
             <Route exact path='/' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             {/* <ProtectedRoute exact path='/documents' component={Documents} />
@@ -30,6 +30,7 @@ function App() {
             <Route exact path='/login' component={Login}/>
             <Route exact path='/contact_us' component={ContactUs}/>
         </Switch>
+        </div>
         <Footer/>   
       </FetchUser>
     </div>
