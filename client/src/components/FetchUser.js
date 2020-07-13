@@ -19,6 +19,7 @@ class FetchUser extends React.Component {
         .get("/api/auth/validate_token")
         .then((res) => {
           setUser(res.data.data);
+          this.setState({ loaded: true });
         })
         .catch((err) => {
           this.setState({ loaded: true });

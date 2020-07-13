@@ -29,7 +29,7 @@ const styles = {
         
     },
      page: {
-        width: '100vw',
+        width: '100%',
         height: '100vh',
         display: 'flex',
         justifyContent: 'center',
@@ -37,7 +37,7 @@ const styles = {
         backgroundColor: '#F7F7F7',
      },
      card: {
-         minHeight: '400px',
+        minHeight: '40%',
         width:'90%',
         display: 'flex',
         border: '2px solid white',
