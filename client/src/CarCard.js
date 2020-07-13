@@ -6,7 +6,7 @@ export default function CarCard(props) {
         <div style={styles.card}>
         <img src={defaultImage} style={{width:'50%'}}/>
         <div style={styles.right}>
-            <h1 style={{fontSize:'30px'}}><strong>{props.model} {props.make}</strong></h1>
+            <h1 style={{fontSize:'30px', whiteSpace:'nowrap'}}><strong>{props.model} {props.make}</strong></h1>
             <h3 style={{fontSize:'20px'}}>Unlock your vehicles estimated trade-in value and up-to-date recalls when you add your liscense plate.</h3>
             <button style={styles.buttonStyle}><strong>ADD LISCENSE PLATE</strong></button>
         </div>
@@ -15,26 +15,15 @@ export default function CarCard(props) {
 }
 
 const styles = {
-    contain: {
-        maxWidth: '60%',
-        
-    },
-     page: {
-        width: '100%',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F7F7F7',
-     },
      card: {
-        width:'90%',
+        width:'100%',
         display: 'flex',
         border: '2px solid white',
         borderRadius: '10px',
         boxShadow: '1px 1px 6px 5px #eeeeee',
         minHeight: '300px',
-        margin:'50px',
+        margin:'20px 0px',
+        float:'left',
      },
      right: {
          display: 'flex',
@@ -49,11 +38,12 @@ const styles = {
      buttonStyle: {
          all: 'unset',
          maxWidth: '70%',
-         padding: '10px 15px',
+         padding: '10px 25px',
          color: 'white',
          backgroundColor: 'black',
          borderRadius: '5px',
          marginLeft: 'auto',
          marginRight: 'auto',
+         whiteSpace: 'nowrap',
      }
 }

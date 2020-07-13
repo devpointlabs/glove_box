@@ -22,7 +22,6 @@ export default function Dashboard() {
         <div style={styles.page}>
             <div style={styles.contain}>
                 <h1 style={{textAlign:'left', fontSize:'50px'}}>Dashboard</h1>
-
                 <h3 style={{textAlign:'left', color:'#A7AAB2', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
                {vehicles.map(v => <CarCard {...v} />) }
             </div>
@@ -42,33 +41,6 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F7F7F7',
+        padding: '100px',
      },
-     card: {
-        width:'90%',
-        display: 'flex',
-        border: '2px solid white',
-        borderRadius: '10px',
-        boxShadow: '1px 1px 6px 5px #eeeeee',
-        minHeight: '300px',
-     },
-     right: {
-         display: 'flex',
-         flexDirection: 'column',
-         justifyContent:'space-around',
-         minWidth: '45%',
-         maxWidth:'50%',
-         padding: '20px 60px',
-         backgroundColor: 'white',
-         height:'300px',
-     },
-     buttonStyle: {
-         all: 'unset',
-         maxWidth: '70%',
-         padding: '10px 15px',
-         color: 'white',
-         backgroundColor: 'black',
-         borderRadius: '5px',
-         marginLeft: 'auto',
-         marginRight: 'auto',
-     }
 }
