@@ -1,13 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap';
-// import { AuthConsumer } from './providers/AuthProvider';
 import axios from 'axios';
+import CarProfileForm from './CarProfileForm'
 
 const CarProfile = (props) => {
-  const [vehicle, setVehicle] = useState({});
+  const [editing, setEditing] = useState(false)
 
-  useEffect(() => {
-    axios.get(`/api/vehicles/`)                                                                                                  
+  const [vehicle, setVehicle] = useState({
+    'id':1,
+    'make':'Nissan',
+    'year':2012,
+    'model':'GTR r35',
+    'image': 'https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/1280x782/546b6e926ded9_-_2012-nissan-gt-r-1-lg.jpg?resize=768:*',
+    'license_plate':'A28BD4',
+    'vin':'12345abc678defg',
+    'mileage':70250,
+    'insured_by':'Progressive',
+    'policy_exp': '12/20/20',
+    'policy_number':'10293847',
+    'roadside_assistance':'true',
+    'insurance_prov_num':'002138546',
+  },);
+  console.log(props)
+
+  useEffect((id) => {
+    axios.get(`/api/vehicles/${id}`)                                                                                                  
       .then((res) => {
         setVehicle(res.data)
       }).catch((e) => {
@@ -15,11 +32,35 @@ const CarProfile = (props) => {
       })
     }, [])
 
-  const deleteVehicle = () => {
-    axios.delete(`/api/vehicles/`)
+  const deleteVehicle = (id) => {
+    axios.delete(`/api/vehicles/${id}`)
       .then((res) => props.history.goBack())
       .catch((e) => console.log(e))
   };
+
+  const roadsideCheck = () => {
+    if (vehicle.roadside_assistance === true) {
+      return (
+        <div>Roadside Assistance<p>✓</p></div>
+      );
+    } else {
+      return (
+        <div>Roadside Assistance<p>X</p></div>
+      )
+    }
+  }
+
+  const editCarProfile = (id, vehicle) => {
+    axios.put(`/api/vehicles${id}`, vehicle)
+      .then( res => {
+        const updateCarProfile = vehicle.map( vehicle => {
+          if (vehicle.id === id)
+            return res.data;
+          return vehicle
+        });
+        setVehicle(updateCarProfile)
+      })
+  }
 
   return (
     <div>
@@ -27,46 +68,33 @@ const CarProfile = (props) => {
       <hr />
       <h2 align='center'>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
       <br />
-      <Button style={{float: 'right'}}>edit</Button>
-      {/* correct way to import photos? */}
-      <img align='center'src={vehicle.image} alt='user_vehicle'/> 
+      <Button onClick={() => setEditing(!editing)} style={{float: 'right'}}>edit</Button>
+      <img width={525} height={350} align='center'src={vehicle.image} alt='user_vehicle'/> 
       <br />
       <br />
-      
-      {/* <Table style={styles.Table}> */}
     <Table>
   <thead>
-    <tr>
+    <tr>  
       <th>License Plate<p>{vehicle.license_plate}</p></th> 
       <th>VIN<p>{vehicle.vin}</p></th>
-      <th>Mileage<p>{}</p></th> 
-      {/* <th>Mileage<p>{record.mileage}</p></th>  */}
+      <th>Mileage<p>{vehicle.mileage}</p></th> 
     </tr>
     </thead>
     </Table>
-   {/* <hr/> */}
    <Table>
   <thead>
    <tr>
       <th>Insurance Provider<p>{vehicle.insured_by}</p></th>
       <th>Policy Expiry<p>{vehicle.policy_exp}</p></th>
       <th>Policy Number<p>{vehicle.policy_number}</p></th>
-      <th>Roadside Assistance<p>{vehicle.roadside_assistance}</p></th>
+      <th>{roadsideCheck()}</th>
       <th>Insurance Provider Number<p>{vehicle.insurance_prov_num}</p></th>
     </tr>
     </thead>
     </Table>
+    { editing && <CarProfileForm editCarProfile={props.editCarProfile} {...props} />}
   </div>
   )
 }
 
 export default CarProfile;
-
-//possible styling for the tables?
-
-// const styles = {
-//   Table: {
-//     textAlign: 'center',
-//     justifyContent: 'space-between' ,
-//   }
-// }
