@@ -8,16 +8,16 @@ import {AuthContext} from '../providers/AuthProvider'
 const ProfileForm = () => {
   const user = useContext(AuthContext) //This gives us global access to the user
 
-  const [first_name, setFirstName] = useState("")
-  const [last_name, setLastName] = useState("")
+  const [fname, setFirstName] = useState("")
+  const [lname, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [birthday, setBirthday] = useState("")
   const [postal_code, setPostal] = useState("")
   const [password, setPassword] = useState("")
 
   const profile = {
-    first_name,
-    last_name,
+    fname,
+    lname,
     email,
     birthday,
     postal_code,
@@ -26,14 +26,14 @@ const ProfileForm = () => {
 
   useEffect(() => {
     if (user.id) {
-      setFirstName(user.first_name)
-      setLastName(user.last_name)
+      setFirstName(user.fname)
+      setLastName(user.lname)
       setEmail(user.email)
       setBirthday(user.birthday)
       setPostal(user.postal)
       setPassword(user.password)
     }
-  }, [user.id, user.first_name, user.last_name, user.email, user.birthday, user.postal, user.password])
+  }, [user.id, user.fname, user.lname, user.email, user.birthday, user.postal, user.password])
 
   const handleSubmit = (e) => {
     // prevent refresh
@@ -41,7 +41,7 @@ const ProfileForm = () => {
 
     // TODO: Make sure endpoint is correct
     // end point that should update user info
-    axios.put("/api/profile", {id: user.id, first_name, last_name, email, birthday, postal_code, password}) //Post = create new, Put = replaces known values
+    axios.put("/api/profile", {id: user.id, fname, lname, email, birthday, postal_code, password}) //Post = create new, Put = replaces known values
       .then(res => {
         // update auth context means update global state
         user.handleUpdatePersonalInfo(profile)
@@ -57,7 +57,7 @@ const ProfileForm = () => {
           placeholder="First Name"
           name="first name"
           require
-          value={first_name}
+          value={fname}
           onChange={(e) => setFirstName(e.target.value)}
         />
         <br />
@@ -65,7 +65,7 @@ const ProfileForm = () => {
           placeholder="Last Name"
           name="last name"
           require
-          value={last_name}
+          value={lname}
           onChange={(e) => setLastName(e.target.value)}
         />
         <br />
@@ -113,9 +113,25 @@ const ProfileForm = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
+
+
+        <h1>Communication Preferences</h1>
+        <hr/>
+        <p>Get recall notifications and exclusive offers - all to your inbox. Unsubscribe from promotional email at any time.</p>
+        <p>If you wish to contact us about your consent, please email us at hello@talktodrive.com</p>
+
+
+
+
+
+
+
+
         <Button type="submit" > 
           Save Changes</Button>
-        
+          <br></br>
+          <Button type="danger" > 
+          Delete Account</Button>
     
           
         <br />
