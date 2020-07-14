@@ -8,6 +8,7 @@ class Register extends React.Component {
   state = {email:'', password:'', passwordConfirmation:'', fname:'', lname:''}
 
   handleSubmit = (e) => {
+    e.preventDefault();
     const {auth: {handleRegister}, history} = this.props
     if (this.state.password !== this.state.passwordConfirmation) {
       alert("passwords don't match");
