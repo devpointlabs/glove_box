@@ -3,21 +3,40 @@ import './App.css';
 import Navbar from './Navbar';
 import Register from './Register';
 import Login from './Login';
-import CarProfile from './components/CarProfile';
 import { Switch, Route } from 'react-router-dom';
-import CarProfileForm from './components/CarProfileForm';
+import FetchUser from './components/FetchUser'
+import ProtectedRoute from './components/ProtectedRoute'
+import { Container } from 'semantic-ui-react';
+import Dashboard from './Dashboard';
+import Profile from './components/Profile'
+import Profile2 from './components/Profile2'
+import ContactUs from './components/ContactUs';
+import Footer from './components/Footer';
+import CarProfile from './components/CarProfile'
+import CarProfileForm from './components/EditCarProfileForm';
+
+
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar/> */}
-      <switch>
-        {/* <Register/>
-        <Login/> */}
-        <CarProfile />
-        {/* <CarProfileForm /> */}
-        {/* <Route exact path='/carprofile' component={CarProfile} /> */}
-      </switch>
+      <FetchUser>
+        <Navbar/>
+        <div style={{minHeight:'86vh'}}>
+        <Switch >
+            <Route exact path='/' component={Register} />
+            <ProtectedRoute exact path='/dashboard' component={Dashboard} />
+            <ProtectedRoute exact path='/carprofile' component={CarProfile} />
+            {/* <ProtectedRoute exact path='/documents' component={Documents} />
+            {/* <ProtectedRoute exact path='/profile' component={Profile} />  */}
+             {/*Will need to replace profile with protected route after design  */}
+            <Route exact path='/profile2' component={Profile2} /> 
+            <Route exact path='/login' component={Login}/>
+            <Route exact path='/contact_us' component={ContactUs}/>
+        </Switch>
+        </div>
+        <Footer/>   
+      </FetchUser>
     </div>
   );
 }

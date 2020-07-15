@@ -1,8 +1,13 @@
 class Api::VehiclesController < ApplicationController
-    
+
     def index
         render json: current_user.vehicles
     end 
+
+    # def show 
+    #     # vehicle = Vehicle.find(params[:id])
+    #     # render json: vehicle
+    # end
 
     def create
         vehicle = current_user.vehicles.new(vehicle_params)
@@ -29,7 +34,7 @@ class Api::VehiclesController < ApplicationController
     private
 
     def vehicle_params
-        params.require(:vehicle).permit(:make, :model, :year, :color, :type, :vin, :roadside, :insured_by, :policy_number, :image)
+        params.require(:vehicle).permit(:make, :model, :year, :color, :type, :vin, :roadside_assistance, :insured_by, :policy_number, :image, :policy_number, :policy_exp, :insurance_prov_num, :mileage, :license_plate)
     end 
 
     def set_vehicle
