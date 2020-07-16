@@ -14,7 +14,7 @@ function ContactUs (){
       <br/>
 
 
-      <h2>Developer Team</h2>
+      <h3>Developer Team</h3>
       <hr/>
       <p>James Riches: jameseldonriches@gmail.com </p>
       <p>Ryan Ashworth: ryanashworth93@yahoo.com </p>

@@ -9,6 +9,21 @@ class Api::RecordsController < ApplicationController
 
     def create
         record = @vehicle.records.new(record_params)
+        
+        file = params[:file]
+        if file
+            begin
+              ext = File.extname(file.tempfile)
+              cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+              record.image = cloud_image['secure_url']
+            rescue => e
+              render json: { errors: e }, status: 422
+              return
+            end
+          end
+        end
+
+
         if record.save
             render json: record
         else
