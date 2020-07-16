@@ -6,6 +6,7 @@ class Login extends React.Component {
   state = { email: "", password: "" };
 
   handleSubmit = (e) => {
+    e.preventDefault()
     this.props.auth.handleLogin({ ...this.state }, this.props.history);
   };
 

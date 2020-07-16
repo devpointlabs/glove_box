@@ -1,7 +1,7 @@
 import React from "react";
 // import { Button, Form, Segment, Header } from "semantic-ui-react";
 import { AuthConsumer } from "./providers/AuthProvider";
-import {Form, Card, Button} from 'react-bootstrap'
+import {Form, Card, Button, Container} from 'react-bootstrap'
 
 
 class Register extends React.Component {
@@ -34,74 +34,76 @@ class Register extends React.Component {
 
         <Card style ={{width: '36rem'}}>
             <Card.Body>
-            <Form onSubmit={this.handleSubmit}>
-                <Form.Row>
-                    <Form.Group  controlId="formGridFirstName">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control 
-                        autoFocus
-                        required
-                        type="text" 
-                        placeholder="First Name" 
-                        label="fname"
-                        name="fname"
-                        value={fname}
-                        onChange={this.handleChange}
-                    />
-                    </Form.Group>
+              <Container>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Row>
+                        <Form.Group controlId="formGridFirstName">
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control 
+                            autoFocus
+                            required
+                            type="text" 
+                            placeholder="First Name" 
+                            label="fname"
+                            name="fname"
+                            value={fname}
+                            onChange={this.handleChange}
+                        />
+                        </Form.Group>
 
-                    <Form.Group controlId="formGridLastName">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control 
-                         type="text" 
-                         placeholder="Last Name" 
-                         label="lname"
-                         name="lname"
-                         value={lname}
-                         onChange={this.handleChange}
-                    />
-                    </Form.Group>
-                </Form.Row>   
+                        <Form.Group controlId="formGridLastName">
+                        <Form.Label>Last Name</Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            placeholder="Last Name" 
+                            label="lname"
+                            name="lname"
+                            value={lname}
+                            onChange={this.handleChange}
+                        />
+                        </Form.Group>
+                    </Form.Row>   
 
-                <Form.Group controlId="formGroupEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control 
-                        label="Email"
-                        required
-                        name="email"
-                        value={email}
-                        placeholder="Email"
-                        onChange={this.handleChange}
-                    />
-                </Form.Group>
-                <Form.Group controlId="formGroupPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control 
-                        label="Password"
-                        required
-                        name="password"
-                        value={password}
-                        placeholder="Password"
-                        type="password"
-                        onChange={this.handleChange}
-                    />
-                </Form.Group>
-                <Form.Group controlId="formGrouppasswordConfirmation">
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control 
-                        label="Password Confirmation"
-                        required
-                        name="passwordConfirmation"
-                        value={passwordConfirmation}
-                        placeholder="Re-type Password"
-                        type="password"
-                        onChange={this.handleChange}
-                    />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Sign Up
-                </Button>
-            </Form>
+                    <Form.Group controlId="formGroupEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control 
+                            label="Email"
+                            required
+                            name="email"
+                            value={email}
+                            placeholder="Email"
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formGroupPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            label="Password"
+                            required
+                            name="password"
+                            value={password}
+                            placeholder="Password"
+                            type="password"
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group controlId="formGrouppasswordConfirmation">
+                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Control 
+                            label="Password Confirmation"
+                            required
+                            name="passwordConfirmation"
+                            value={passwordConfirmation}
+                            placeholder="Re-type Password"
+                            type="password"
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Sign Up
+                    </Button>
+                </Form>
+              </Container>
             </Card.Body>
         </Card>
         </>

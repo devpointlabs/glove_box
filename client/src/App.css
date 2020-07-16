@@ -38,3 +38,11 @@
     transform: rotate(360deg);
   }
 }
+
+.filepond--item {
+  width: calc(25% - .5em);
+}
+
+.filepond--file-action-button {
+  cursor: pointer;
+}
