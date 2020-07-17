@@ -1,5 +1,5 @@
 class Api::RecordsController < ApplicationController
-    before action :set_vehicle
+    before_action :set_vehicle
     before_action :set_record, only: [:update, :destroy]
 
 
@@ -8,7 +8,9 @@ class Api::RecordsController < ApplicationController
     end
 
     def create
-        record = @vehicle.records.new(record_params)
+        # record = @vehicle.records.new(record_params)
+        record = @vehicle.records.new({category: "insurance"})
+        # //pass category from the front end
         
         file = params[:file]
         if file
@@ -17,16 +19,17 @@ class Api::RecordsController < ApplicationController
               cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
               record.image = cloud_image['secure_url']
             rescue => e
+                debugger
               render json: { errors: e }, status: 422
               return
             end
-          end
         end
 
 
         if record.save
             render json: record
         else
+            debugger
             render json: {errors: record.errors, status: 422}
         end 
     end 
@@ -50,7 +53,9 @@ class Api::RecordsController < ApplicationController
     end 
 
     def set_vehicle
-        @vehicle = current_user.Vehicle.find(params[:vehicle_id])
+        # //commented out for testing . revert back once vehicles set-up
+        # @vehicle = current_user.vehicles.find(params[:vehicle_id])
+        @vehicle= Vehicle.find(params[:vehicle_id])
     end 
 
     def set_record
