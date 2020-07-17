@@ -3,6 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { FilePond } from 'react-filepond'
 
 const EditCarProfileForm = (props) => {
   const [editVehicle, setEditVehicle] = useState({})
@@ -17,27 +18,51 @@ const EditCarProfileForm = (props) => {
   // const [policy_number, setPolicyNumber] = useState ('')
   // const [roadside_assistance, setRoadsideAssistance] = useState ('')
   // const [insurance_prov_num, setInsuranceProvNum] = useState ('')
+  //this is another option for doing the form 
   
+  //getting with caden today to connect our pages together 
+
+  // useEffect (() => {
+  //   if(props.vehicle) {
+  //     setEditVehicle(props.vehicle.name)
+  //   }
+  // },[])
 
   useEffect((id) => { //added in id in useEffect so i dont get an error for now
     axios.get(`/api/vehicles/${id}`)
       .then(res => {
         setEditVehicle(res.data)
+      }).catch(err => {
+          console.log(err)
       })
   })
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if(props.editCarProfile){
+  //     props.editCarProfile(props.id)
+  //   } else {
+  //     axios.put(`/api/vehicles`)
+  //     // axios.put(`/api/vehicles/${id}`) correct axios call 'id undefiend'
+  //       .then(res => {
+  //         setEditVehicle(res.data)
+  //         props.history.goBack()
+  //       }).catch((err) => {
+  //         console.log(err)
+  //       })
+  //     }
+  // }
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if(props.editCarProfile){
-      props.editCarProfile(props.id)
-    } else {
-      axios.put(`/api/vehicles`)
-      // axios.put(`/api/vehicles/${id}`) correct axios call 'id undefiend'
+    e.preventDefault()
+    axios.put(`/api/vehicles`)
+      // axios.put(`/api/vehicles/${id}`)
         .then(res => {
           setEditVehicle(res.data)
           props.history.goBack()
+        }).catch(err =>{
+          console.log(err.response)
         })
-      }
   }
 
   const handleChange = (e) => {
@@ -47,12 +72,22 @@ const EditCarProfileForm = (props) => {
     })
   }
 
+  const deleteVehicle = (id) => { //take out id once you have props from other page
+    axios.delete(`/api/vehicles/${id}`)
+      .then((res) => props.history.goBack())
+      .catch((e) => console.log(e))
+  };
+
+  const handleChangeCheckbox = (e) => {
+    setEditVehicle({roadside_assistance: !editVehicle.roadside_assistance})
+  }
+
   //  goBack() {
   //   this.props.history.goBack()
   // }
 
   return (
-    <>
+   
       <div>
         <Form
         bg="light"
@@ -141,14 +176,6 @@ const EditCarProfileForm = (props) => {
         />
         <br />
         <Form.Control 
-        placeholder='Roadside Assistance Put "Yes" or "No"'
-        name='roadside assistance'
-        required
-        value={editVehicle.roadside_assistance}
-        onChange={handleChange}
-        />
-        <br />
-        <Form.Control 
         placeholder='Insurance Provider Number'
         name='insurance prov num'
         required
@@ -156,20 +183,37 @@ const EditCarProfileForm = (props) => {
         onChange={handleChange}
         />
         <br />
+        <h6>Roadside Assistance? Check the box for Yes</h6>
+        <Form.Control 
+        placeholder='Roadside Assistance? Check for Yes'
+        name='roadside assistance'
+        required
+        type='checkbox'
+        onChange={handleChangeCheckbox}
+        checked={editVehicle.roadside_assistance}
+        />
+        <br />
         <Button type='submit'>Update</Button>
         {' '}
-        <Button variant="danger">Delete Vehicle</Button>
-        {/* <Button onClick={() => props.history.goBack()}>Back</Button> */}
+        <Button onClick={deleteVehicle}variant="danger">Delete Vehicle</Button>
+        {' '}
+        <Button onClick={() => props.history.goBack()}>Back</Button>
         {/* WORKING BACK BUTTON IF WE WANT IT */}
+        <br/>
+        <>
+        <br/>
+      <h6>Edit Car Photo</h6>
+      <FilePond route={`/api/vehicles`}/>
+      </>
       </Form>
       </Form>
       </div>
-    </>
   )
 }
 
 export default EditCarProfileForm;
 
+// SCHEMA
 // "make"
 //     t.string "model"
 //     t.integer "year"

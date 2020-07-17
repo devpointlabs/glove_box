@@ -1,13 +1,13 @@
 class Api::VehiclesController < ApplicationController
+    before_action :set_vehicle, only: [:show]
 
     def index
         render json: current_user.vehicles
     end 
 
-    # def show 
-    #     # vehicle = Vehicle.find(params[:id])
-    #     # render json: vehicle
-    # end
+    def show 
+        render json: @vehicle
+    end
 
     def create
         vehicle = current_user.vehicles.new(vehicle_params)
@@ -39,5 +39,6 @@ class Api::VehiclesController < ApplicationController
 
     def set_vehicle
         @vehicle = current_user.Vehicle.find(params[:vehicle_id])
+        # @vehicle = Vehicle.find(params[:id])
     end 
 end
