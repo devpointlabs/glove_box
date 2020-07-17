@@ -1,16 +1,16 @@
 import React from "react";
 // import { Button, Form, Segment, Header } from "semantic-ui-react";
 import { AuthConsumer } from "./providers/AuthProvider";
-import {Form, Card, Button, Container} from 'react-bootstrap'
+import {Form, Card, Button, Container, Col} from 'react-bootstrap'
 
 
 class Register extends React.Component {
-  state = {email:'', password:'', passwordConfirmation:'', fname:'', lname:''}
+  state = {email:'', password:'', password_confirmation:'', fname:'', lname:''}
 
   handleSubmit = (e) => {
     e.preventDefault();
     const {auth: {handleRegister}, history} = this.props
-    if (this.state.password !== this.state.passwordConfirmation) {
+    if (this.state.password !== this.state.password_confirmation) {
       alert("passwords don't match");
       return;
     }
@@ -22,7 +22,7 @@ class Register extends React.Component {
     this.setState({[name]: value})
   }
   render() {
-    const { email, password, passwordConfirmation, fname, lname } = this.state;
+    const { email, password, password_confirmation, fname, lname } = this.state;
 
     return (
         <>
@@ -31,13 +31,15 @@ class Register extends React.Component {
         <p>A place for you to store all of your important vehicle records</p>
         <br/>
         <br/>
-
+        <Container>
         <Card style ={{width: '36rem'}}>
             <Card.Body>
               <Container>
                 <Form onSubmit={this.handleSubmit}>
+                  
                     <Form.Row>
-                        <Form.Group controlId="formGridFirstName">
+                      <Col>
+                        <Form.Group controlId="formGridfname">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control 
                             autoFocus
@@ -50,8 +52,9 @@ class Register extends React.Component {
                             onChange={this.handleChange}
                         />
                         </Form.Group>
-
-                        <Form.Group controlId="formGridLastName">
+                      </Col>
+                      <Col>
+                        <Form.Group controlId="formGridlname">
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control 
                             type="text" 
@@ -62,7 +65,9 @@ class Register extends React.Component {
                             onChange={this.handleChange}
                         />
                         </Form.Group>
+                        </Col>
                     </Form.Row>   
+                  
 
                     <Form.Group controlId="formGroupEmail">
                         <Form.Label>Email address</Form.Label>
@@ -87,13 +92,13 @@ class Register extends React.Component {
                             onChange={this.handleChange}
                         />
                     </Form.Group>
-                    <Form.Group controlId="formGrouppasswordConfirmation">
+                    <Form.Group controlId="formGrouppassword_confirmation">
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control 
                             label="Password Confirmation"
                             required
-                            name="passwordConfirmation"
-                            value={passwordConfirmation}
+                            name="password_confirmation"
+                            value={password_confirmation}
                             placeholder="Re-type Password"
                             type="password"
                             onChange={this.handleChange}
@@ -106,6 +111,7 @@ class Register extends React.Component {
               </Container>
             </Card.Body>
         </Card>
+        </Container>
         </>
 
     //   <Segment basic>

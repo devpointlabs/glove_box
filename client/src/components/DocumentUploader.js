@@ -6,13 +6,16 @@ import FileUploader from './FileUploader'
 function DocumentUploader (){
   return(
     <Container>
-      <Card>
+      <Card bg="secondary"
+            text='white'>
         <Card.Body> 
-          <Tabs defaultActiveKey="insurance">
-            <Tab eventKey="insurance" title="Insurance">
+          <Tabs defaultActiveKey="insurance" text='white'>
+            <Tab eventKey="insurance" title="Insurance" >
+              
               <br/>
               List of uploaded insurance documents
               <FileUploader/>
+             
             </Tab>
             <Tab eventKey="registration" title="Registration">
               <br/>

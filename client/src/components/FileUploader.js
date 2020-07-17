@@ -6,8 +6,9 @@ import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 import FilePondPluginFileRename from 'filepond-plugin-file-rename';
-import '../App.css';
+import '../filepond.css';
 import Axios from 'axios'
+import { Container } from 'react-bootstrap'
 
 registerPlugin (FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileRename)
 
@@ -16,62 +17,29 @@ function FileUploader (){
   const [loading, setLoading] = useState(false)
 
 
-  // const upLoadFile = (dlikodxxc, Digital_Glovebox) => ({
-  //   process: (file, load, error, progress, abort) => {
+  function setFileHandler (f){
+    let data = new FormData()
+    data.append('file', f[0].file)
+    //1 is hardcoded for vehicle ID
+    Axios.post('/api/vehicles/1/records', data)
+    .then(res => {debugger})
+    .catch(err => {debugger})
 
-  //       const url = `https://api.cloudinary.com/v1_1/dlikodxxc`;
-  //       const xhr = new XMLHttpRequest();
-  //       const formData = new FormData();
-
-  //       xhr.open('POST', url, true);
-  //       xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-
-  //       xhr.upload.addEventListener('progress', e => {
-  //           progress(e.lengthComputable, e.loaded, e.total);
-  //       });
-
-  //       xhr.onreadystatechange = e => {
-
-  //           if (xhr.readyState !== 4) {
-  //               return;
-  //           }
-
-  //           if (xhr.status >= 200 && xhr.status < 300) {
-  //               const response = JSON.parse(xhr.responseText);
-  //               load(response.public_id);
-  //               return;
-  //           }
-  //           error('Error!');
-  //       };
-
-  //       formData.append('upload_preset', 'Digital_Glovebox');
-  //       // formData.append('tags', 'browser_upload');
-  //       formData.append('file', file);
-  //       xhr.send(formData);
-        
-  //       return {
-  //           abort: () => {
-  //               xhr.abort();
-  //           }
-  //       }
-  //   },
-  //   revert: null
-  // });
-
-
+    
+  }
 
   return (
-    <div className="App">
+    <div >
       <FilePond
         files={files}
         allowMultiple={true}
-        onupdatefiles={setFiles}
+        onupdatefiles={setFileHandler}
         allowReorder={true}
-        labelIdle=' + UPLOAD YOUR DOCUMENTS'
+        labelIdle=' <span class="filepond--label-action">+ UPLOAD YOUR DOCUMENTS</span>'
         allowFileRename={true}
         instantUpload={true}
         // server="/api"
-        server="https://api.cloudinary.com/v1_1/dlikodxxc"
+        // server="https://api.cloudinary.com/v1_1/dlikodxxc"
         // server= {upLoadFile}
         chunkUploads={true}
         // imagePreviewHeight={null}
@@ -82,50 +50,5 @@ function FileUploader (){
     </div>
   )
 }
-
-// class FileUploader extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       // Set initial files, type 'local' means this is a file
-//       // that has already been uploaded to the server (see docs)
-//       files: [
-//         {
-//           source: "index.html",
-//           options: {
-//             type: "local"
-//           }
-//         }
-//       ]
-//     };
-//   }
-
-//   handleInit() {
-//     console.log("FilePond instance has initialised", this.pond);
-//   }
-
-//   render() {
-//     return (
-//       <div className="App">
-//         {/* Pass FilePond properties as attributes */}
-//         <FilePond
-//           ref={ref => (this.pond = ref)}
-//           files={this.state.files}
-//           allowMultiple={true}
-//           maxFiles={3}
-//           server="/api"
-//           name="files" 
-//           oninit={() => this.handleInit()}
-//           onupdatefiles={fileItems => {
-//             this.setState({
-//               files: fileItems.map(fileItem => fileItem.file)
-//             });
-//           }}
-//         />
-//       </div>
-//     );
-//   }
-// }
 
 export default FileUploader
