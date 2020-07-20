@@ -1,9 +1,13 @@
 class Api::RecordsController < ApplicationController
-    before_action :set_vehicle
+    # before_action :set_vehicle
     before_action :set_record, only: [:update, :destroy]
 
 
     def index
+        render json: @vehicle.records
+    end
+
+    def show
         render json: @vehicle.records
     end
 
