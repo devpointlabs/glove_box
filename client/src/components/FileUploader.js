@@ -21,11 +21,11 @@ function FileUploader (){
     let data = new FormData()
     data.append('file', f[0].file)
     //1 is hardcoded for vehicle ID
-    Axios.post('/api/vehicles/1/records', data)
-    .then(res => {debugger})
-    .catch(err => {debugger})
-
-    
+    Axios.post(`/api/vehicles/1/records`, data)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => console.log(err))
   }
 
   return (

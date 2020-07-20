@@ -6,7 +6,7 @@ export const AuthConsumer = AuthContext.Consumer
 
 class AuthProvider extends React.Component {
 
-  state = {user: null} // {user: {id: '1', first_name: 'bob', last_name....}}
+  state = {user: null, } // {user: {id: '1', first_name: 'bob', last_name....}}
 
   handleRegister = (user, history) => {
     axios.post('/api/auth', user)
@@ -42,6 +42,7 @@ class AuthProvider extends React.Component {
       console.log(res)
     })
   }
+  
 
   handleUpdatePersonalInfo = (newUserData) => { //Added a new function to handle updated information
     this.setState({ user: {...this.state.user, ...newUserData}})    
