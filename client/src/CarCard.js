@@ -1,15 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
+import AddVehicleForm from './components/AddVehicleForm'
+
 
 export default function CarCard(props) {
-    const defaultImage = 'https://lh3.googleusercontent.com/proxy/pBC2-MR-kzg4iZ5V20cIW587JBKPTLsVmJdOn2_r0uGz4HW9-RydVgiBArCoFJNkbErN3vhINBcG6ig0TsicqMSbZeLno75L_7-423rpeZA56mhgSMtzqRWi'
+    const [editing, setEditing] = useState(false)
+    
     return (
         <div style={styles.card}>
-        <img src={defaultImage} style={{width:'50%'}}/>
+        <img src={'#'} style={{width:'50%'}}/>
         <div style={styles.right}>
             <h1 style={{fontSize:'30px', whiteSpace:'nowrap'}}><strong>{props.model} {props.make}</strong></h1>
             <h3 style={{fontSize:'20px'}}>Unlock your vehicles estimated trade-in value and up-to-date recalls when you add your liscense plate.</h3>
-            <button style={styles.buttonStyle}><strong>ADD LISCENSE PLATE</strong></button>
+            <button style={styles.buttonStyle} onClick={()=> setEditing(!editing)}><strong>EDIT VEHICLE</strong></button>
         </div>
+        {/* {editing && <AddVehicleForm {...props} setEditing={setEditing}/>} */}
     </div>
     )
 }
