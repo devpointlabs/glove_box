@@ -11,7 +11,7 @@ const CarProfile = (props) => {
     'make':'Nissan',
     'year':2012,
     'model':'GTR r35',
-    // 'image': 'https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/1280x782/546b6e926ded9_-_2012-nissan-gt-r-1-lg.jpg?resize=768:*',
+    'image': 'https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/1280x782/546b6e926ded9_-_2012-nissan-gt-r-1-lg.jpg?resize=768:*',
     'license_plate':'A28BD4',
     'vin':'12345abc678defg',
     'mileage':70250,
