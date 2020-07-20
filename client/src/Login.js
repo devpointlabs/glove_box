@@ -7,6 +7,7 @@ class Login extends React.Component {
   // added a email and password..delete when done
 
   handleSubmit = (e) => {
+    e.preventDefault()
     this.props.auth.handleLogin({ ...this.state }, this.props.history);
   };
 

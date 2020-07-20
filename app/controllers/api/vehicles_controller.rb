@@ -39,6 +39,6 @@ class Api::VehiclesController < ApplicationController
 
     def set_vehicle
         @vehicle = current_user.Vehicle.find(params[:vehicle_id])
-        # @vehicle = Vehicle.find(params[:id])
+        # @vehicle = Vehicle.find(params[:vehicle_id])
     end 
 end

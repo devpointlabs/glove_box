@@ -29,7 +29,7 @@ const EditCarProfileForm = (props) => {
   // },[])
 
   useEffect((id) => { //added in id in useEffect so i dont get an error for now
-    axios.get(`/api/vehicles/${id}`)
+    axios.get(`/api/vehicles/${id}`) //show method
       .then(res => {
         setEditVehicle(res.data)
       }).catch(err => {
@@ -56,7 +56,7 @@ const EditCarProfileForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios.put(`/api/vehicles`)
-      // axios.put(`/api/vehicles/${id}`)
+      // axios.put(`/api/vehicles/${id}`) //update method
         .then(res => {
           setEditVehicle(res.data)
           props.history.goBack()
@@ -73,7 +73,7 @@ const EditCarProfileForm = (props) => {
   }
 
   const deleteVehicle = (id) => { //take out id once you have props from other page
-    axios.delete(`/api/vehicles/${id}`)
+    axios.delete(`/api/vehicles/${id}`) //destroy method
       .then((res) => props.history.goBack())
       .catch((e) => console.log(e))
   };
@@ -203,7 +203,8 @@ const EditCarProfileForm = (props) => {
         <>
         <br/>
       <h6>Edit Car Photo</h6>
-      <FilePond route={`/api/vehicles`}/>
+      <FilePond route={`/api/vehicles/`}/>
+      {/* <img style={{borderRadius: "3px"}} width="250" height="auto"src={editVehicle.file}  /> */}
       </>
       </Form>
       </Form>
