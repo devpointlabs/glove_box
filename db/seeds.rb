@@ -11,7 +11,7 @@ end
 
 insurance = ['State Farm', 'Geico', 'Nationwide', 'Farmers', 'Progressive', 'All-state', 'Nationwide']
 
-10.times do 
+3.times do 
     Vehicle.create(
         make: Faker::Vehicle.make,
         model: Faker::Vehicle.model,
@@ -29,7 +29,7 @@ end
 
 category = %w(regular maintenence, upgrades, accident)
 tasks = %w(oil change, bumper damage, engine replacement, breaks, new battery, new windshield)
-20.times do
+3.times do
     Record.create(
     date: Faker::Date.between(from: '2014-09-23', to: '2020-09-25'),
     maintenance_task: tasks.sample,

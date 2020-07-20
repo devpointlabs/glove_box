@@ -1,0 +1,15 @@
+.filepond--item {
+  width: calc(25% - .5em);
+}
+
+.filepond--file-action-button {
+  cursor: pointer;
+}
+
+.filepond--drop-label {
+  color: rgb(255, 255, 255);
+}
+
+.filepond--panel-root {
+  background-color: rgb(0, 0, 0);
+}
