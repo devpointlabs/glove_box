@@ -41,7 +41,8 @@ const ProfileForm = () => {
 
     // TODO: Make sure endpoint is correct
     // end point that should update user info
-    axios.put("/api/profile", {id: user.id, fname, lname, email, birthday, postal_code, password}) //Post = create new, Put = replaces known values
+    //interpulate user id after userVV
+    axios.put(`/api/user/${user.id}`, {id: user.id, fname, lname, email, birthday, postal_code, password}) //Post = create new, Put = replaces known values
       .then(res => {
         // update auth context means update global state
         user.handleUpdatePersonalInfo(profile)
