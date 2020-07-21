@@ -6,7 +6,7 @@ import {AuthContext} from '../providers/AuthProvider'
 
 
 const ProfileForm = () => {
-  const user = useContext(AuthContext) //This gives us global access to the user
+  const { user } = useContext(AuthContext)
 
   const [fname, setFirstName] = useState("")
   const [lname, setLastName] = useState("")
@@ -36,15 +36,10 @@ const ProfileForm = () => {
   }, [user.id, user.fname, user.lname, user.email, user.birthday, user.postal, user.password])
 
   const handleSubmit = (e) => {
-    // prevent refresh
     e.preventDefault()
 
-    // TODO: Make sure endpoint is correct
-    // end point that should update user info
-    //interpulate user id after userVV
     axios.put(`/api/user/${user.id}`, {id: user.id, fname, lname, email, birthday, postal_code, password}) //Post = create new, Put = replaces known values
       .then(res => {
-        // update auth context means update global state
         user.handleUpdatePersonalInfo(profile)
       })
   }
@@ -96,7 +91,7 @@ const ProfileForm = () => {
           onChange={(e) => setPostal(e.target.value)}
         />
         <br />
-        <h1>Change Password</h1>
+        <h3>Change Password</h3>
         <hr />
         <Form.Control
           placeholder="Current Password"

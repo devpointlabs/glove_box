@@ -26,9 +26,7 @@ function App() {
             <Route exact path='/' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             <Route exact path='/documents' component={Documents} />
-            <Route exact path='/profile' component={Profile} /> 
-             {/*Will need to replace profile with protected route after design  */}
-            <Route exact path='/ProfileForm' component={ProfileForm} /> 
+            <Route exact path='/profile' component={ProfileForm} /> 
             <Route exact path='/login' component={Login}/>
             <Route exact path='/contact_us' component={ContactUs}/>
         </Switch>
