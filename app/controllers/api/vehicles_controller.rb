@@ -1,5 +1,5 @@
 class Api::VehiclesController < ApplicationController
-    before_action :set_vehicle, only: [:show]
+    before_action :set_vehicle, only: [:show, :update, :destroy]
 
     def index
         render json: current_user.vehicles
@@ -19,7 +19,7 @@ class Api::VehiclesController < ApplicationController
     end 
 
     def update
-        if @vehicle.update
+        if @vehicle.update(vehicle_params)
             render json: @vehicle
         else
             render json: {errors: @vehicle.errors, status: 422}
@@ -38,7 +38,6 @@ class Api::VehiclesController < ApplicationController
     end 
 
     def set_vehicle
-        @vehicle = current_user.Vehicle.find(params[:vehicle_id])
-        # @vehicle = Vehicle.find(params[:vehicle_id])
+        @vehicle = Vehicle.find(params[:id])
     end 
 end

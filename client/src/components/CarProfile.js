@@ -3,35 +3,23 @@ import { Table } from 'react-bootstrap';
 import axios from 'axios';
 import EditCarProfileForm from './EditCarProfileForm'
 import { Button, Icon } from 'semantic-ui-react'
+// import CarCard from '../CarCard';
 
 const CarProfile = (props) => {
   const [editing, setEditing] = useState(false)
-  const [vehicle, setVehicle] = useState({
-    // 'id':10,
-    // 'make':'Nissan',
-    // 'year':2012,
-    // 'model':'GTR r35',
-    // 'image': 'https://hips.hearstapps.com/roa.h-cdn.co/assets/cm/14/47/1280x782/546b6e926ded9_-_2012-nissan-gt-r-1-lg.jpg?resize=768:*',
-    // 'license_plate':'A28BD4',
-    // 'vin':'12345abc678defg',
-    // 'mileage':70250,
-    // 'insured_by':'Progressive',
-    // 'policy_exp': '12/20/20',
-    // 'policy_number':'10293847',
-    // 'roadside_assistance':true,
-    // 'insurance_prov_num':'002138546',
-  });
-  //this is just so you can see the page display until i am able to pass down props 
+  // const [carCardPage, setCarCardPage] = useState(false) was for back button to carCard but not working right 
+  const [vehicle, setVehicle] = useState({});
 
-  useEffect(() => { //added in id in useEffect so i dont get an error for now take out once you have props from other page
-    axios.get(`/api/vehicles`) //show method                                                                                           
-      .then((res) => {
-        // debugger;
-        setVehicle(res.data)
-      }).catch((e) => {
-        console.log(e)
-      })
-    }, [])
+  useEffect(() => { 
+    // axios.get(`/api/vehicles/${props.id}`)                                                                                          
+    //   .then((res) => {
+    //     setVehicle(res.data)
+    //   }).catch((e) => {
+    //     console.log(e)
+    //   })
+    debugger
+    }, [props.car])
+    
 
   const roadsideCheck = () => {
     if (vehicle.roadside_assistance === true) {
@@ -45,51 +33,55 @@ const CarProfile = (props) => {
     }
   }
 
-  const editCarProfile = (id) => {
-    axios.put(`/api/vehicles${id}`)
-      .then( res => {
-        const updateCarProfile = vehicle.map( vehicle => {
-          if (vehicle.id === id)
-            return res.data;
-          return vehicle
-        });
-        setVehicle(editCarProfile)
-      })
-  }
+  // const editCarProfile = () => {
+  //   axios.put(`/api/vehicles${props.id}`)
+  //     .then( res => {
+  //       const updateCarProfile = props.vehicles.map( vehicle => {
+  //         if (vehicle.id === res.id) return res.data;
+  //           else return vehicle
+  //       });
+  //       props.setVehicle(updateCarProfile)
+  //         setEditing(!editing) //or false
+  //     })
+  // }
 
   return (
     <>
-    <div>
-      {editing ? <EditCarProfileForm toggleEdit={setEditing} editCarProfile={props.editCarProfile} {...props} /> :
+    <div style={styles.styleForm}>
+      {/* {carCardPage && <CarCard toggleCarCard={setCarCardPage} /> } kinda works as a back button but looks like crap */}
+      {editing ? <EditCarProfileForm toggleEdit={setEditing} editCarProfile={props.editCarProfile} {...props.car} editVehicle={props.editVehicle}
+      //  vehicles={props.vehicles} setVehicles={props.setVehicles} 
+       /> :
       <>
       <h1 align='left'>Car Profile</h1>
       <hr />
-      <h2 align='center'>{vehicle.year} {vehicle.make} {vehicle.model}</h2>
+      <h2 align='center'>{props.car.year} {props.car.make} {props.car.model}</h2>
       <br />
+      {/* <Button onClick={() => setCarCardPage(!carCardPage) } >Dashboard</Button> kinda works as a back button but looks like crap */} 
       <Button name='edit outline' size='large' icon basic onClick={() => setEditing(!editing)} style={{float: 'right'}}> <Icon name="edit outline"/></Button>
       {/* <img src={vehicle.picture} onError={(e)=>{e.target.onerror = null; e.target.src='add vehicle url here'}}/> tried adding default vehicle image but wanst working */}
-      <img width={525} height={350} align='center'src={vehicle.image} alt='no vehicle image'/> 
-      {/* <img width={525} height={350} align='center'src={`${vehicle.file}`} alt='user_vehicle'/> possibly the correct way with filepond? */}
+      {/* <img width={525} height={350} align='center'src={props.image} alt='no vehicle image'/>  */}
+      <img width={525} height={350} align='center'src={`${props.image}`} alt='user_vehicle'/> 
       <br />
       <br />
       <br />
     <Table>
   <thead>
     <tr>  
-      <th>License Plate<p>{vehicle.license_plate}</p></th> 
-      <th>VIN<p>{vehicle.vin}</p></th>
-      <th>Mileage<p>{vehicle.mileage}</p></th> 
+      <th>License Plate<p>{props.license_plate}</p></th> 
+      <th>VIN<p>{props.vin}</p></th>
+      <th>Mileage<p>{props.mileage}</p></th> 
     </tr>
     </thead>
     </Table>
    <Table>
   <thead>
    <tr>
-      <th>Insurance Provider<p>{vehicle.insured_by}</p></th>
-      <th>Policy Expiry<p>{vehicle.policy_exp}</p></th>
-      <th>Policy Number<p>{vehicle.policy_number}</p></th>
+      <th>Insurance Provider<p>{props.insured_by}</p></th>
+      <th>Policy Expiry<p>{props.policy_exp}</p></th>
+      <th>Policy Number<p>{props.policy_number}</p></th>
       <th>{roadsideCheck()}</th>
-      <th>Insurance Provider Number<p>{vehicle.insurance_prov_num}</p></th>
+      <th>Insurance Provider Number<p>{props.insurance_prov_num}</p></th>
     </tr>
     </thead>
     </Table>
@@ -100,6 +92,16 @@ const CarProfile = (props) => {
   )
 }
 
-export default CarProfile;
+const styles = {
+  styleForm: {
+    position: 'fixed',
+    top: '42px',
+    left: '0',
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'white',
+    padding: "20px",
+  }
+}
 
-  // the user data im working with and signed in on is user id: 1
+export default CarProfile;

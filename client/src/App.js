@@ -12,7 +12,6 @@ import ProfileForm from './components/ProfileForm'
 import ContactUs from './components/ContactUs';
 import Documents from './components/Documents'
 import Footer from './components/Footer';
-import CarProfile from './components/CarProfile'
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
             <Route exact path='/' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             <Route exact path='/documents' component={Documents} />
-            <Route exact path='/CarProfile' component={CarProfile} />
             {/* <ProtectedRoute exact path='/profile' component={Profile} />  */}
              {/*Will need to replace profile with protected route after design  */}
             <Route exact path='/ProfileForm' component={ProfileForm} /> 

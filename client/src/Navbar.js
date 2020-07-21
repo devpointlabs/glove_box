@@ -28,15 +28,6 @@ class Navbar extends React.Component {
           </Link>
         </Menu.Menu>
         <Menu.Menu position='right'>
-          {/* added this carprofile link so i can work on carprofile page 'ryan' */}
-        <Link to='/CarProfile'>
-            <Menu.Item
-              id='carprofile'
-              name='Car Profile'
-              active={this.props.location.pathname === '/CarProfile'}
-            />
-          </Link>
-          {/* added this carprofile link so i can work on carprofile page 'ryan' */}
          <Link to='/profile'>
             <Menu.Item
               id='profile'
