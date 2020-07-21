@@ -2,18 +2,24 @@ import React, { useState, useEffect, useContext } from "react"
 import { Button, Form, } from "react-bootstrap"
 import axios from "axios"
 
+import useWindowSize from '../hooks/useWindowSize'
+
 import {AuthContext} from '../providers/AuthProvider'
 
 
 const ProfileForm = () => {
-  const { user } = useContext(AuthContext)
+  const {user, handleUpdatePersonalInfo} = useContext(AuthContext)
+  
+  const [windowWidth, ,bps] = useWindowSize()
 
   const [fname, setFirstName] = useState("")
   const [lname, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [birthday, setBirthday] = useState("")
   const [postal_code, setPostal] = useState("")
-  const [password, setPassword] = useState("")
+  const [oldPassword, setOldPassword] = useState("")
+  const [newPassword, setNewPassword] = useState("")
+  const [isChecked, setIsChecked] = useState(false)
 
   const profile = {
     fname,
@@ -21,7 +27,7 @@ const ProfileForm = () => {
     email,
     birthday,
     postal_code,
-    password,
+    oldPassword,
   }
 
   useEffect(() => {
@@ -31,109 +37,228 @@ const ProfileForm = () => {
       setEmail(user.email)
       setBirthday(user.birthday)
       setPostal(user.postal)
-      setPassword(user.password)
     }
-  }, [user.id, user.fname, user.lname, user.email, user.birthday, user.postal, user.password])
+  }, [user.id, user.fname, user.lname, user.email, user.birthday, user.postal])
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    axios.put(`/api/user/${user.id}`, {id: user.id, fname, lname, email, birthday, postal_code, password}) //Post = create new, Put = replaces known values
-      .then(res => {
-        user.handleUpdatePersonalInfo(profile)
-      })
+    const updatedUser = {id: user.id}
+
+    if (fname) {
+      updatedUser.fname = fname
+    }
+    
+    if (lname) {
+      updatedUser.lname = lname
+    }
+    
+    if (email) {
+      updatedUser.email = email
+    }
+    
+    if (birthday) {
+      updatedUser.birthday = birthday
+    }
+
+    if (postal_code) {
+      updatedUser.postal_code = postal_code
+    }
+
+    if (oldPassword && newPassword) {
+      // * implement verifcation of oldpassword in backend
+      // updatedUser.oldPassword = oldPassword
+      // updatedUser.newPassword = newPassword
+
+      // * meanwhile
+      updatedUser.password = newPassword
+    }
+
+    axios
+      .put(`/api/users/${user.id}`, updatedUser) //Post = create new, Put = replaces known values
+      .then(res => handleUpdatePersonalInfo(profile))
   }
 
+  const actualWidthSize = windowWidth > bps.md ? '40%' : '90%'
+
   return (
-    <>
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      marginTop: '30px',
+      marginBottom: '30px',
+    }}>
+    <div style={{
+      width: actualWidthSize,
+      maxWidth: actualWidthSize,
+      border: 'solid black 1px',
+      padding: '20px',
+    }}>
       <Form onSubmit={handleSubmit}>
-      <Form.Label>Personal Details </Form.Label>
-      <hr />
-        <Form.Control
-          placeholder="First Name"
-          name="first name"
-          require
-          value={fname}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <br />
-        <Form.Control
-          placeholder="Last Name"
-          name="last name"
-          require
-          value={lname}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <br />
-        <Form.Control
-          placeholder="Email"
-          name="email"
-
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <Form.Control
-          placeholder="Date of Birth"
-          name="Date of Birth"
-
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-        />
-        <br />
-        <h3>Connect to your RBC account</h3>
+        <div style={{display: 'flex', justifyContent: 'start', marginBottom: '30px'}}>
+          <h1><b>Account Settings</b></h1>
+          <hr />
+        </div>
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <h3>Personal Details</h3>
+        </div>
         <hr />
-        <Form.Control
-          placeholder="Postal Code"
-          name="Postal Code"
-
-          value={postal_code}
-          onChange={(e) => setPostal(e.target.value)}
-        />
+        <Form.Row>
+          <div style={{
+            width: '50%',
+            paddingRight: '5px'
+          }}>
+            <div style={{display: 'flex', justifyContent: 'start'}}>
+              <label>First Name</label>
+            </div>
+            <Form.Control
+              placeholder="First Name"
+              name="first name"
+              required
+              value={fname}
+              onChange={(e) => setFirstName(e.target.value)}
+              />
+          </div>
+          <div style={{
+            width: '50%',
+            paddingLeft: '5px'
+          }}>
+            <div style={{display: 'flex', justifyContent: 'start'}}>
+              <label>Last Name</label>
+            </div>
+            <Form.Control
+              placeholder="Last Name"
+              name="last name"
+              required
+              value={lname}
+              onChange={(e) => setLastName(e.target.value)}
+              />
+          </div>
+        </Form.Row>
         <br />
-        <h3>Change Password</h3>
+        <Form.Row>
+          <div style={{
+            width: '50%',
+            paddingLeft: '5px'
+          }}>
+            <div style={{display: 'flex', justifyContent: 'start'}}>
+              <label>Email</label>
+            </div>
+            <Form.Control
+              placeholder="Email"
+              name="email"
+
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <br />
+          <div style={{
+            width: '50%',
+            paddingLeft: '5px'
+          }}>
+            <div style={{display: 'flex', justifyContent: 'start'}}>
+              <label>DOB</label>
+            </div>
+            <Form.Control
+              placeholder="2020/01/01"
+              name="Date of Birth"
+              // type='datetime'
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+            />
+          </div>
+        </Form.Row>
+        <br />
+        <Form.Row>
+          <div style={{
+            width: '50%',
+            paddingLeft: '5px'
+          }}>
+            <label style={{display: 'flex', justifyContent: 'start'}}>Connect to your RBC account</label>
+            <Form.Control
+              placeholder="Postal Code"
+              name="Postal Code"
+
+              value={postal_code}
+              onChange={(e) => setPostal(e.target.value)}
+            />
+          </div>
+        </Form.Row>
+        <br />
+        <div>
+          <h3 style={{display: 'flex', justifyContent: 'start'}}>Change Password</h3>
+        </div>
         <hr />
-        <Form.Control
-          placeholder="Current Password"
-          name="Current Password"
-        
-        //   value={password}
-        //   onChange={(e) => setPassword(e.target.value)}
-        />
+        <Form.Row>
+          <div style={{
+              width: '50%',
+              paddingRight: '5px'
+            }}>
+              <div style={{display: 'flex', justifyContent: 'start'}}>
+                <label>Current Password</label>
+              </div>
+            <Form.Control
+              placeholder="Current Password"
+              name="Current Password"
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
+            />
+          </div>
+          <br />
+          <div style={{
+              width: '50%',
+              paddingRight: '5px'
+            }}>
+              <div style={{display: 'flex', justifyContent: 'start'}}>
+                <label>New Password</label>
+              </div>
+            <Form.Control
+              placeholder="Type New Password"
+              name="Type New Password"
+
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+            />
+          </div>
+        </Form.Row>
         <br />
-        <Form.Control
-          placeholder="Type New Password"
-          name="Type New Password"
-
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-
-
-        <h1>Communication Preferences</h1>
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <h3>Communication Preferences</h3>
+        </div>
         <hr/>
-        <p>Get recall notifications and exclusive offers - all to your inbox. Unsubscribe from promotional email at any time.</p>
-        <p>If you wish to contact us about your consent, please email us at hello@talktodrive.com</p>
-
-
-
-
-
-
-
-
-        <Button type="submit" > 
-          Save Changes</Button>
-          <br></br>
-          <Button type="danger" > 
-          Delete Account</Button>
-    
-          
-        <br />
+        <div data-name='container'>
+          <section style={{display: 'flex', flexDirection: 'row', marginBottom: '14px'}}>
+            <div style={{marginRight: '10px', marginTop: '10px'}}>
+              <input
+                type="checkbox"
+                id="check-box"
+                name="CommunicationPref" 
+                value={isChecked} 
+                onChange={() => setIsChecked(!isChecked)}
+              />
+            </div>
+            <div style={{textAlign: 'left'}}>
+              Get recall notifications and exclusive offers - all to your inbox. Unsubscribe from promotional email at any time.
+            </div>
+          </section>
+          <section style={{textAlign: 'left'}}>
+            If you wish to contact us about your consent, please email us at hello@talktodrive.com
+          </section>
+        </div>
+        <hr style={{marginTop: '30px', marginBottom: '30px'}}/>
+        <Button variant="secondary" style={{backgroundColor: 'black', width: '30%'}}> 
+          Save Changes
+        </Button>
+        <br/>
+        <br/>
+        <Button variant="danger"> 
+          Delete Account
+        </Button>
         <br />
       </Form>
-    </>
+    </div>
+    </div>
   )
 };
 
@@ -141,11 +266,3 @@ export default ProfileForm;
 
 
 
-// onClick={this.toggleEdit}>
-// <div>
-{/* <Button icon color="blue" onClick={this.toggleEdit}>
-<Icon name="pencil" />
-</Button>
-<Button icon color="red">
-<Icon name="trash" />
-</Button> */}
