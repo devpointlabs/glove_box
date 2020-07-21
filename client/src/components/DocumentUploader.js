@@ -4,22 +4,27 @@ import Dropzone from 'react-dropzone'
 import FileUploader from './FileUploader'
 import FileShow from './FileShow'
 
-function DocumentUploader (){
+function DocumentUploader ({v}){
   return(
     <Container>
       <Card bg="secondary"
-            text='white'>
+            text='white'
+            key={v.id}
+            >
+              
         <Card.Body> 
+        
           <Tabs defaultActiveKey="insurance" text='white'>
             <Tab eventKey="insurance" title="Insurance" >
               <br/>
               <br/>
               List of uploaded insurance documents
               <br/>
-              <FileShow/>
+              <FileShow v={v}
+              />
               <br/>
               <br/>
-              <FileUploader/>
+              <FileUploader v={v} eventKey="insurance"/>
               <br/>
              
             </Tab>
@@ -31,7 +36,7 @@ function DocumentUploader (){
               <br/>
               <br/>
 
-                <FileUploader/>
+                <FileUploader v={v} eventKey="registration"/>
               <br/>
 
             </Tab>
@@ -44,7 +49,7 @@ function DocumentUploader (){
               <br/>
               <br/>
 
-                <FileUploader/>
+                <FileUploader v={v} eventKey="service_records" />
               <br/>
 
             </Tab>
@@ -57,7 +62,7 @@ function DocumentUploader (){
               <br/>
               <br/>
 
-                <FileUploader/>
+                <FileUploader v={v} eventKey="others"/>
               <br/>
 
             </Tab>

@@ -5,6 +5,7 @@ import VehiclesShowOnDocsPage from './VehiclesShowOnDocsPage'
 import { AuthConsumer, } from "../providers/AuthProvider";
 import { Link, withRouter, } from 'react-router-dom'
 import Axios from 'axios'
+import FileShow from './FileShow'
 
 class Documents extends React.Component {
   state = {vehicles: []}
@@ -42,6 +43,7 @@ class Documents extends React.Component {
             <Card.Text align='left' as='h4'> </Card.Text>
             <br/>
             {this.VehicleShow()}
+            
           </Card>
         </Container>
       </div>
