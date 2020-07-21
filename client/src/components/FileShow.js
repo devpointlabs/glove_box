@@ -1,29 +1,43 @@
-import React from 'react'
+import React, {useState, useEffect}from 'react'
 import Axios from 'axios'
-
-class FileShow extends React.Component {
-
-  state = {records: []}
+import {Image, CloudinaryContext, Cloudinary} from "cloudinary-react"
+import {Card } from 'react-bootstrap'
 
 
-  renderFiles (){
-    const {records} = this.state
-    Axios.get(`/api/vehicles/1/records`)
-    .then((res) => {
+function FileShow ({v}) {
+
+  const [records, setRecords] = useState ([{}])
+  
+
+  useEffect(()=> {
+    Axios.get(`/api/vehicles/${v.id}/records/`)
+    .then(res => {
         console.log(res)
-        this.setState({records: res.data})
+        setRecords(res.data)
     })
-    .catch((err) => console.log(err))
-  }
+    .catch(err => console.log(err))
+  }, [])
 
 
-  render() {
-    return(
-      <div>
-        {this.renderFiles()}
-      </div>
+  const renderRecords = () => {
+
+    return records.map((r) => (
+      // <CloudinaryContext cloudName='cloud_name'>
+        <div>
+        
+        <Image cloudName='cloud_name' publicId={r.image} width='300' secure='true' crop="scale" fetch-format="auto" dpr="auto" responsive/>
+       
+        </div>
+      // </CloudinaryContext>
+      )
     )
   }
-}
 
+  return (
+    <div>
+      {/* <Image publicID={i} /> */}
+      {renderRecords()}
+    </div>
+  )
+}
 export default FileShow

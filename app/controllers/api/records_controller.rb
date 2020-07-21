@@ -1,5 +1,5 @@
 class Api::RecordsController < ApplicationController
-    # before_action :set_vehicle
+    before_action :set_vehicle
     before_action :set_record, only: [:update, :destroy]
 
 

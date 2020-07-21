@@ -12,7 +12,7 @@ import { Container } from 'react-bootstrap'
 
 registerPlugin (FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileRename)
 
-function FileUploader (){
+function FileUploader ({v}){
   const [files, setFiles] = useState([])
   const [loading, setLoading] = useState(false)
 
@@ -20,8 +20,7 @@ function FileUploader (){
   function setFileHandler (f){
     let data = new FormData()
     data.append('file', f[0].file)
-    //1 is hardcoded for vehicle ID
-    Axios.post(`/api/vehicles/1/records`, data)
+    Axios.post(`/api/vehicles/${v.id}/records`, data)
     .then((res) => {
       console.log(res)
     })
