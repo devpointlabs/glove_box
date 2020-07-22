@@ -3,8 +3,8 @@ import './App.css';
 import Navbar from './Navbar';
 import Register from './Register';
 import Login from './Login';
+import { Switch, Route } from 'react-router-dom';
 import FetchUser from './components/FetchUser'
-import { Switch, Route, } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute'
 import { Container } from 'semantic-ui-react';
 import Dashboard from './Dashboard';
@@ -13,8 +13,6 @@ import ContactUs from './components/ContactUs';
 import Documents from './components/Documents'
 import Footer from './components/Footer';
 import Profile from './components/Profile'
-
-
 
 function App() {
   return (
@@ -38,5 +36,3 @@ function App() {
 }
 
 export default App;
-
-

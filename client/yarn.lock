@@ -1307,9 +1307,9 @@
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
 "@popperjs/core@^2.0.0":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.3.tgz#9b10ec423989d3a7fe46f3d8a9cafe8589ccf354"
-  integrity sha512-r0jArf9l4hXBJVgWlFiDj3rC+51G9d+AfycAp2YacHeKZnslGQblxGdRpbprZ2snXzYVjrSu0Tt0TZFQAILipg==
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.4.tgz#11d5db19bd178936ec89cd84519c4de439574398"
+  integrity sha512-1oO6+dN5kdIA3sKPZhRGJTfGVP4SWV6KqlMOwry4J3HfyD68sl/3KmG7DeYUzvN+RbhXDnv/D8vNNB8168tAMg==
 
 "@restart/context@^2.1.4":
   version "2.1.4"
@@ -4591,6 +4591,11 @@ filepond-plugin-file-rename@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/filepond-plugin-file-rename/-/filepond-plugin-file-rename-1.1.4.tgz#6b4de094fd638cae1c62cf080ea7c695e22c1cbf"
   integrity sha512-2r1czhNLPXtJSHKZmYQTPFDwPpyrV+ClWnbmxCIthTVg6ocspalZMMxabfhc7fDz1nZMqPKByPsB+pobb4sPFA==
+
+filepond-plugin-file-validate-type@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-file-validate-type/-/filepond-plugin-file-validate-type-1.2.5.tgz#b3588088d2b0d5dbdf706d068c0ecdf28140a8e3"
+  integrity sha512-SsdYD6N+PDnetrPrBHfl13ZC9jRv5BuGdai5cORfANhuE/N32OwU/IclCNQ4qlpIa88hzqBg9dj6IINkiW+4HA==
 
 filepond-plugin-image-exif-orientation@^1.0.9:
   version "1.0.9"

@@ -3,7 +3,8 @@ import { AuthConsumer } from "./providers/AuthProvider";
 import { Button, Form, Segment, Header, Container } from "semantic-ui-react";
 
 class Login extends React.Component {
-  state = { email: "", password: "" };
+  state = { email: "ryan@ryan.com", password: "123456" }; 
+  // added a email and password..delete when done
 
   handleSubmit = (e) => {
     e.preventDefault()
@@ -64,6 +65,25 @@ export default class ConnectedLogin extends React.Component {
   }
 }
 
+const styles = {
+    vertForm: {
+        display: 'flex',
+        flexDirection: 'column',
+        // maxWidth:'70%',
+    },
+    formDiv: {
+        display: 'flex',
+        justifyContent:'center',
+        alignItems: 'center',
+        justifyContent:'center'
+    },
+    buttonStyle: {
+        maxWidth: '50%',
+        marginLeft:'auto',
+        marginRight:'auto',
+        marginTop:'10px',
+    }
+}
 
 // import React, {useState} from 'react'
 

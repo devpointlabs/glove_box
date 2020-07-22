@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import AddVehicleForm from './components/AddVehicleForm'
+import CarProfile from './components/CarProfile'
 
 
 export default function CarCard(props) {
@@ -7,13 +7,13 @@ export default function CarCard(props) {
     
     return (
         <div style={styles.card}>
-        <img src={'#'} style={{width:'50%'}}/>
+        <img src={''} style={{width:'50%'}}/>
         <div style={styles.right}>
-            <h1 style={{fontSize:'30px', whiteSpace:'nowrap'}}><strong>{props.model} {props.make}</strong></h1>
+            <h1 style={{fontSize:'30px', whiteSpace:'nowrap'}}><strong>{props.car.year} {props.car.make} {props.car.model}</strong></h1>
             <h3 style={{fontSize:'20px'}}>Unlock your vehicles estimated trade-in value and up-to-date recalls when you add your liscense plate.</h3>
             <button style={styles.buttonStyle} onClick={()=> setEditing(!editing)}><strong>EDIT VEHICLE</strong></button>
         </div>
-        {/* {editing && <AddVehicleForm {...props} setEditing={setEditing}/>} */}
+        {editing && <CarProfile {...props} setEditing={setEditing} vehicles={props.vehicles} setVehicles={props.setVehicles} editVehicle={props.editVehicle} deleteVehicle={props.deleteVehicle}/>}
     </div>
     )
 }
