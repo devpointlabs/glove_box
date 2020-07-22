@@ -3,8 +3,7 @@ import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-// import { FilePond } from 'react-filepond'
-import Filepond  from './Filepond'
+import { FilePond } from 'react-filepond'
 
 const EditCarProfileForm = (props) => {
   const [editVehicle, setEditVehicle] = useState({})
@@ -20,10 +19,12 @@ const EditCarProfileForm = (props) => {
   const [insurance_prov_num, setInsuranceProvNum] = useState (props.insurance_prov_num ? props.insurance_prov_num : '')
   const [roadside_assistance, setRoadsideAssistance] = useState (props.roadside_assistance ? props.roadside_assistance : false)
   const [image, setImage] = useState (props.image ? props.image : '')
+  const [file, setFile] = useState(null);
+  
 
   const vehicle = { year: year, make: make, model: model, license_plate: license_plate, vin: vin, 
     mileage: mileage, insured_by: insured_by, policy_exp: policy_exp, policy_number: policy_number, 
-    insurance_prov_num: insurance_prov_num, roadside_assistance: roadside_assistance, image: image }
+    insurance_prov_num: insurance_prov_num, roadside_assistance: roadside_assistance, image: image, file }
 
   useEffect(() => { 
     // axios.get(`/api/vehicles/${props.id}`)
@@ -33,6 +34,10 @@ const EditCarProfileForm = (props) => {
     //       console.log(err)
     //   })
   }, [])
+
+  const setFileHandler = (files) => {
+    setFile(files[0].file);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -155,8 +160,12 @@ const EditCarProfileForm = (props) => {
         <>
         <br/>
       <h6>Edit Car Photo</h6>
-      <Filepond route={`/api/vehicles/${props.id}`}/>
-      {/* <img style={{borderRadius: "3px"}} width="250" height="auto"src={props.image}  /> */}
+      <FilePond
+            files={file}
+            allowMultiple={false}
+            onupdatefiles={setFileHandler}
+            labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+          />
       </>
       </Form>
       </div>

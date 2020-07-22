@@ -17,7 +17,7 @@ const CarProfile = (props) => {
     //   }).catch((e) => {
     //     console.log(e)
     //   })
-    }, [props.vehciles])
+    }, [props.vehicles])
     
 
   const roadsideCheck = () => {

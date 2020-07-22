@@ -26,7 +26,15 @@ export default function Dashboard() {
     }, [])
     
     const editVehicle = (id, car) => {
-        axios.put(`/api/vehicles/${id}`, car) //update method
+        const data = new FormData();
+        if (car.file && car.file._relativePath) {
+            data.append("file", car.file);
+          }
+            let key;
+            for (key in car) {
+        data.append(`${key}`, car[key]);
+        }
+        axios.put(`/api/vehicles/${id}`, data) //update method
             .then(res => {
                 const updateCarProfile = vehicles.map(vehicle => {
                   if (vehicle.id === res.data.id) return res.data; // we were calling res.id and not res.data.id so it was just returning vehicle until you refresh
