@@ -17,12 +17,11 @@ const CarProfile = (props) => {
     //   }).catch((e) => {
     //     console.log(e)
     //   })
-    debugger
-    }, [props.car])
+    }, [props.vehciles])
     
 
   const roadsideCheck = () => {
-    if (vehicle.roadside_assistance === true) {
+    if (props.car.roadside_assistance === true) {
       return (
         <div>Roadside Assistance<p>✓</p></div>
       );
@@ -32,6 +31,8 @@ const CarProfile = (props) => {
       )
     }
   }
+
+  // const defaultImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQOxaKlejQjrB7wfSvhmaaoXUCVBXEfKYdMDQ&usqp=CAU'
 
   // const editCarProfile = () => {
   //   axios.put(`/api/vehicles${props.id}`)
@@ -49,7 +50,7 @@ const CarProfile = (props) => {
     <>
     <div style={styles.styleForm}>
       {/* {carCardPage && <CarCard toggleCarCard={setCarCardPage} /> } kinda works as a back button but looks like crap */}
-      {editing ? <EditCarProfileForm toggleEdit={setEditing} editCarProfile={props.editCarProfile} {...props.car} editVehicle={props.editVehicle}
+      {editing ? <EditCarProfileForm toggleEdit={setEditing} editCarProfile={props.editCarProfile} {...props.car} editVehicle={props.editVehicle} deleteVehicle={props.deleteVehicle}
       //  vehicles={props.vehicles} setVehicles={props.setVehicles} 
        /> :
       <>
@@ -61,27 +62,27 @@ const CarProfile = (props) => {
       <Button name='edit outline' size='large' icon basic onClick={() => setEditing(!editing)} style={{float: 'right'}}> <Icon name="edit outline"/></Button>
       {/* <img src={vehicle.picture} onError={(e)=>{e.target.onerror = null; e.target.src='add vehicle url here'}}/> tried adding default vehicle image but wanst working */}
       {/* <img width={525} height={350} align='center'src={props.image} alt='no vehicle image'/>  */}
-      <img width={525} height={350} align='center'src={`${props.image}`} alt='user_vehicle'/> 
+      <img width={525} height={350} align='center'src={props.car.image} alt='user_vehicle'/> 
       <br />
       <br />
       <br />
     <Table>
   <thead>
     <tr>  
-      <th>License Plate<p>{props.license_plate}</p></th> 
-      <th>VIN<p>{props.vin}</p></th>
-      <th>Mileage<p>{props.mileage}</p></th> 
+      <th>License Plate<p>{props.car.license_plate}</p></th> 
+      <th>VIN<p>{props.car.vin}</p></th>
+      <th>Mileage<p>{props.car.mileage}</p></th> 
     </tr>
     </thead>
     </Table>
    <Table>
   <thead>
    <tr>
-      <th>Insurance Provider<p>{props.insured_by}</p></th>
-      <th>Policy Expiry<p>{props.policy_exp}</p></th>
-      <th>Policy Number<p>{props.policy_number}</p></th>
+      <th>Insurance Provider<p>{props.car.insured_by}</p></th>
+      <th>Policy Expiry<p>{props.car.policy_exp}</p></th>
+      <th>Policy Number<p>{props.car.policy_number}</p></th>
       <th>{roadsideCheck()}</th>
-      <th>Insurance Provider Number<p>{props.insurance_prov_num}</p></th>
+      <th>Insurance Provider Number<p>{props.car.insurance_prov_num}</p></th>
     </tr>
     </thead>
     </Table>

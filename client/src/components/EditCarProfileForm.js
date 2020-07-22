@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 // import { FilePond } from 'react-filepond'
-import Filepond  from '../components/FileUploader'
+import Filepond  from './Filepond'
 
 const EditCarProfileForm = (props) => {
   const [editVehicle, setEditVehicle] = useState({})
@@ -40,14 +40,9 @@ const EditCarProfileForm = (props) => {
     props.toggleEdit(false)
   }
 
-  const deleteVehicle = () => { 
-    axios.delete(`/api/vehicles/${props.id}`)
-      .then( res => {
-       const filteredVehicles = props.vehicles.filter(vehicle => {
-          return vehicle.id != res.data.id
-        })
-        props.setVehicles(filteredVehicles)
-      })
+  const deleteVehicle = (id) => { 
+    props.deleteVehicle(id);
+    props.toggleEdit(false);
   }
 
   const handleChangeCheckbox = (e) => {
@@ -57,8 +52,7 @@ const EditCarProfileForm = (props) => {
   return (
    
       <div>
-        <Form style={styles.styleForm}>
-      <Form onSubmit={handleSubmit}>
+      <Form style={styles.styleForm} onSubmit={handleSubmit}>
         <Form.Label></Form.Label>
         <Form.Label>Edit Car Profile</Form.Label>
         <Form.Control 
@@ -162,9 +156,8 @@ const EditCarProfileForm = (props) => {
         <br/>
       <h6>Edit Car Photo</h6>
       <Filepond route={`/api/vehicles/${props.id}`}/>
-      <img style={{borderRadius: "3px"}} width="250" height="auto"src={image}  />
+      {/* <img style={{borderRadius: "3px"}} width="250" height="auto"src={props.image}  /> */}
       </>
-      </Form>
       </Form>
       </div>
   )
