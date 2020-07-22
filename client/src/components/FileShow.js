@@ -1,12 +1,12 @@
 import React, {useState, useEffect}from 'react'
 import Axios from 'axios'
 import {Image, CloudinaryContext, Cloudinary} from "cloudinary-react"
-import {Card } from 'react-bootstrap'
+import {Card, Button } from 'react-bootstrap'
 
 
-function FileShow ({v}) {
+function FileShow ({v, eventKey}) {
 
-  const [records, setRecords] = useState ([{}])
+  const [records, setRecords] = useState ([])
   
 
   useEffect(()=> {
@@ -18,24 +18,33 @@ function FileShow ({v}) {
     .catch(err => console.log(err))
   }, [])
 
+  async function deleteRecord(r){
+    const res = await Axios.delete(`/api/vehicles/${v.id}/records/${r.id}`)
+    const newRecords = records.filter((r) => r.id !== res.data.id) 
+    setRecords(newRecords)
+  }
+
+
+
 
   const renderRecords = () => {
+    const filterRecords = records.filter(r => r.category == eventKey)
 
-    return records.map((r) => (
-      // <CloudinaryContext cloudName='cloud_name'>
-        <div>
-        
-        <Image cloudName='cloud_name' publicId={r.image} width='300' secure='true' crop="scale" fetch-format="auto" dpr="auto" responsive/>
-       
-        </div>
-      // </CloudinaryContext>
+    return filterRecords.map((r) => (
+      
+        <Card bg="secondary">
+        <Image cloudName='cloud_name' publicId={r.image} width='300' popup={true }overwrite={true}
+        />
+
+        <Button variant="danger" onClick={() => deleteRecord(r)}>Delete Document</Button>
+        </Card> 
       )
     )
+    
   }
 
   return (
     <div>
-      {/* <Image publicID={i} /> */}
       {renderRecords()}
     </div>
   )

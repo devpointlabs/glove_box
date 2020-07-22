@@ -13,8 +13,9 @@ class Api::RecordsController < ApplicationController
 
     def create
         # record = @vehicle.records.new(record_params)
-        record = @vehicle.records.new({category: "insurance"})
-        # //pass category from the front end
+        record = @vehicle.records.new
+        record.category = params[:category]
+        # //pass category from the front end ({category: "insurance"})
         
         file = params[:file]
         if file
@@ -22,6 +23,9 @@ class Api::RecordsController < ApplicationController
               ext = File.extname(file.tempfile)
               cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
               record.image = cloud_image['secure_url']
+                # begin
+                #     record.image.category = eventKey
+                # end
             rescue => e
                 debugger
               render json: { errors: e }, status: 422
@@ -47,6 +51,7 @@ class Api::RecordsController < ApplicationController
     end 
 
     def destroy
+        record = Record.find(params[:id])
         render json: @record.destroy
     end 
 
