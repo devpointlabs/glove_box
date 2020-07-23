@@ -82,6 +82,7 @@ const styles = {
     height: '100vh',
     backgroundColor: 'white',
     padding: "20px",
+    zIndex:'4',
   }
 }
 
