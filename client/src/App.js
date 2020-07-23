@@ -15,6 +15,8 @@ import Footer from './components/Footer';
 import Profile from './components/Profile'
 import Premium from './components/Premium';
 import ThankYouAddVehicle from './components/ThankYouAddVehicle';
+import AddVehicleForm from './components/AddVehicleForm';
+import Emergency from './components/Emergency';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         <Switch >
             <Route exact path='/' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
+            <ProtectedRoute exact path='/addVehicle' component={AddVehicleForm} />
+            <ProtectedRoute exact path='/emergency' component={Emergency} />
             <Route exact path='/documents' component={Documents} />
             <Route exact path='/profile' component={ProfileForm} /> 
             <Route exact path='/login' component={Login}/>
