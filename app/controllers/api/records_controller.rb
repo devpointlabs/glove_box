@@ -27,7 +27,6 @@ class Api::RecordsController < ApplicationController
                 #     record.image.category = eventKey
                 # end
             rescue => e
-                debugger
               render json: { errors: e }, status: 422
               return
             end
@@ -37,7 +36,6 @@ class Api::RecordsController < ApplicationController
         if record.save
             render json: record
         else
-            debugger
             render json: {errors: record.errors, status: 422}
         end 
     end 

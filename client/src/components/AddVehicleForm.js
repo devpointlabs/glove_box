@@ -12,7 +12,6 @@ export default function AddVehicleForm(props){
     const [vinForm, setVinForm] = useState(false)
     const [makeModelForm, setMakeModelForm] = useState(false)
 
-
     const vehicle = { vin: vin, licensePlate: licensePlate, make: make, year: year, model: model  }
 
     const editVehicle = () => {
@@ -49,20 +48,23 @@ export default function AddVehicleForm(props){
       if (makeModelForm == true){
         return (
           <Form onSubmit={handleSubmit}>
-            <h2 align="center">Please enter make, model, adn year of your vehicle. You can always add your licence plate later</h2>
+            <h2 align="center">Please enter make, model, and year of your vehicle. You can always add your licence plate later</h2>
             <Form.Control
+            required
             placeholder="Make"
             name="make"
             value={make}
             onChange={(e) => setMake(e.target.value)}
             />
             <Form.Control
+            required
             placeholder="Model"
             name="model"
             value={model}
             onChange={(e) => setModel(e.target.value)}
             />
             <Form.Control
+            required
             placeholder="Year"
             name="year"
             value={year}
@@ -78,6 +80,7 @@ export default function AddVehicleForm(props){
             <h2 align="center">Please enter vehicle vin number</h2>
             <Form.Label>Enter Vehicle Vin Number Here </Form.Label>
             <Form.Control
+              required
               placeholder="Enter Vehicle Vin Number Here"
               name="vin number"
               value={vin}
@@ -96,6 +99,7 @@ export default function AddVehicleForm(props){
           <h2 align="center">Please enter your license plate number</h2>
           <Form.Label>Enter Vehicle Vin Number Here </Form.Label>
           <Form.Control
+            required
             placeholder="Enter Licence Plate Number Here"
             name="licensePlate"
             value={licensePlate}

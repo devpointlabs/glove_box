@@ -4,7 +4,6 @@ import { Button, Form, Segment, Header, Container } from "semantic-ui-react";
 
 class Login extends React.Component {
   state = { email: "", password: "" }; 
-  // added a email and password..delete when done
 
   handleSubmit = (e) => {
     e.preventDefault()

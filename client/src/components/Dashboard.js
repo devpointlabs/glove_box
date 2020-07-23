@@ -5,9 +5,12 @@ import AddVehicleForm from './components/AddVehicleForm'
 import Countdown from './components/Countdown'
 
 
+import Loading from './Loading'
+import AddVehicleForm from './AddVehicleForm'
 
 export default function Dashboard() {
     const [vehicles, setVehicles] = useState([])
+    const [loading, setLoading] = useState(true)
     const [showAddForm, setShowAddForm] = useState(false)
    
     const getVehicles = () => {
@@ -15,17 +18,21 @@ export default function Dashboard() {
         .then(res => {
             console.log(res)
             setVehicles(res.data)
+            setLoading(false)
         })
         .catch(err => console.log(err))
-    }
-
-    const addVehicleToUi = (vehicleObj) => {
-        setVehicles([...vehicles, vehicleObj])
     }
 
     useEffect(()=> {
         getVehicles()
     }, [])
+
+
+    const addVehicleToUi = (vehicleObj) => {
+        setVehicles([...vehicles, vehicleObj])
+    }
+
+    if (loading) return <div style={styles.centered}><Loading /></div> 
     
     const editVehicle = (id, car) => {
         const data = new FormData();
@@ -85,7 +92,7 @@ const styles = {
         maxWidth: '60%',
         
     },
-     pages: {
+     page: {
         width: '100%',
         minHeight: '100vh',
         display: 'flex',
@@ -94,4 +101,11 @@ const styles = {
         backgroundColor: '#F7F7F7',
         padding: '100px',
      },
+     centered: {
+         minHeight: '86vh',
+         width:'100vw',
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems:'center',
+     }
 }
