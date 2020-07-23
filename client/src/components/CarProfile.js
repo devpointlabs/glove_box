@@ -4,10 +4,12 @@ import axios from 'axios';
 import EditCarProfileForm from './EditCarProfileForm'
 import { Button, Icon } from 'semantic-ui-react'
 import CarCard from './CarCard';
+import Dashboard from './Dashboard';
 
 const CarProfile = (props) => {
   const [editing, setEditing] = useState(false)
   const [vehicle, setVehicle] = useState({});
+  const [toggleDashPage, setToggleDashPage] = useState(false)
 
   useEffect(() => { 
     
@@ -28,19 +30,16 @@ const CarProfile = (props) => {
   return (
     <>
     <div style={styles.styleForm}>
-      {/* {carCardPage && <CarCard toggleCarCard={setCarCardPage} /> } kinda works as a back button but looks like crap */}
       {editing ? <EditCarProfileForm toggleEdit={setEditing} editCarProfile={props.editCarProfile} {...props.car} editVehicle={props.editVehicle} deleteVehicle={props.deleteVehicle}
-      //  vehicles={props.vehicles} setVehicles={props.setVehicles} 
        /> :
       <>
       <h1 align='left'>Car Profile</h1>
       <hr />
       <h2 align='center'>{props.car.year} {props.car.make} {props.car.model}</h2>
       <br />
-      {/* <Button onClick={() => setCarCardPage(!carCardPage) } >Dashboard</Button> kinda works as a back button but looks like crap */} 
       <Button name='edit outline' size='large' icon basic onClick={() => setEditing(!editing)} style={{float: 'right'}}> <Icon name="edit outline"/></Button>
+      <Button name='edit outline' silze='large' icon basic onClick={() => props.setEditing(false)}style={{float: 'right'}}> <Icon name="arrow left"/></Button>
       {/* <img src={vehicle.picture} onError={(e)=>{e.target.onerror = null; e.target.src='add vehicle url here'}}/> tried adding default vehicle image but wanst working */}
-      {/* <img width={525} height={350} align='center'src={props.image} alt='no vehicle image'/>  */}
       <img width={525} height={350} align='center'src={props.car.image} alt='user_vehicle'/> 
       <br />
       <br />
