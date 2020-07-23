@@ -1,6 +1,6 @@
 import React, {useState, useEffect}from 'react'
 import Axios from 'axios'
-import {Image, CloudinaryContext, Cloudinary} from "cloudinary-react"
+import {Image,} from "cloudinary-react"
 import {Card, Button } from 'react-bootstrap'
 
 
@@ -8,7 +8,6 @@ function FileShow ({v, eventKey}) {
 
   const [records, setRecords] = useState ([])
   
-
   useEffect(()=> {
     Axios.get(`/api/vehicles/${v.id}/records/`)
     .then(res => {
@@ -24,23 +23,17 @@ function FileShow ({v, eventKey}) {
     setRecords(newRecords)
   }
 
-
-
-
   const renderRecords = () => {
     const filterRecords = records.filter(r => r.category == eventKey)
 
-    return filterRecords.map((r) => (
-      
+    return filterRecords.map((r) => ( 
         <Card bg="secondary">
         <Image cloudName='cloud_name' publicId={r.image} width='300' popup={true }overwrite={true}
         />
-
-        <Button variant="danger" onClick={() => deleteRecord(r)}>Delete Document</Button>
+        <Button width='300' variant="danger" onClick={() => deleteRecord(r)}>Delete Document</Button>
         </Card> 
       )
-    )
-    
+    )  
   }
 
   return (

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import CarCard from './CarCard'
 import AddVehicleForm from './components/AddVehicleForm'
+import Countdown from './components/Countdown'
+
 
 
 export default function Dashboard() {
@@ -58,9 +60,12 @@ export default function Dashboard() {
 
     return (
         <div style={styles.pages}>
+            
+            <Countdown styles={{justifyContent: 'left'}}/>
             <div style={styles.contain}>
                 <h1 style={{textAlign:'left', fontSize:'50px'}}>Dashboard</h1>
                 <h3 style={{textAlign:'left', color:'#A7AAB2', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
+                
                {vehicles.map(v => <CarCard car={{...v}} vehicles={vehicles} setVehicles={setVehicles} editVehicle={editVehicle} deleteVehicle={deleteVehicle} key={v.id} />) }
                <button onClick={() => setShowAddForm(!showAddForm)}>add vehicle</button>
             {showAddForm && 
@@ -69,8 +74,8 @@ export default function Dashboard() {
             setShowAddForm={setShowAddForm} 
             addVehicleToUi={addVehicleToUi}
             />}
-            </div>
             
+            </div>
         </div>
     )
 }
