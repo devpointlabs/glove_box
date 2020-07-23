@@ -15,7 +15,7 @@ const ProfileForm = () => {
   const [fname, setFirstName] = useState("")
   const [lname, setLastName] = useState("")
   const [email, setEmail] = useState("")
-  const [birthday, setBirthday] = useState("")
+  const [birth_date, setBirthday] = useState("")
   const [postal_code, setPostal] = useState("")
   const [oldPassword, setOldPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
@@ -25,7 +25,7 @@ const ProfileForm = () => {
     fname,
     lname,
     email,
-    birthday,
+    birth_date,
     postal_code,
     oldPassword,
   }
@@ -35,10 +35,10 @@ const ProfileForm = () => {
       setFirstName(user.fname)
       setLastName(user.lname)
       setEmail(user.email)
-      setBirthday(user.birthday)
+      setBirthday(user.birth_date)
       setPostal(user.postal)
     }
-  }, [user.id, user.fname, user.lname, user.email, user.birthday, user.postal])
+  }, [user.id, user.fname, user.lname, user.email, user.birth_date, user.postal])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -57,8 +57,8 @@ const ProfileForm = () => {
       updatedUser.email = email
     }
     
-    if (birthday) {
-      updatedUser.birthday = birthday
+    if (birth_date) {
+      updatedUser.birth_date = birth_date
     }
 
     if (postal_code) {
@@ -164,7 +164,7 @@ const ProfileForm = () => {
               placeholder="2020/01/01"
               name="Date of Birth"
               // type='datetime'
-              value={birthday}
+              value={birth_date}
               onChange={(e) => setBirthday(e.target.value)}
             />
           </div>
