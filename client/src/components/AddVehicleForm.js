@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import axios from "axios"
 import { Button, Form, } from "react-bootstrap"
+import { useHistory } from 'react-router-dom'
 
 export default function AddVehicleForm(props){
   
@@ -11,6 +12,7 @@ export default function AddVehicleForm(props){
     const [model, setModel ] = useState("")
     const [vinForm, setVinForm] = useState(false)
     const [makeModelForm, setMakeModelForm] = useState(false)
+    let history = useHistory()
 
     const vehicle = { vin: vin, licensePlate: licensePlate, make: make, year: year, model: model  }
 
@@ -27,8 +29,12 @@ export default function AddVehicleForm(props){
       axios.post("/api/vehicles", vehicle)
       .then(response => {
         console.log(response)
+        if (props.addVehicleToUi){
         props.addVehicleToUi(response.data)
         props.setShowAddForm(false)
+        } else {
+          history.push('/dashboard')
+        }
       })
       .catch(error => console.log(error))
 
@@ -106,7 +112,7 @@ export default function AddVehicleForm(props){
             onChange={(e) => setLicensePlate(e.target.value)}
           />
           <h2>Dont know your license plate?</h2>
-         <Button onClick={() => props.setShowAddForm(false)}>Back</Button> <Button type='submit'>Continue</Button>
+         <Button onClick={() => props.setShowAddForm ? props.setShowAddForm(false) : props.setAdding(false)}>Back</Button> <Button type='submit'>Continue</Button>
         </Form>
         <Button onClick={() => setVinForm(true)}>ADD BY VIN</Button> <Button onClick={() => setMakeModelForm(true)}>ADD BY MAKE, YEAR, AND MODEL</Button>
         </div>

@@ -14,6 +14,7 @@ import Documents from './components/Documents'
 import Footer from './components/Footer';
 import Profile from './components/Profile'
 import Premium from './components/Premium';
+import ThankYouAddVehicle from './components/ThankYouAddVehicle';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route exact path='/login' component={Login}/>
             <Route exact path='/contact_us' component={ContactUs}/>
             <Route exact path='/premium' component={Premium}/>
+            <ProtectedRoute exact path='/ThankYou' component={ThankYouAddVehicle}/>
 
         </Switch>
         </div>
