@@ -7,7 +7,7 @@ import FetchUser from './components/FetchUser'
 import { Switch, Route, } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute'
 import { Container } from 'semantic-ui-react';
-import Dashboard from './Dashboard';
+import Dashboard from './components/Dashboard';
 import ProfileForm from './components/ProfileForm'
 import ContactUs from './components/ContactUs';
 import Documents from './components/Documents'

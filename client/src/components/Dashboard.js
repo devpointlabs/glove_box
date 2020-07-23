@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
 import CarCard from './CarCard'
-import AddVehicleForm from './components/AddVehicleForm'
-
+import Loading from './Loading'
+import AddVehicleForm from './AddVehicleForm'
 
 export default function Dashboard() {
     const [vehicles, setVehicles] = useState([])
+    const [loading, setLoading] = useState(true)
     const [showAddForm, setShowAddForm] = useState(false)
    
     const getVehicles = () => {
@@ -13,20 +14,24 @@ export default function Dashboard() {
         .then(res => {
             console.log(res)
             setVehicles(res.data)
+            setLoading(false)
         })
         .catch(err => console.log(err))
-    }
-
-    const addVehicleToUi = (vehicleObj) => {
-        setVehicles([...vehicles, vehicleObj])
     }
 
     useEffect(()=> {
         getVehicles()
     }, [])
+
+
+    const addVehicleToUi = (vehicleObj) => {
+        setVehicles([...vehicles, vehicleObj])
+    }
+
+    if (loading) return <div style={styles.centered}><Loading /></div> 
     
     return (
-        <div style={styles.pages}>
+        <div style={styles.page}>
             <div style={styles.contain}>
                 <h1 style={{textAlign:'left', fontSize:'50px'}}>Dashboard</h1>
                 <h3 style={{textAlign:'left', color:'#A7AAB2', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
@@ -49,7 +54,7 @@ const styles = {
         maxWidth: '60%',
         
     },
-     pages: {
+     page: {
         width: '100%',
         minHeight: '100vh',
         display: 'flex',
@@ -58,4 +63,11 @@ const styles = {
         backgroundColor: '#F7F7F7',
         padding: '100px',
      },
+     centered: {
+         minHeight: '86vh',
+         width:'100vw',
+         display: 'flex',
+         justifyContent: 'center',
+         alignItems:'center',
+     }
 }
