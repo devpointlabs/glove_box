@@ -20,7 +20,7 @@ function DocumentUploader ({v}){
               <br/>
               List of uploaded insurance documents
               <br/>
-              <FileShow v={v}
+              <FileShow v={v} eventKey="insurance"
               />
               <br/>
               <br/>
@@ -33,6 +33,8 @@ function DocumentUploader ({v}){
               <br/>
                 List of uploaded registration documents
               <br/>
+              <FileShow v={v} eventKey="registration"
+              />
               <br/>
               <br/>
 
@@ -46,6 +48,8 @@ function DocumentUploader ({v}){
 
                 List of uploaded service_records documents
               <br/>
+              <FileShow v={v} eventKey="service_records"
+              />
               <br/>
               <br/>
 
@@ -59,6 +63,8 @@ function DocumentUploader ({v}){
 
                 List of uploaded other documents
               <br/>
+              <FileShow v={v} eventKey="others"
+              />
               <br/>
               <br/>
 

@@ -1,7 +1,9 @@
-import React,{ useState } from 'react'
+import React, {useState} from 'react'
+import CarProfile from './CarProfile'
+
 
 export default function CarCard(props) {
-    const [editingVehicle, setEditingVehicle] = useState(false)
+    const [editing, setEditing] = useState(false)
 
     const defaultImage = 'https://lh3.googleusercontent.com/proxy/pBC2-MR-kzg4iZ5V20cIW587JBKPTLsVmJdOn2_r0uGz4HW9-RydVgiBArCoFJNkbErN3vhINBcG6ig0TsicqMSbZeLno75L_7-423rpeZA56mhgSMtzqRWi'
     
@@ -9,13 +11,12 @@ export default function CarCard(props) {
         <div style={styles.card}>
         <img src={props.image ?  props.image : defaultImage} style={{width:'50%'}}/>
         <div style={styles.right}>
-            <h1 style={{fontSize:'30px', whiteSpace:'nowrap'}}><strong>{props.make} {props.model}</strong></h1>
+            <h1 style={{fontSize:'30px', whiteSpace:'nowrap'}}><strong>{props.car.make} {props.car.model}</strong></h1>
             <h3 style={{fontSize:'20px'}}>Unlock your vehicles estimated trade-in value and up-to-date recalls when you add your liscense plate.</h3>
-            <button style={styles.buttonStyle} onClick={() => setEditingVehicle(!editingVehicle)}><strong>EDIT VEHICLE</strong></button>
-            {/* replace form element with actual form component */}
-            {editingVehicle && <form></form>}
+            <button style={styles.buttonStyle} onClick={() => setEditing(!editing)}><strong>EDIT VEHICLE</strong></button>
 
         </div>
+        {editing && <CarProfile {...props} setEditing={setEditing} vehicles={props} setVehicles={props.setVehicles} editVehicle={props.editVehicle} deleteVehicle={props.deleteVehicle}/>}
     </div>
     )
 }
