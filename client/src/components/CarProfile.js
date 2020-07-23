@@ -3,23 +3,16 @@ import { Table } from 'react-bootstrap';
 import axios from 'axios';
 import EditCarProfileForm from './EditCarProfileForm'
 import { Button, Icon } from 'semantic-ui-react'
-// import CarCard from '../CarCard';
+import CarCard from '../CarCard';
 
 const CarProfile = (props) => {
   const [editing, setEditing] = useState(false)
-  // const [carCardPage, setCarCardPage] = useState(false) was for back button to carCard but not working right 
   const [vehicle, setVehicle] = useState({});
 
   useEffect(() => { 
-    // axios.get(`/api/vehicles/${props.id}`)                                                                                          
-    //   .then((res) => {
-    //     setVehicle(res.data)
-    //   }).catch((e) => {
-    //     console.log(e)
-    //   })
+    
     }, [props.vehicles])
     
-
   const roadsideCheck = () => {
     if (props.car.roadside_assistance === true) {
       return (
@@ -31,20 +24,6 @@ const CarProfile = (props) => {
       )
     }
   }
-
-  // const defaultImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQOxaKlejQjrB7wfSvhmaaoXUCVBXEfKYdMDQ&usqp=CAU'
-
-  // const editCarProfile = () => {
-  //   axios.put(`/api/vehicles${props.id}`)
-  //     .then( res => {
-  //       const updateCarProfile = props.vehicles.map( vehicle => {
-  //         if (vehicle.id === res.id) return res.data;
-  //           else return vehicle
-  //       });
-  //       props.setVehicle(updateCarProfile)
-  //         setEditing(!editing) //or false
-  //     })
-  // }
 
   return (
     <>
@@ -95,6 +74,7 @@ const CarProfile = (props) => {
 
 const styles = {
   styleForm: {
+    overflow: 'auto',
     position: 'fixed',
     top: '42px',
     left: '0',

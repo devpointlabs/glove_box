@@ -27,12 +27,7 @@ const EditCarProfileForm = (props) => {
     insurance_prov_num: insurance_prov_num, roadside_assistance: roadside_assistance, image: image, file }
 
   useEffect(() => { 
-    // axios.get(`/api/vehicles/${props.id}`)
-    //   .then(res => {
-    //     setEditVehicle(res.data)
-    //   }).catch(err => {
-    //       console.log(err)
-    //   })
+
   }, [])
 
   const setFileHandler = (files) => {
@@ -118,7 +113,7 @@ const EditCarProfileForm = (props) => {
         />
         <br />
         <Form.Control 
-        placeholder='Policy Exporation'
+        placeholder='Policy Exporation Date'
         name='policy exp'
         required
         value={policy_exp}
@@ -155,7 +150,6 @@ const EditCarProfileForm = (props) => {
         <Button onClick={() => deleteVehicle(props.id)}variant="danger">Delete Vehicle</Button>
         {' '}
         <Button onClick={() => props.toggleEdit(false)}>Back</Button>
-        {/* WORKING BACK BUTTON IF WE WANT IT */}
         <br/>
         <>
         <br/>
@@ -174,6 +168,7 @@ const EditCarProfileForm = (props) => {
 
 const styles = {
   styleForm: {
+    overflow: 'auto',
     padding: '20px',
     width: '30px',
     position: 'fixed',

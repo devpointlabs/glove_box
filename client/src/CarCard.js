@@ -7,7 +7,7 @@ export default function CarCard(props) {
     
     return (
         <div style={styles.card}>
-        <img src={''} style={{width:'50%'}}/>
+        <img src={props.car.image} style={{width:'50%'}}/>
         <div style={styles.right}>
             <h1 style={{fontSize:'30px', whiteSpace:'nowrap'}}><strong>{props.car.year} {props.car.make} {props.car.model}</strong></h1>
             <h3 style={{fontSize:'20px'}}>Unlock your vehicles estimated trade-in value and up-to-date recalls when you add your liscense plate.</h3>

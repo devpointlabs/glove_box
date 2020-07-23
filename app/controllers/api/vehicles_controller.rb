@@ -28,7 +28,6 @@ class Api::VehiclesController < ApplicationController
                 cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
                 @vehicle.image = cloud_image['secure_url']
             rescue => e
-                # debugger
                 render json: { errors: e }, status: 422
                 return
             end
@@ -36,7 +35,6 @@ class Api::VehiclesController < ApplicationController
         if @vehicle.save()
             render json: @vehicle
         else
-            # debugger
             render json: {errors: @vehicle.errors, status: 422}
         end 
     end 
