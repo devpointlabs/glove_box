@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import CarCard from './CarCard'
-import AddVehicleForm from './components/AddVehicleForm'
-import Countdown from './components/Countdown'
+
+import Countdown from './Countdown'
 
 
 import Loading from './Loading'
