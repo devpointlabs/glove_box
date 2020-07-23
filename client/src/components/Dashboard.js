@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import CarCard from './CarCard'
-import AddVehicleForm from './components/AddVehicleForm'
-import Countdown from './components/Countdown'
-
-
+import Countdown from './Countdown'
 import Loading from './Loading'
 import AddVehicleForm from './AddVehicleForm'
+import { Container } from 'react-bootstrap'
 
 export default function Dashboard() {
     const [vehicles, setVehicles] = useState([])
@@ -66,23 +64,21 @@ export default function Dashboard() {
     }
 
     return (
-        <div style={styles.pages}>
-            
-            <Countdown styles={{justifyContent: 'left'}}/>
+        <div style={styles.page}>
             <div style={styles.contain}>
                 <h1 style={{textAlign:'left', fontSize:'50px'}}>Dashboard</h1>
                 <h3 style={{textAlign:'left', color:'#A7AAB2', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
-                
+                <button style={styles.buttonStyle} onClick={() => setShowAddForm(!showAddForm)}><strong>ADD VEHICLE</strong></button>
                {vehicles.map(v => <CarCard car={{...v}} vehicles={vehicles} setVehicles={setVehicles} editVehicle={editVehicle} deleteVehicle={deleteVehicle} key={v.id} />) }
-               <button onClick={() => setShowAddForm(!showAddForm)}>add vehicle</button>
+               
             {showAddForm && 
             <AddVehicleForm 
             showAddForm={showAddForm} 
             setShowAddForm={setShowAddForm} 
             addVehicleToUi={addVehicleToUi}
             />}
-            
             </div>
+            <Countdown/>
         </div>
     )
 }
@@ -100,6 +96,7 @@ const styles = {
         alignItems: 'center',
         backgroundColor: '#F7F7F7',
         padding: '100px',
+        flexDirection:'column',
      },
      centered: {
          minHeight: '86vh',
@@ -107,5 +104,16 @@ const styles = {
          display: 'flex',
          justifyContent: 'center',
          alignItems:'center',
-     }
+     },
+     buttonStyle: {
+        all: 'unset',
+        maxWidth: '70%',
+        padding: '10px 25px',
+        color: 'white',
+        backgroundColor: 'black',
+        borderRadius: '5px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        whiteSpace: 'nowrap',
+    }
 }

@@ -113,7 +113,7 @@ const EditCarProfileForm = (props) => {
         />
         <br />
         <Form.Control 
-        placeholder='Policy Exporation Date'
+        placeholder='Policy Expiration Date'
         name='policy exp'
         required
         value={policy_exp}
