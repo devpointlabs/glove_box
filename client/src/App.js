@@ -13,6 +13,7 @@ import ContactUs from './components/ContactUs';
 import Documents from './components/Documents'
 import Footer from './components/Footer';
 import Profile from './components/Profile'
+import Premium from './components/Premium';
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
             <Route exact path='/profile' component={ProfileForm} /> 
             <Route exact path='/login' component={Login}/>
             <Route exact path='/contact_us' component={ContactUs}/>
+            <Route exact path='/premium' component={Premium}/>
+
         </Switch>
         </div>
         <Footer/>   

@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
-import { Grid, Image, Card, Container,CardDeck, Button, Modal} from 'react-bootstrap'
+import { Card, Button, Modal} from 'react-bootstrap'
 import DocumentUploader from './DocumentUploader'
-import FileShow from './FileShow';
+
 
 function DocCarCard ({v}) {
   
@@ -11,7 +11,7 @@ function DocCarCard ({v}) {
     
     return(
       <>
-      <Card bg="dark" text='white'>
+      <Card bg="dark" text='white' max-width='300rem'>
         {/* <Card.Img variant="top" key={v.id} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQOxaKlejQjrB7wfSvhmaaoXUCVBXEfKYdMDQ&usqp=CAU'} />  default image from dre?*/} 
         <Card.Img variant="top" key={v.id} src={v.image} />
         <Card.Body>
