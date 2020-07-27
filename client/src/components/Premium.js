@@ -29,7 +29,7 @@ function Premium (){
           <hr />
         </div>
         <div style={{display: 'flex', justifyContent: 'start'}}>
-          <h3>Enter your billing nformation</h3>
+          <h3>Enter your billing information</h3>
         </div>
         <hr />
         <Form.Row>

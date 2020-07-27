@@ -1,8 +1,9 @@
 import React from 'react'
 import { AuthConsumer, } from "./providers/AuthProvider";
-import { Menu, } from 'semantic-ui-react'
+import { Menu, Icon, } from 'semantic-ui-react'
 import { Link, withRouter, } from 'react-router-dom'
 import Countdown from './components/Countdown';
+import { Dropdown } from 'react-bootstrap'
 
 class Navbar extends React.Component {
 
@@ -29,13 +30,6 @@ class Navbar extends React.Component {
           </Link>
         </Menu.Menu>
         <Menu.Menu position='right'>
-         <Link to='/profile'>
-            <Menu.Item
-              id='profile'
-              name='profile'
-              active={this.props.location.pathname === '/profile'}
-            />
-          </Link>
           <Link to='/contact_us'>
             <Menu.Item
               id='contact us'
@@ -43,10 +37,18 @@ class Navbar extends React.Component {
               active={this.props.location.pathname === '/contact_us'}
             />
           </Link>
-          <Menu.Item
-            name='logout'
-            onClick={() => handleLogout(this.props.history)}
-          />
+          <Dropdown style={styles.drop}>
+            <Dropdown.Toggle id="dropdown-basic" style={styles.drop}>
+             <Icon name='user'/> Profile
+            </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item eventKey="1"><Link to='/addVehicle'><Icon name='add'/><strong>Add Vehicle</strong></Link></Dropdown.Item>
+                <Dropdown.Item eventKey="2"><Link to='/profile'>My Information</Link></Dropdown.Item>
+                <Dropdown.Item eventKey="3"><Link to='/emergency'>Emergency Checklist</Link></Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item eventKey="4"><Link onClick={() => handleLogout(this.props.history)}>Logout</Link></Dropdown.Item>
+              </Dropdown.Menu>
+          </Dropdown>
         </Menu.Menu>
        
         </>
@@ -92,6 +94,15 @@ class Navbar extends React.Component {
   };
 };
 
+const styles = { 
+  drop: {
+    backgroundColor:'white',
+    border:'none',
+    color:'black',
+    marginTop:'.1em'
+  }
+}
+
 export class ConnectedNavbar extends React.Component {
   render() {
     return (
@@ -105,3 +116,9 @@ export class ConnectedNavbar extends React.Component {
 };
 
 export default withRouter(ConnectedNavbar);
+
+
+
+const styles = {
+  
+}

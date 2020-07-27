@@ -68,9 +68,9 @@ export default function Dashboard() {
             <div style={styles.contain}>
                 <h1 style={{textAlign:'left', fontSize:'50px'}}>Dashboard</h1>
                 <h3 style={{textAlign:'left', color:'#A7AAB2', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
-                
+                <button style={styles.buttonStyle} onClick={() => setShowAddForm(!showAddForm)}><strong>ADD VEHICLE</strong></button>
                {vehicles.map(v => <CarCard car={{...v}} vehicles={vehicles} setVehicles={setVehicles} editVehicle={editVehicle} deleteVehicle={deleteVehicle} key={v.id} />) }
-               <button onClick={() => setShowAddForm(!showAddForm)}>add vehicle</button>
+               
             {showAddForm && 
             <AddVehicleForm 
             showAddForm={showAddForm} 
@@ -104,5 +104,16 @@ const styles = {
          display: 'flex',
          justifyContent: 'center',
          alignItems:'center',
-     }
+     },
+     buttonStyle: {
+        all: 'unset',
+        maxWidth: '70%',
+        padding: '10px 25px',
+        color: 'white',
+        backgroundColor: 'black',
+        borderRadius: '5px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        whiteSpace: 'nowrap',
+    }
 }
