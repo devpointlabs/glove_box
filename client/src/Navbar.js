@@ -116,9 +116,3 @@ export class ConnectedNavbar extends React.Component {
 };
 
 export default withRouter(ConnectedNavbar);
-
-
-
-const styles = {
-  
-}
