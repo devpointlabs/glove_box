@@ -11,12 +11,12 @@ function DocCarCard ({v}) {
     
     return(
       <>
-      <Card bg="dark" text='white' max-width='300rem'>
+      <Card bg="dark" text='white' max-width='300rem'style={styles.card}>
         {/* <Card.Img variant="top" key={v.id} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQOxaKlejQjrB7wfSvhmaaoXUCVBXEfKYdMDQ&usqp=CAU'} />  default image from dre?*/} 
-        <Card.Img variant="top" key={v.id} src={v.image} />
+        <Card.Img variant="top" key={v.id} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQOxaKlejQjrB7wfSvhmaaoXUCVBXEfKYdMDQ&usqp=CAU'} />
         <Card.Body>
-          <Card.Title>{v.year} {v.make} {v.model} </Card.Title>
-          <Button variant="primary" onClick={handleShow}>
+          <Card.Title style={{fontFamily: 'Lato ' }}>{v.year} {v.make} {v.model} </Card.Title>
+          <Button  onClick={handleShow} style={styles.buttonStyle}>
             View/Add Documents
           </Button>
         
@@ -29,13 +29,13 @@ function DocCarCard ({v}) {
             key={v.id}
           >
             <Modal.Header closeButton>
-              <Modal.Title> {v.year} {v.make} {v.model} </Modal.Title>
+              <Modal.Title  style={{fontFamily: 'Lato ' }}> {v.year} {v.make} {v.model} </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body style={{fontFamily: 'Lato ' }}>
               <DocumentUploader v={v}/>
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" onClick={handleClose}>
+              <Button style={styles.buttonStyle} onClick={handleClose}>
                 Close
               </Button>
             </Modal.Footer>
@@ -47,3 +47,34 @@ function DocCarCard ({v}) {
 }
 
 export default DocCarCard
+
+const styles = {
+   page: {
+      width: '100%',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#F7F7F7',
+      padding: '100px',
+      flexDirection:'column',
+   },
+   buttonStyle: {
+      all: 'unset',
+      maxWidth: '70%',
+      padding: '10px 25px',
+      color: 'white',
+      backgroundColor: 'black',
+      borderRadius: '5px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      whiteSpace: 'nowrap',
+      fontFamily: 'Lato ',
+      cursor: 'pointer',
+  },
+    card: {
+      border: '2px solid white',
+      borderRadius: '10px',
+      boxShadow: '1px 1px 6px 5px #eeeeee',
+  },
+}

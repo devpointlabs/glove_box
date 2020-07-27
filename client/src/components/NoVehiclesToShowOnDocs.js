@@ -11,7 +11,7 @@ function NoVehiclesToShowOnDocs(){
             text='white'
           >
             <Card.Body>
-              <Card.Title> Please add a vehicle on the <a href="/dashboard">Dashboard</a> page before adding documents </Card.Title>
+              <Card.Title style={{fontFamily: 'Lato' }}> Please add a vehicle on the <a href="/dashboard">Dashboard</a> page before adding documents </Card.Title>
             </Card.Body>
           </Card>
         </Container>
