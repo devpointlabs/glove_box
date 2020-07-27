@@ -3,7 +3,7 @@ import { AuthConsumer } from "./providers/AuthProvider";
 import { Button, Form, Segment, Header, Container } from "semantic-ui-react";
 
 class Login extends React.Component {
-  state = { email: "", password: "" }; 
+  state = { email: "", password: "" };
 
   handleSubmit = (e) => {
     e.preventDefault()

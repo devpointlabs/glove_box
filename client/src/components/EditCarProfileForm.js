@@ -53,86 +53,125 @@ const EditCarProfileForm = (props) => {
    
       <div>
       <Form style={styles.styleForm} onSubmit={handleSubmit}>
-        <Form.Label></Form.Label>
-        <Form.Label>Edit Car Profile</Form.Label>
+        <Form.Label fontSize='30px' >Edit Car Profile</Form.Label>
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>Year</label>
+        </div>
         <Form.Control 
         placeholder='Year'
         name='year'
         required
         autoFocus
         value={year}
+        maxLength="4"
         onChange={(e)=> setYear(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>Make</label>
+        </div>
         <Form.Control 
         placeholder='Make'
         name='make'
         required
         value={make}
+        maxLength="20"
         onChange={(e)=> setMake(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>Model</label>
+        </div>
         <Form.Control 
         placeholder='Model'
         name='model'
         required
         value={model}
+        maxLength="20"
         onChange={(e)=> setModel(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>License Plate</label>
+        </div>
         <Form.Control 
         placeholder='License Plate'
         name='licensePlate'
         required
         value={license_plate}
+        maxLength="10"
         onChange={(e)=> setLicensePlate(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>VIN</label>
+        </div>
         <Form.Control 
         placeholder='VIN'
         name='vin'
         required
         value={vin}
+        maxLength="17"
         onChange={(e)=> setVin(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>Mileage</label>
+        </div>
         <Form.Control 
         placeholder='Mileage'
         name='mileage'
         required
         value={mileage}
+        maxLength="6"
         onChange={(e)=> setMileage(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>Insurance Provider</label>
+        </div>
         <Form.Control 
         placeholder='Insurance Provider'
         name='insured by'
         required
         value={insured_by}
+        maxLength="25"
         onChange={(e)=> setInsuredBy(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>Policy Expiration Date</label>
+        </div>
         <Form.Control 
         placeholder='Policy Expiration Date'
         name='policy exp'
         required
         value={policy_exp}
+        maxLength="20"
         onChange={(e)=> setPolicyExp(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>Policy Number</label>
+        </div>
         <Form.Control 
         placeholder='Policy Number'
         name='policy number'
         required
         value={policy_number}
+        maxLength="10"
         onChange={(e)=> setPolicyNumber(e.target.value)}
         />
         <br />
+        <div style={{display: 'flex', justifyContent: 'start'}}>
+          <label>Insurance Provider Number</label>
+        </div>
         <Form.Control 
         placeholder='Insurance Provider Number'
         name='insurance prov num'
         required
         value={insurance_prov_num}
+        maxLength="10"
         onChange={(e)=> setInsuranceProvNum(e.target.value)}
         />
         <br />
@@ -153,7 +192,7 @@ const EditCarProfileForm = (props) => {
         <br/>
         <>
         <br/>
-      <h6>Edit Car Photo</h6>
+      <h5>Change Or Add Car Photo</h5>
       <FilePond
             files={file}
             allowMultiple={false}
