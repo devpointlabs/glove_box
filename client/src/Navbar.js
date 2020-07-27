@@ -63,7 +63,7 @@ class Navbar extends React.Component {
               active={location.pathname === '/login'}
             />
           </Link>
-          <Link to='/'>
+          <Link to='/register'>
             <Menu.Item
               id='register'
               name='register'
@@ -119,6 +119,6 @@ export default withRouter(ConnectedNavbar);
 
 
 
-const styles = {
+// const styles = {
   
-}
+// }

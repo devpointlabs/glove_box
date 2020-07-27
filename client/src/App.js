@@ -17,6 +17,7 @@ import Premium from './components/Premium';
 import ThankYouAddVehicle from './components/ThankYouAddVehicle';
 import AddVehicleForm from './components/AddVehicleForm';
 import Emergency from './components/Emergency';
+import LandingPage from './components/LandingPage'
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         <Navbar/>
         <div style={{minHeight:'86vh'}}>
         <Switch >
-            <Route exact path='/' component={Register} />
+            <Route exact path='/' component={LandingPage} />
+            <Route exact path='/register' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             <ProtectedRoute exact path='/addVehicle' component={AddVehicleForm} />
             <ProtectedRoute exact path='/emergency' component={Emergency} />
@@ -35,7 +37,6 @@ function App() {
             <Route exact path='/contact_us' component={ContactUs}/>
             <Route exact path='/premium' component={Premium}/>
             <ProtectedRoute exact path='/ThankYou' component={ThankYouAddVehicle}/>
-
         </Switch>
         </div>
         <Footer/>   
