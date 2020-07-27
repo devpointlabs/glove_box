@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import axios from "axios"
 import { Button, Form, } from "react-bootstrap"
-import { useHistory } from 'react-router-dom'
+import { useHistory, Redirect } from 'react-router-dom'
 
 export default function AddVehicleForm(props){
   
@@ -112,7 +112,14 @@ export default function AddVehicleForm(props){
             onChange={(e) => setLicensePlate(e.target.value)}
           />
           <h2>Dont know your license plate?</h2>
-         <Button onClick={() => props.setShowAddForm ? props.setShowAddForm(false) : props.setAdding(false)}>Back</Button> <Button type='submit'>Continue</Button>
+         <Button onClick={() => 
+          {if(props.setShowAddForm){
+            props.setShowAddForm(false)
+          }else if(props.setAdding){props.setAdding(false)
+          }else{
+            return history.push('/dashboard')
+          }}}
+          >Back</Button> <Button type='submit'>Continue</Button>
         </Form>
         <Button onClick={() => setVinForm(true)}>ADD BY VIN</Button> <Button onClick={() => setMakeModelForm(true)}>ADD BY MAKE, YEAR, AND MODEL</Button>
         </div>
