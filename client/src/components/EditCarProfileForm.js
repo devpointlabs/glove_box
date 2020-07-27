@@ -18,7 +18,7 @@ const EditCarProfileForm = (props) => {
   const [policy_number, setPolicyNumber] = useState (props.policy_number ? props.policy_number : '')
   const [insurance_prov_num, setInsuranceProvNum] = useState (props.insurance_prov_num ? props.insurance_prov_num : '')
   const [roadside_assistance, setRoadsideAssistance] = useState (props.roadside_assistance ? props.roadside_assistance : false)
-  const [image, setImage] = useState (props.image ? props.image : '')
+  const [image, setImage] = useState (props.image ? props.image : 'https://www.carhuddle.com/images/default/car-default.jpg')
   const [file, setFile] = useState(null);
   
 
@@ -184,7 +184,7 @@ const EditCarProfileForm = (props) => {
         checked={roadside_assistance}
         />
         <br />
-        <Button type='submit'>Update</Button>
+        <Button onClick={()=> setImage }type='submit'>Update</Button>
         {' '}
         <Button onClick={() => deleteVehicle(props.id)}variant="danger">Delete Vehicle</Button>
         {' '}

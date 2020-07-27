@@ -20,7 +20,7 @@ function DocumentUploader ({v}){
             <Nav.Link eventKey="service_records" title="Service Records" style={{color: 'black'}}>Service Records</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="others" title="Others" style={{color: 'black'}}>Others</Nav.Link>
+            <Nav.Link eventKey="other" title="Other" style={{color: 'black'}}>License/Other</Nav.Link>
           </Nav.Item>
         </Nav>
         <Tab.Content defaultActiveKey="insurance">
@@ -42,11 +42,11 @@ function DocumentUploader ({v}){
             <br/>
             <FileUploader v={v} eventKey="service_records" />
           </Tab.Pane>
-          <Tab.Pane eventKey="others">
+          <Tab.Pane eventKey="other">
             <br/>
-            <FileShow v={v} eventKey="others"/>
+            <FileShow v={v} eventKey="other"/>
             <br/>
-            <FileUploader v={v} eventKey="others"/>
+            <FileUploader v={v} eventKey="other"/>
           </Tab.Pane>
         </Tab.Content>
       </Tab.Container>

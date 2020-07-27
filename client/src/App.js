@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
-import Navbar from './Navbar';
+import NavbarComponent from './NavbarComponent';
 import Register from './Register';
 import Login from './Login';
 import { Switch, Route } from 'react-router-dom';
@@ -18,12 +18,15 @@ import ThankYouAddVehicle from './components/ThankYouAddVehicle';
 import AddVehicleForm from './components/AddVehicleForm';
 import Emergency from './components/Emergency';
 import LandingPage from './components/LandingPage'
+import { AuthContext } from './providers/AuthProvider'
 
 function App() {
+  const {user} = useContext(AuthContext)
   return (
+    <>
     <div className="App">
       <FetchUser>
-        <Navbar/>
+        {user && <NavbarComponent />  }
         <div style={{minHeight:'86vh'}}>
         <Switch >
             <Route exact path='/' component={LandingPage} />
@@ -42,6 +45,7 @@ function App() {
         <Footer/>   
       </FetchUser>
     </div>
+            </>
   );
 }
 
