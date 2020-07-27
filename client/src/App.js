@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Navbar from './Navbar';
+import NavbarComponent from './NavbarComponent';
 import Register from './Register';
 import Login from './Login';
 import { Switch, Route } from 'react-router-dom';
@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App">
       <FetchUser>
-        <Navbar/>
+        <NavbarComponent/>
         <div style={{minHeight:'86vh'}}>
         <Switch >
             <Route exact path='/' component={Register} />
