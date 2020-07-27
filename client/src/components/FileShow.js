@@ -1,7 +1,8 @@
 import React, {useState, useEffect}from 'react'
 import Axios from 'axios'
 import {Image,} from "cloudinary-react"
-import {Card, Button } from 'react-bootstrap'
+import {Card, Button, Container,} from 'react-bootstrap'
+// import {Link} from 'react-dom'
 
 
 function FileShow ({v, eventKey}) {
@@ -27,11 +28,15 @@ function FileShow ({v, eventKey}) {
     const filterRecords = records.filter(r => r.category == eventKey)
 
     return filterRecords.map((r) => ( 
-        <Card bg="secondary">
-        <Image cloudName='cloud_name' publicId={r.image} width='300' popup={true }overwrite={true}
-        />
-        <Button width='300' variant="danger" onClick={() => deleteRecord(r)}>Delete Document</Button>
-        </Card> 
+      <>
+       <div style={{display: 'flex'}}>
+        <a href={r.image}>
+          <Image display='flex' cloudName='cloud_name' publicId={r.image} width='400' popup={true }overwrite={true}/>
+        </a>
+        <Button onClick={() => deleteRecord(r)} style={styles.buttonStyle}>Delete Document</Button>
+      </div>
+      <br/>
+      </>  
       )
     )  
   }
@@ -43,3 +48,41 @@ function FileShow ({v, eventKey}) {
   )
 }
 export default FileShow
+
+const styles = {
+  contain: {
+      maxWidth: '60%',
+      
+  },
+   page: {
+      width: '100%',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#F7F7F7',
+      padding: '100px',
+      flexDirection:'column',
+   },
+   centered: {
+       minHeight: '86vh',
+       width:'100vw',
+       display: 'flex',
+       justifyContent: 'center',
+       alignItems:'center',
+   },
+   buttonStyle: {
+      all: 'unset',
+      maxWidth: '70%',
+      maxHeight: '20px',
+      padding: '10px 25px',
+      color: 'white',
+      backgroundColor: 'black',
+      borderRadius: '5px',
+      marginLeft: 'auto',
+      // alignItems: 'center',
+      cursor: 'pointer',
+      // justifyContent: 'left',
+      
+  }
+}

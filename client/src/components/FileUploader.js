@@ -31,7 +31,8 @@ function FileUploader ({v, eventKey, pond}){
         allowMultiple={true}
         ref={ref => (pond = ref)}
         onaddfile={setFileHandler}
-        labelIdle=' <span class="filepond--label-action">+ UPLOAD YOUR DOCUMENTS</span>'
+        style={{fontFamily: 'Lato' }}
+        labelIdle='<span class="filepond--label-action">+ UPLOAD YOUR DOCUMENTS</span>'
       />
     </div>
   )
