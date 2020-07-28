@@ -184,7 +184,7 @@ const EditCarProfileForm = (props) => {
         checked={roadside_assistance}
         />
         <br />
-        <Button onClick={()=> setImage }type='submit'>Update</Button>
+        <Button onClick={()=> setImage} type='submit'>Update</Button>
         {' '}
         <Button onClick={() => deleteVehicle(props.id)}variant="danger">Delete Vehicle</Button>
         {' '}

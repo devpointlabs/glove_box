@@ -36,18 +36,22 @@ class Documents extends React.Component {
   render() {
     return (
       <div style={styles.page}>
-        
+        <div style={styles.contain}>
+          <h1 style={{textAlign:'left', fontSize:'50px', color:'#F7F7F7'}}>Documents</h1>
+          <h3 style={{textAlign:'left', color:'#F7F7F7', fontSize:'30px', marginBottom:'30px'}}>Upload and store all of your car related documents, including your service records, insurance files and more.</h3>
+        </div>
         <Container>
           <br/>
-          <Card>
-            <Card.Header align='left' as='h1' style={{fontFamily: 'Lato ', fontWeight: 'bold' }}>Documents</Card.Header>
+          {/* <Card > */}
+            {/* <Card.Header align='left' as='h1' style={{fontFamily: 'Lato ', fontWeight: 'bold' }}>Documents</Card.Header>
             <Card.Body align='left' as='h3' style={{fontFamily: 'Lato ' }}>Upload and store all of your car related documents, including your service records, insurance files and more.</Card.Body>
-            <Card.Text align='left' as='h4'> </Card.Text>
+            <Card.Text align='left' as='h4'> </Card.Text> */}
             <br/>
             {this.VehicleShow()}
             
-          </Card>
+          {/* </Card> */}
         </Container>
+        
       </div>
     );
   };
@@ -69,7 +73,7 @@ export default withRouter(ConnectedDocuments);
 
 const styles = {
   contain: {
-      maxWidth: '60%',
+      maxWidth: '90%',
       
   },
    page: {
@@ -78,7 +82,7 @@ const styles = {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F7F7F7',
+      backgroundColor: '#1C2226',
       padding: '100px',
       flexDirection:'column',
    },

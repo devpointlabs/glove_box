@@ -1,6 +1,7 @@
 import React from "react";
 import { AuthConsumer } from "./providers/AuthProvider";
-import { Button, Form, Segment, Header, Container } from "semantic-ui-react";
+// import { Form, Segment, Header, Container } from "semantic-ui-react";
+import { Card, Button, Container, Form} from 'react-bootstrap'
 
 class Login extends React.Component {
   // state = { email: "", password: "" };
@@ -19,38 +20,84 @@ class Login extends React.Component {
   render() {
     const { email, password } = this.state;
     return (
-      <Container>
-      <Segment basic>
-        <Header as="h1" textAlign="center">
-          Login
-        </Header>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Input
-            label="Email"
-            autoFocus
-            required
-            name="email"
-            value={email}
-            placeholder="Email"
-            onChange={this.handleChange}
-          />
-          <Form.Input
-            label="Password"
-            required
-            name="password"
-            value={password}
-            placeholder="Password"
-            type="password"
-            onChange={this.handleChange}
-          />
-          <Segment textAlign="center" basic>
-            <Button primary type="submit">
-              Sign in
+
+      <div style={styles.page}>
+        <Container style={{maxWidth: '40%', fontFamily: 'Lato '}}>
+          <br/>
+        <Card >
+          <Card.Body>
+            <h1 style={{textAlign: 'left'}}>Login</h1>
+            <br/>
+            <Form onSubmit={this.handleSubmit}>
+            <Form.Group controlId="formGridemail">
+                <Form.Control 
+                  autoFocus
+                  required
+                  type="text" 
+                  placeholder="Email" 
+                  label="email"
+                  name="email"
+                  value={email}
+                  onChange={this.handleChange}
+              />
+              </Form.Group>
+              <br/>
+                <Form.Control 
+                  required
+                  type="text" 
+                  placeholder="Password" 
+                  label="password"
+                  name="password"
+                  value={password}
+                  type="password"
+                  onChange={this.handleChange}
+              />
+              <br/>
+              <Button style={styles.buttonStyle} type="submit" >
+              Log in
             </Button>
-          </Segment>
-        </Form>
-      </Segment>
-      </Container>
+            </Form>
+            <br/>
+            
+          </Card.Body>
+        </Card>
+      
+        </Container>
+    </div>
+
+
+      // <Container>
+      // <Segment basic>
+      //   <Header as="h1" textAlign="center">
+      //     Login
+      //   </Header>
+      //   <Form onSubmit={this.handleSubmit}>
+      //     <Form.Input
+      //       label="Email"
+      //       autoFocus
+      //       required
+      //       name="email"
+      //       value={email}
+      //       placeholder="Email"
+      //       onChange={this.handleChange}
+      //     />
+      //     <Form.Input
+      //       label="Password"
+      //       required
+      //       name="password"
+      //       value={password}
+      //       placeholder="Password"
+      //       type="password"
+      //       onChange={this.handleChange}
+      //     />
+      //     <Segment textAlign="center" basic>
+      //       <Button style={styles.buttonStyle} type="submit">
+      //         Sign in
+      //       </Button>
+      //     </Segment>
+      //   </Form>
+      // </Segment>
+      // </Container>
     );
   }
 }
@@ -78,55 +125,36 @@ const styles = {
         justifyContent:'center'
     },
     buttonStyle: {
-        maxWidth: '50%',
-        marginLeft:'auto',
-        marginRight:'auto',
-        marginTop:'10px',
-    }
+      all: 'unset',
+      maxWidth: '70%',
+      padding: '10px 25px',
+      color: 'white',
+      backgroundColor: 'black',
+      borderRadius: '5px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      whiteSpace: 'nowrap',
+      fontFamily: 'Lato ',
+      cursor: 'pointer',
+    },
+    card: {
+      maxWidth: '50%',
+      display: 'flex',
+      justifyContent:'center',
+      fontFamily: 'Lato ',
+      alignItems: 'center',
+    },
+    page: {
+      // width: '100%',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      // backgroundColor: '#F7F7F7',
+      backgroundColor: '#1C2226',
+      padding: '100px',
+      // flexDirection:'column',
+   },
+
 }
 
-// import React, {useState} from 'react'
-
-// export default function Login() {
-//     const [email, setEmail] = useState('')
-//     const [password, setPassword] = useState('')
-
-//     const handleSubmit = (e) => {
-//         e.preventDefault()
-//         console.log('submit',{ email, password })
-//        //TODO: add axios call to devise method we dont have yet
-//     }
-    
-//     return (
-//         <div style={styles.formDiv}>
-//         <form title='Register' onSubmit={handleSubmit} style={styles.vertForm}>
-//             <h1>Register</h1>
-//             <label for='email'>Email</label>
-//             <input type='text' label='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
-//             <label for='password'>Password</label>
-//             <input type='text' label='password' name='password' value={password} onChange={(e)=> setPassword(e.target.value) }/>
-//             <button style={styles.buttonStyle}>Submit</button>
-//         </form>
-//     </div>
-//     )
-// }
-
-// const styles = {
-//     vertForm: {
-//         display: 'flex',
-//         flexDirection: 'column',
-//         // maxWidth:'70%',
-//     },
-//     formDiv: {
-//         display: 'flex',
-//         justifyContent:'center',
-//         alignItems: 'center',
-//         justifyContent:'center'
-//     },
-//     buttonStyle: {
-//         maxWidth: '50%',
-//         marginLeft:'auto',
-//         marginRight:'auto',
-//         marginTop:'10px',
-//     }
-// }

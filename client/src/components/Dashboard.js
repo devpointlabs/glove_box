@@ -66,8 +66,8 @@ export default function Dashboard() {
     return (
         <div style={styles.page}>
             <div style={styles.contain}>
-                <h1 style={{textAlign:'left', fontSize:'50px'}}>Dashboard</h1>
-                <h3 style={{textAlign:'left', color:'#A7AAB2', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
+                <h1 style={{textAlign:'left', fontSize:'50px', color:'#F7F7F7'}}>Dashboard</h1>
+                <h3 style={{textAlign:'left', color:'#F7F7F7', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
                 <button style={styles.buttonStyle} onClick={() => setShowAddForm(!showAddForm)}><strong>ADD VEHICLE</strong></button>
                {vehicles.map(v => <CarCard car={{...v}} vehicles={vehicles} setVehicles={setVehicles} editVehicle={editVehicle} deleteVehicle={deleteVehicle} key={v.id} />) }
                
@@ -78,6 +78,7 @@ export default function Dashboard() {
             addVehicleToUi={addVehicleToUi}
             />}
             </div>
+            <br/>
             <Countdown/>
         </div>
     )
@@ -94,9 +95,10 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F7F7F7',
+        backgroundColor: '#1C2226',
         padding: '100px',
         flexDirection:'column',
+        fontFamily: 'Lato',
      },
      centered: {
          minHeight: '86vh',
@@ -115,5 +117,6 @@ const styles = {
         marginLeft: 'auto',
         marginRight: 'auto',
         whiteSpace: 'nowrap',
+        fontFamily: 'Lato',
     }
 }
