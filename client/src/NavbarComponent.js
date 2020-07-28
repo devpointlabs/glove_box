@@ -119,7 +119,7 @@ class NavbarComponent extends React.Component {
               active={location.pathname === '/login'}
             />
           </Link>
-          <Link to='/'>
+          <Link to='/register'>
             <Menu.Item
               id='register'
               name='register'

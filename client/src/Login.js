@@ -4,7 +4,8 @@ import { AuthConsumer } from "./providers/AuthProvider";
 import { Card, Button, Container, Form} from 'react-bootstrap'
 
 class Login extends React.Component {
-  state = { email: "", password: "" };
+  // state = { email: "", password: "" };
+  state = { email: "ryanash@something.com", password: "123456" }; // DELETE WHEN DONE
 
   handleSubmit = (e) => {
     e.preventDefault()
