@@ -2,6 +2,7 @@ import React from "react";
 // import { Button, Form, Segment, Header } from "semantic-ui-react";
 import { AuthConsumer } from "./providers/AuthProvider";
 import {Form, Card, Button, Container, Col} from 'react-bootstrap'
+import logo from './logo/logo_transparent.png'
 
 
 class Register extends React.Component {
@@ -26,6 +27,11 @@ class Register extends React.Component {
 
     return (
         <div style={styles.page}>
+        <img
+          src={logo}
+          width="200"
+          height="200"
+          />
         <br/>
         <h1 style={{textAlign:'left', fontSize:'50px', color:'#F7F7F7'}}>Welcome to your Digital GloveBox</h1>
         <p style={{textAlign:'left', fontSize:'25px', fontStyle: 'italic' ,color:'#F7F7F7'}}>A place for you to store all of your important vehicle records</p>
@@ -141,7 +147,7 @@ const styles = {
       alignItems: 'center',
       // backgroundColor: '#F7F7F7',
       backgroundColor: '#1C2226',
-      padding: '100px',
+      padding: '80px',
       flexDirection:'column',
    },
    centered: {

@@ -82,10 +82,9 @@ export default function Dashboard() {
                 size="lg"
                 >
                 <Modal.Header closeButton>
-                <Modal.Title  style={{fontFamily: 'Lato ' }}>  </Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{fontFamily: 'Lato ' }}>
-                    <AddVehicleForm/>
+                    <AddVehicleForm  addVehicleToUi={addVehicleToUi}/>
                 </Modal.Body>
                 <Modal.Footer>
                 <Button style={styles.buttonStyle} onClick={handleClose}>
