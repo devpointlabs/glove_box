@@ -2,7 +2,7 @@ import React, {useState, useEffect}from 'react'
 import Axios from 'axios'
 import {Image,} from "cloudinary-react"
 import {Card, Button, Container,} from 'react-bootstrap'
-// import {Link} from 'react-dom'
+
 
 
 function FileShow ({v, eventKey}) {
@@ -80,9 +80,6 @@ const styles = {
       backgroundColor: 'black',
       borderRadius: '5px',
       marginLeft: 'auto',
-      // alignItems: 'center',
       cursor: 'pointer',
-      // justifyContent: 'left',
-      
   }
 }

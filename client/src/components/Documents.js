@@ -42,14 +42,8 @@ class Documents extends React.Component {
         </div>
         <Container>
           <br/>
-          {/* <Card > */}
-            {/* <Card.Header align='left' as='h1' style={{fontFamily: 'Lato ', fontWeight: 'bold' }}>Documents</Card.Header>
-            <Card.Body align='left' as='h3' style={{fontFamily: 'Lato ' }}>Upload and store all of your car related documents, including your service records, insurance files and more.</Card.Body>
-            <Card.Text align='left' as='h4'> </Card.Text> */}
-            <br/>
-            {this.VehicleShow()}
-            
-          {/* </Card> */}
+          <br/>
+          {this.VehicleShow()}
         </Container>
         
       </div>
@@ -73,7 +67,7 @@ export default withRouter(ConnectedDocuments);
 
 const styles = {
   contain: {
-      maxWidth: '90%',
+      maxWidth: '60%',
       
   },
    page: {
