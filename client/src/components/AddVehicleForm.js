@@ -77,7 +77,7 @@ export default function AddVehicleForm(props){
             value={year}
             onChange={(e) => setYear(e.target.value)}
             />
-            <Button style={styles.buttonStyle} onClick={()=> setMakeModelForm(false)}>Back</Button> <Button type='submit'>Continue</Button>
+            <Button style={styles.buttonStyle} onClick={()=> setMakeModelForm(false)}>Back</Button> <Button style={styles.buttonStyle}  type='submit'>Continue</Button>
           </Form>
         )
       } else if (makeModelForm == false && vinForm == true){
@@ -163,5 +163,6 @@ const styles = {
     whiteSpace: 'nowrap',
     fontFamily: 'Lato',
     cursor: 'pointer',
+    marginTop: '10px'
   }
 }
