@@ -215,7 +215,7 @@ const styles = {
     left: '0',
     bottom: '0',
     width: '100vw',
-    height: '86vh',
+    height: '100vh',
     backgroundColor: 'white',
   }
 }
