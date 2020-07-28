@@ -197,7 +197,7 @@ const EditCarProfileForm = (props) => {
             // files={file}
             allowMultiple={false}
             onupdatefiles={setFileHandler}
-            labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+            labelIdle='<span class="filepond--label-action">+UPLOAD YOUR VEHICLE IMAGE</span>'
           />
       </>
       </Form>

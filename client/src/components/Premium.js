@@ -17,8 +17,8 @@ function Premium (){
       marginBottom: '30px',
     }}>
     <div style={{
-      // width: actualWidthSize,
-      // maxWidth: actualWidthSize,
+      width: actualWidthSize,
+      maxWidth: actualWidthSize,
       border: 'solid black 1px',
       padding: '20px',
     }}>

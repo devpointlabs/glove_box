@@ -25,18 +25,18 @@ class Register extends React.Component {
     const { email, password, password_confirmation, fname, lname } = this.state;
 
     return (
-        <>
+        <div style={styles.page}>
         <br/>
-        <h1>Welcome to your Digital GloveBox</h1>
-        <p>A place for you to store all of your important vehicle records</p>
+        <h1 style={{textAlign:'left', fontSize:'50px', color:'#F7F7F7'}}>Welcome to your Digital GloveBox</h1>
+        <p style={{textAlign:'left', fontSize:'25px', fontStyle: 'italic' ,color:'#F7F7F7'}}>A place for you to store all of your important vehicle records</p>
         <br/>
         <br/>
-        <Container>
-        <Card style ={{width: '36rem'}}>
+        <Container style={{maxWidth: '40%'}}>
+        <Card >
+          <br/>
             <Card.Body>
               <Container>
                 <Form onSubmit={this.handleSubmit}>
-                  
                     <Form.Row>
                       <Col>
                         <Form.Group controlId="formGridfname">
@@ -112,63 +112,7 @@ class Register extends React.Component {
             </Card.Body>
         </Card>
         </Container>
-        </>
-
-    //   <Segment basic>
-    //     <Header as="h1" textAlign="center">
-    //       Welcome to your Digital GloveBox
-    //     </Header>
-    //     <Header as="p" textAlign="center">
-    //     A place for you to store all of your important vehicle records
-    //     </Header>
-    //     <br/>
-    //     <Form as='h2' onSubmit={this.handleSubmit}>
-    //       <p>Sign up for a free account</p>
-    //       <Form.Input
-    //         label="Name"
-    //         required
-    //         autoFocus
-    //         name="name"
-    //         value={window.name}
-    //         placeholder="Name"
-    //         onChange={this.handleChange}
-    //       />
-    //       <Form.Input
-    //         label="Email"
-    //         required
-    //         name="email"
-    //         value={email}
-    //         placeholder="Email"
-    //         onChange={this.handleChange}
-    //       />
-    //       <Form.Input
-    //         label="Password"
-    //         required
-    //         name="password"
-    //         value={password}
-    //         placeholder="Password"
-    //         type="password"
-    //         onChange={this.handleChange}
-    //       />
-    //       <Form.Input
-    //         label="Password Confirmation"
-    //         required
-    //         name="passwordConfirmation"
-    //         value={passwordConfirmation}
-    //         placeholder="Password Confirmation"
-    //         type="password"
-    //         onChange={this.handleChange}
-    //       />
-    //       <Segment textAlign="center" basic>
-    //         <Button primary type="submit">
-    //           Submit
-    //         </Button>
-    //       </Segment>
-    //     </Form>
-    //   </Segment>
-
-
-
+        </div>
     );
   }
 }
@@ -181,5 +125,46 @@ export default class ConnectedRegister extends React.Component {
 
       </AuthConsumer>
     )
+  }
+}
+
+const styles = {
+  contain: {
+      maxWidth: '60%',
+      
+  },
+   page: {
+      width: '100%',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      // backgroundColor: '#F7F7F7',
+      backgroundColor: '#1C2226',
+      padding: '100px',
+      flexDirection:'column',
+   },
+   centered: {
+       minHeight: '86vh',
+       width:'100vw',
+       display: 'flex',
+       justifyContent: 'center',
+       alignItems:'center',
+   },
+   buttonStyle: {
+      all: 'unset',
+      maxWidth: '70%',
+      padding: '10px 25px',
+      color: 'white',
+      backgroundColor: 'black',
+      borderRadius: '5px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      whiteSpace: 'nowrap',
+  },
+  card: {
+    border: '2px solid white',
+    borderRadius: '10px',
+    boxShadow: '1px 1px 6px 5px #eeeeee',
   }
 }

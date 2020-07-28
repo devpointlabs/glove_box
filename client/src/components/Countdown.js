@@ -29,22 +29,19 @@ class Countdown extends React.Component {
   render(){
     return(
       <div>
-        <Card  style={{width:'18rem', background: 'darkgray'}}>
+        <Card  style={{width:'40em', background: '#F7F7F7', }}>
           <Card.Body>
-            <Card.Text style={{color: 'white'}}>
+            <Card.Text style={{color: 'black'}}>
             Number of vehicle profiles remaining on the free trial version
             </Card.Text>
             <Card.Text style={{color: 'red', fontWeight: 'bold', fontSize: '25px'} }>
             {this.countdownShow ()}
             </Card.Text>
-            <Card.Text style={{color: 'white'}}>
+            <Card.Text style={{color: 'black'}}>
               Sign up for a <a style={{fontWeight: 'bold'}} href='/premium'>Premium</a> subscription 
-            </Card.Text>
-           
+            </Card.Text> 
           </Card.Body>
         </Card>
-
-        {/* <p> You have {this.countdownShow ()} vehicles left in on the free version</p> */}
       </div>
     )
   }
