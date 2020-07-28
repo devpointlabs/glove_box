@@ -1,73 +1,94 @@
 import React from 'react'
-import {Container,Tabs, Tab, Form, Card} from 'react-bootstrap'
-import Dropzone from 'react-dropzone'
+import {Container,Tabs, Tab, Card, Navbar, Nav} from 'react-bootstrap'
 import FileUploader from './FileUploader'
 import FileShow from './FileShow'
 
-function DocumentUploader (){
+function DocumentUploader ({v}){
   return(
     <Container>
-      <Card bg="secondary"
-            text='white'>
-        <Card.Body> 
-          <Tabs defaultActiveKey="insurance" text='white'>
-            <Tab eventKey="insurance" title="Insurance" >
-              <br/>
-              <br/>
-              List of uploaded insurance documents
-              <br/>
-              <FileShow/>
-              <br/>
-              <br/>
-              <FileUploader/>
-              <br/>
-             
-            </Tab>
-            <Tab eventKey="registration" title="Registration">
-              <br/>
-              <br/>
-                List of uploaded registration documents
-              <br/>
-              <br/>
-              <br/>
+      <Card.Img key={v.id} src={v.image} />
 
-                <FileUploader/>
-              <br/>
-
-            </Tab>
-            <Tab eventKey="service_records" title="Service Records">
-              <br/>
-              <br/>
-
-                List of uploaded service_records documents
-              <br/>
-              <br/>
-              <br/>
-
-                <FileUploader/>
-              <br/>
-
-            </Tab>
-            <Tab eventKey="others" title="Others">
-              <br/>
-              <br/>
-
-                List of uploaded other documents
-              <br/>
-              <br/>
-              <br/>
-
-                <FileUploader/>
-              <br/>
-
-            </Tab>
-        </Tabs>
-      </Card.Body>
-      </Card>
+      <Tab.Container defaultActiveKey="insurance">
+        <Nav style={styles.navStyle} className="nav-fill " >
+          <Nav.Item>
+            <Nav.Link eventKey="insurance" title="Insurance" style={{color: 'black'}}>Insurance</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="registration" title="Registration" style={{color: 'black'}}>Registration</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="service_records" title="Service Records" style={{color: 'black'}}>Service Records</Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link eventKey="other" title="Other" style={{color: 'black'}}>License/Other</Nav.Link>
+          </Nav.Item>
+        </Nav>
+        <Tab.Content defaultActiveKey="insurance">
+          <Tab.Pane eventKey="insurance">
+            <br/>
+            <FileShow v={v} eventKey="insurance"/>
+            <br/>
+            <FileUploader v={v} eventKey="insurance"/>
+          </Tab.Pane>
+          <Tab.Pane eventKey="registration">
+            <br/>
+            <FileShow v={v} eventKey="registration"/>
+            <br/>
+            <FileUploader v={v} eventKey="registration"/>
+          </Tab.Pane>
+          <Tab.Pane eventKey="service_records">
+            <br/>
+            <FileShow v={v} eventKey="service_records"/>
+            <br/>
+            <FileUploader v={v} eventKey="service_records" />
+          </Tab.Pane>
+          <Tab.Pane eventKey="other">
+            <br/>
+            <FileShow v={v} eventKey="other"/>
+            <br/>
+            <FileUploader v={v} eventKey="other"/>
+          </Tab.Pane>
+        </Tab.Content>
+      </Tab.Container>
       <br/>
     </Container>
   )
 }
 
-
 export default DocumentUploader
+
+const styles = {
+  contain: {
+      maxWidth: '60%',
+  },
+   page: {
+      width: '100%',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#F7F7F7',
+      padding: '100px',
+      flexDirection:'column',
+   },
+   buttonStyle: {
+      all: 'unset',
+      maxWidth: '70%',
+      padding: '10px 25px',
+      color: 'white',
+      backgroundColor: 'black',
+      borderRadius: '5px',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      whiteSpace: 'nowrap',
+      cursor: 'pointer',
+      fontFamily: 'Lato ',
+  },
+  navStyle: {
+    fontFamily: 'Lato ',
+    color: 'black',
+    textDecoration: "underline", 
+    fontSize: "18px", 
+    fontWeight: "bold"
+  }
+}

@@ -1,27 +1,24 @@
-import React, { useState } from 'react'
-import ReactDOM from 'react-dom'
-import { FilePond, File, registerPlugin } from 'react-filepond'
+import React from 'react'
+import { FilePond, registerPlugin } from 'react-filepond'
 import 'filepond/dist/filepond.min.css'
 import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
-import FilePondPluginFileRename from 'filepond-plugin-file-rename';
 import '../filepond.css';
 import Axios from 'axios'
-import { Container } from 'react-bootstrap'
 
-registerPlugin (FilePondPluginImageExifOrientation, FilePondPluginImagePreview, FilePondPluginFileRename)
 
-function FileUploader (){
-  const [files, setFiles] = useState([])
-  const [loading, setLoading] = useState(false)
+registerPlugin (FilePondPluginImageExifOrientation, FilePondPluginImagePreview, )
 
+function FileUploader ({v, eventKey, pond}){
 
   function setFileHandler (f){
+    
+    console.log('message')
     let data = new FormData()
-    data.append('file', f[0].file)
-    //1 is hardcoded for vehicle ID
-    Axios.post(`/api/vehicles/1/records`, data)
+    data.append('file', pond.getFile().file)
+    data.append('category', eventKey )
+    Axios.post(`/api/vehicles/${v.id}/records`, data)
     .then((res) => {
       console.log(res)
     })
@@ -31,21 +28,11 @@ function FileUploader (){
   return (
     <div >
       <FilePond
-        files={files}
         allowMultiple={true}
-        onupdatefiles={setFileHandler}
-        allowReorder={true}
-        labelIdle=' <span class="filepond--label-action">+ UPLOAD YOUR DOCUMENTS</span>'
-        allowFileRename={true}
-        instantUpload={true}
-        // server="/api"
-        // server="https://api.cloudinary.com/v1_1/dlikodxxc"
-        // server= {upLoadFile}
-        chunkUploads={true}
-        // imagePreviewHeight={null}
-        // onChange={upLoadFile}
-        // stylePanelLayout='integrated'
-        // labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+        ref={ref => (pond = ref)}
+        onaddfile={setFileHandler}
+        style={{fontFamily: 'Lato' }}
+        labelIdle='<span class="filepond--label-action">+ UPLOAD YOUR DOCUMENTS</span>'
       />
     </div>
   )
