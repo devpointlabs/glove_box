@@ -77,7 +77,7 @@ export default function AddVehicleForm(props){
             value={year}
             onChange={(e) => setYear(e.target.value)}
             />
-            <Button onClick={()=> setMakeModelForm(false)}>Back</Button> <Button type='submit'>Continue</Button>
+            <Button style={styles.buttonStyle} onClick={()=> setMakeModelForm(false)}>Back</Button> <Button type='submit'>Continue</Button>
           </Form>
         )
       } else if (makeModelForm == false && vinForm == true){
@@ -94,9 +94,9 @@ export default function AddVehicleForm(props){
               onChange={(e) => setVin(e.target.value)}
             />
 
-            <Button onClick={()=> setImage} type='submit'>Continue</Button>
+            <Button style={styles.buttonStyle} onClick={()=> setImage} type='submit'>Continue</Button>
           </Form>
-          <Button onClick={() => setVinForm(false)}>Back</Button> 
+          <Button style={styles.buttonStyle} onClick={() => setVinForm(false)}>Back</Button> 
           </div>
         )
       } else {
@@ -115,17 +115,17 @@ export default function AddVehicleForm(props){
           <h2>Dont know your license plate?</h2>
 
 
-         <Button onClick={() => 
+         <Button style={styles.buttonStyle} onClick={() => 
           {if(props.setShowAddForm){
             props.setShowAddForm(false)
           }else if(props.setAdding){props.setAdding(false)
           }else{
             return history.push('/dashboard')
           }}}
-          >Back</Button> <Button type='submit'>Continue</Button>
+          >Back</Button> <Button style={styles.buttonStyle} type='submit'>Continue</Button>
 
         </Form>
-        <Button onClick={() => setVinForm(true)}>ADD BY VIN</Button> <Button onClick={() => setMakeModelForm(true)}>ADD BY MAKE, YEAR, AND MODEL</Button>
+        <Button style={styles.buttonStyle} onClick={() => setVinForm(true)}>ADD BY VIN</Button> <Button style={styles.buttonStyle}onClick={() => setMakeModelForm(true)}>ADD BY MAKE, YEAR, AND MODEL</Button>
         </div>
         )
       }
@@ -150,5 +150,18 @@ const styles = {
     top:'0px',
     left:'0px',
     backgroundColor: 'gray',
+  },
+  buttonStyle: {
+    all: 'unset',
+    maxWidth: '70%',
+    padding: '10px 25px',
+    color: 'white',
+    backgroundColor: 'black',
+    borderRadius: '5px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    whiteSpace: 'nowrap',
+    fontFamily: 'Lato',
+    cursor: 'pointer',
   }
 }
