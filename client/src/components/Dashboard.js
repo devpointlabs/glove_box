@@ -4,12 +4,15 @@ import CarCard from './CarCard'
 import Countdown from './Countdown'
 import Loading from './Loading'
 import AddVehicleForm from './AddVehicleForm'
-import { Container } from 'react-bootstrap'
+import { Container ,Modal, Button} from 'react-bootstrap'
 
 export default function Dashboard() {
     const [vehicles, setVehicles] = useState([])
     const [loading, setLoading] = useState(true)
     const [showAddForm, setShowAddForm] = useState(false)
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
    
     const getVehicles = () => {
         axios.get('/api/vehicles')
@@ -68,15 +71,34 @@ export default function Dashboard() {
             <div style={styles.contain}>
                 <h1 style={{textAlign:'left', fontSize:'50px', color:'#F7F7F7'}}>Dashboard</h1>
                 <h3 style={{textAlign:'left', color:'#F7F7F7', fontSize:'30px', marginBottom:'30px'}}>CAR DETAILS</h3>
-                <button style={styles.buttonStyle} onClick={() => setShowAddForm(!showAddForm)}><strong>ADD VEHICLE</strong></button>
+                <button style={styles.buttonStyle} onClick={handleShow}><strong>ADD VEHICLE</strong></button>
                {vehicles.map(v => <CarCard car={{...v}} vehicles={vehicles} setVehicles={setVehicles} editVehicle={editVehicle} deleteVehicle={deleteVehicle} key={v.id} />) }
+
+               <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+                size="lg"
+                >
+                <Modal.Header closeButton>
+                </Modal.Header>
+                <Modal.Body style={{fontFamily: 'Lato ' }}>
+                    <AddVehicleForm  addVehicleToUi={addVehicleToUi}/>
+                </Modal.Body>
+                <Modal.Footer>
+                <Button style={styles.buttonStyle} onClick={handleClose}>
+                    Close
+                </Button>
+                </Modal.Footer>
+                </Modal>
                
-            {showAddForm && 
+            {/* {showAddForm && 
             <AddVehicleForm 
             showAddForm={showAddForm} 
             setShowAddForm={setShowAddForm} 
             addVehicleToUi={addVehicleToUi}
-            />}
+            />} */}
             </div>
             <br/>
             <Countdown/>

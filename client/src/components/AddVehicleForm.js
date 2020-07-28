@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from "axios"
-import { Button, Form, Container, Card } from "react-bootstrap"
+import { Button, Form, Card } from "react-bootstrap"
 import { useHistory, Redirect } from 'react-router-dom'
 
 export default function AddVehicleForm(props){
@@ -77,7 +77,7 @@ export default function AddVehicleForm(props){
             value={year}
             onChange={(e) => setYear(e.target.value)}
             />
-            <button style={styles.buttonStyle} onClick={()=> setMakeModelForm(false)}>Back</button> <button style={styles.buttonStyle} type='submit'>Continue</button>
+            <Button style={styles.buttonStyle} onClick={()=> setMakeModelForm(false)}>Back</Button> <Button style={styles.buttonStyle}  type='submit'>Continue</Button>
           </Form>
         )
       } else if (makeModelForm == false && vinForm == true){
@@ -94,9 +94,9 @@ export default function AddVehicleForm(props){
               onChange={(e) => setVin(e.target.value)}
             />
 
-          <button style={styles.buttonStyle} onClick={()=> setImage} type='submit'>Continue</button>
+            <Button style={styles.buttonStyle} onClick={()=> setImage} type='submit'>Continue</Button>
           </Form>
-          <button style={styles.buttonStyle} onClick={() => setVinForm(false)}>Back</button> 
+          <Button style={styles.buttonStyle} onClick={() => setVinForm(false)}>Back</Button> 
           </div>
         )
       } else {
@@ -115,88 +115,54 @@ export default function AddVehicleForm(props){
           <h2>Dont know your license plate?</h2>
 
 
-          <button style={styles.buttonStyle} onClick={() => props.setShowAddForm ? props.setShowAddForm(false) : props.setAdding(false)}>Back</button> <button style={styles.buttonStyle} type='submit'>Continue</button>
+         <Button style={styles.buttonStyle} onClick={() => 
+          {if(props.setShowAddForm){
+            props.setShowAddForm(false)
+          }else if(props.setAdding){props.setAdding(false)
+          }else{
+            return history.push('/dashboard')
+          }}}
+          >Back</Button> <Button style={styles.buttonStyle} type='submit'>Continue</Button>
 
-          </Form>
-          <button style={styles.buttonStyle} onClick={() => setVinForm(true)}>ADD BY VIN</button> 
-          <button style={styles.buttonStyle} onClick={() => setMakeModelForm(true)}>ADD BY MAKE, YEAR, AND MODEL</button>
-          </div>
+        </Form>
+        <Button style={styles.buttonStyle} onClick={() => setVinForm(true)}>ADD BY VIN</Button> <Button style={styles.buttonStyle}onClick={() => setMakeModelForm(true)}>ADD BY MAKE, YEAR, AND MODEL</Button>
+        </div>
         )
       }
     }
 
     return (
-            // <div style={styles.layout}>
-            //   <div style={styles.card}>
-                <div style={styles.page}>
-                <Container>
-                  <div >
-                    <h1 align="center">Add A Vehicle</h1>
-                    {formDisplay()}
-                  </div>   
-                </Container>
-              </div>
-            //   </div>
-            // </div>
-          
-          )
-      }
-      
-      const styles = {
-       
-       page: {
-         display: 'flex',
-         justifyContent: 'center',
-         height: '100vh',
-         width: '100vw',
-         zIndex: '4',
-         position: 'fixed',
-         top:'0px',
-         left:'0px',
-         backgroundColor: 'white',
-         border: 'solid black 1px',
-         padding: '20px',
-         maxWidth: 'actualWidthSize',
-         margin: 'auto',
-         alignItems: 'center',
-        
-       },
-      
-       buttonStyle: {
-        all: 'unset',
-        maxWidth: '70%',
-        color: 'white',
-        backgroundColor: 'black',
-        borderRadius: '5px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        whiteSpace: 'nowrap',
-        fontFamily: 'Lato',
-        cursor: 'pointer',
-        marginTop: '10px',
-        padding: '10px 25px',
+      // <div style={styles.page}>
+        <Card>
+        <h1 align="center">Add A Vehicle</h1>
+        {formDisplay()}
+        </Card>
+      // </div> 
+    )  
+}
 
-      },
-      
-      layout: {
-        display:'flex',
-        justifyContent:'center',
-        backgroundColor: '#F7F7F7',
-      },
-      
-      card: {
-        display:'flex',
-        flexDirection:'column',
-        backgroundColor:'white',
-        justifyContent:'center',
-        alignItems:'center',
-        border:'1px solid black',
-        borderRadius:'3px',
-        marginTop: '100px',
-        padding: '30px 10px',
-      },
-      }
-      
-
-
-
+const styles = {
+  page: {
+    height: '100vh',
+    width: '100vw',
+    zIndex: '1',
+    position: 'fixed',
+    top:'0px',
+    left:'0px',
+    backgroundColor: 'gray',
+  },
+  buttonStyle: {
+    all: 'unset',
+    maxWidth: '70%',
+    padding: '10px 25px',
+    color: 'white',
+    backgroundColor: 'black',
+    borderRadius: '5px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    whiteSpace: 'nowrap',
+    fontFamily: 'Lato',
+    cursor: 'pointer',
+    marginTop: '10px'
+  }
+}

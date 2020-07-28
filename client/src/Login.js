@@ -2,6 +2,7 @@ import React from "react";
 import { AuthConsumer } from "./providers/AuthProvider";
 // import { Form, Segment, Header, Container } from "semantic-ui-react";
 import { Card, Button, Container, Form} from 'react-bootstrap'
+import logo from './logo/logo_transparent.png'
 
 class Login extends React.Component {
   state = { email: "", password: "" };
@@ -21,7 +22,15 @@ class Login extends React.Component {
     return (
 
       <div style={styles.page}>
+       
         <Container style={{maxWidth: '40%', fontFamily: 'Lato '}}>
+        <img
+          src={logo}
+          width="200"
+          height="200"
+        />
+          <br/>
+          <br/>
           <br/>
         <Card >
           <Card.Body>
@@ -156,4 +165,3 @@ const styles = {
    },
 
 }
-

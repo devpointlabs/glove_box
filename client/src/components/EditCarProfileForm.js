@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Form } from 'react-bootstrap'
+import { Button, Container, Col, Form } from 'react-bootstrap'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -50,13 +50,16 @@ const EditCarProfileForm = (props) => {
   }
 
   return (
-   
-      <div>
-      <Form style={styles.styleForm} onSubmit={handleSubmit}>
-        <Form.Label fontSize='30px' >Edit Car Profile</Form.Label>
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>Year</label>
+    
+    <div style={styles.page} >
+        <Container>
+      <Form.Label style={styles.formHeader} >Edit Car Profile</Form.Label>
+      <Form  onSubmit={handleSubmit}>
+        <div style={{ margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Row>
+        <Form.Group md="1" >
+          <Form.Label>Year</Form.Label>
         <Form.Control 
         placeholder='Year'
         name='year'
@@ -66,10 +69,12 @@ const EditCarProfileForm = (props) => {
         maxLength="4"
         onChange={(e)=> setYear(e.target.value)}
         />
+        </Form.Group>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>Make</label>
+        <div style={{  margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Group md="1" >
+          <Form.Label>Make</Form.Label>
         <Form.Control 
         placeholder='Make'
         name='make'
@@ -78,10 +83,12 @@ const EditCarProfileForm = (props) => {
         maxLength="20"
         onChange={(e)=> setMake(e.target.value)}
         />
+        </Form.Group>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>Model</label>
+        <div style={{  margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Group md="1" >
+          <Form.Label>Model</Form.Label>
         <Form.Control 
         placeholder='Model'
         name='model'
@@ -90,10 +97,14 @@ const EditCarProfileForm = (props) => {
         maxLength="20"
         onChange={(e)=> setModel(e.target.value)}
         />
+        </Form.Group>
+        </Form.Row>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>License Plate</label>
+        <div style={{ margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Row>
+        <Form.Group md="1" >
+          <Form.Label>License Plate</Form.Label>
         <Form.Control 
         placeholder='License Plate'
         name='licensePlate'
@@ -102,10 +113,12 @@ const EditCarProfileForm = (props) => {
         maxLength="10"
         onChange={(e)=> setLicensePlate(e.target.value)}
         />
+        </Form.Group>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>VIN</label>
+        <div style={{ margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Group md="2" >
+          <Form.Label>VIN</Form.Label>
         <Form.Control 
         placeholder='VIN'
         name='vin'
@@ -114,10 +127,12 @@ const EditCarProfileForm = (props) => {
         maxLength="17"
         onChange={(e)=> setVin(e.target.value)}
         />
+        </Form.Group>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>Mileage</label>
+        <div style={{ margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Group md="1" >
+          <Form.Label>Mileage</Form.Label>
         <Form.Control 
         placeholder='Mileage'
         name='mileage'
@@ -126,10 +141,14 @@ const EditCarProfileForm = (props) => {
         maxLength="6"
         onChange={(e)=> setMileage(e.target.value)}
         />
+        </Form.Group>
+        </Form.Row>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>Insurance Provider</label>
+        <div style={{ margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Row>
+        <Form.Group md="2" >
+          <Form.Label>Insurance Provider</Form.Label>
         <Form.Control 
         placeholder='Insurance Provider'
         name='insured by'
@@ -138,10 +157,12 @@ const EditCarProfileForm = (props) => {
         maxLength="25"
         onChange={(e)=> setInsuredBy(e.target.value)}
         />
+        </Form.Group>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>Policy Expiration Date</label>
+        <div style={{ margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Group md="2" >
+          <Form.Label>Policy Expiration Date</Form.Label>
         <Form.Control 
         placeholder='Policy Expiration Date'
         name='policy exp'
@@ -150,10 +171,12 @@ const EditCarProfileForm = (props) => {
         maxLength="20"
         onChange={(e)=> setPolicyExp(e.target.value)}
         />
+        </Form.Group>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>Policy Number</label>
+        <div style={{ margin: 'auto', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Group md="2" >
+          <Form.Label>Policy Number</Form.Label>
         <Form.Control 
         placeholder='Policy Number'
         name='policy number'
@@ -162,10 +185,14 @@ const EditCarProfileForm = (props) => {
         maxLength="10"
         onChange={(e)=> setPolicyNumber(e.target.value)}
         />
+        </Form.Group>
+        </Form.Row>
+        <Form.Row>
         <br />
-        <div style={{display: 'flex', justifyContent: 'start'}}>
-          <label>Insurance Provider Number</label>
+        <div style={{ margin: 'left', display: 'flex', justifyContent: 'start'}}>
         </div>
+        <Form.Group md="2" >
+          <Form.Label>Insurance Provider Number</Form.Label>
         <Form.Control 
         placeholder='Insurance Provider Number'
         name='insurance prov num'
@@ -174,8 +201,12 @@ const EditCarProfileForm = (props) => {
         maxLength="10"
         onChange={(e)=> setInsuranceProvNum(e.target.value)}
         />
+        </Form.Group>
         <br />
-        <h6>Roadside Assistance? Check the box for Yes</h6>
+        <div style={{ margin: 'auto', display: 'flex', justifyContent: 'start'}}>
+        </div>
+        <Form.Group md="2" >
+          <Form.Label>Roadside Assistance? Check for Yes</Form.Label>
         <Form.Control 
         placeholder='Roadside Assistance? Check for Yes'
         name='roadside assistance'
@@ -183,6 +214,8 @@ const EditCarProfileForm = (props) => {
         onChange={()=> setRoadsideAssistance(!roadside_assistance)}
         checked={roadside_assistance}
         />
+        </Form.Group>
+        </Form.Row>
         <br />
         <Button onClick={()=> setImage} type='submit'>Update</Button>
         {' '}
@@ -201,23 +234,26 @@ const EditCarProfileForm = (props) => {
           />
       </>
       </Form>
+      </Container>
       </div>
   )
 }
 
 const styles = {
-  styleForm: {
-    overflow: 'auto',
-    padding: '20px',
-    width: '30px',
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    bottom: '0',
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'white',
-  }
+  page: {
+    margin: 'auto',
+    border: 'solid black 1px',
+    width: '50%',
+    minHeight: '50vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '100px',
+ },
+ formHeader: {
+   fontSize:'20px',
+   paddingBottom: '60px',
+ }
 }
 
 export default EditCarProfileForm;
