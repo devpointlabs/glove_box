@@ -22,7 +22,6 @@ class NavbarComponent extends React.Component {
                 height="80"
                 />
             </Navbar.Brand>
-           
             <Nav.Link style={styles.link} href="/dashboard">Dashboard</Nav.Link>
             <Nav.Link style={styles.link}href="/documents">Documents</Nav.Link>
             <Nav.Link style={styles.link}href="/contact_us">Contact Us</Nav.Link>
