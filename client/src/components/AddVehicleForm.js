@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from "axios"
-import { Button, Form, } from "react-bootstrap"
+import { Button, Form, Card } from "react-bootstrap"
 import { useHistory, Redirect } from 'react-router-dom'
 
 export default function AddVehicleForm(props){
@@ -132,10 +132,12 @@ export default function AddVehicleForm(props){
     }
 
     return (
-      <div style={styles.page}>
+      // <div style={styles.page}>
+        <Card>
         <h1 align="center">Add A Vehicle</h1>
         {formDisplay()}
-      </div> 
+        </Card>
+      // </div> 
     )  
 }
 
