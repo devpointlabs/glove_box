@@ -153,7 +153,7 @@ class NavbarComponent extends React.Component {
 const styles = { 
   drop: {
     backgroundColor:'black',
-    border:'none',
+    border:'black',
     color:'white',
     // marginTop:'.1em',
     fontSize: '18px',

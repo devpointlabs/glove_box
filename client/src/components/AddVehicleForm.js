@@ -12,9 +12,10 @@ export default function AddVehicleForm(props){
     const [model, setModel ] = useState("")
     const [vinForm, setVinForm] = useState(false)
     const [makeModelForm, setMakeModelForm] = useState(false)
+    const [image, setImage] = useState (props.image ? props.image : 'https://www.carhuddle.com/images/default/car-default.jpg')
     let history = useHistory()
 
-    const vehicle = { vin: vin, licensePlate: licensePlate, make: make, year: year, model: model  }
+    const vehicle = { vin: vin, licensePlate: licensePlate, make: make, year: year, model: model, image: image  }
 
     const editVehicle = () => {
       // edit vehicle will have id at end
@@ -93,7 +94,7 @@ export default function AddVehicleForm(props){
               onChange={(e) => setVin(e.target.value)}
             />
 
-            <Button type='submit'>Continue</Button>
+            <Button onClick={()=> setImage} type='submit'>Continue</Button>
           </Form>
           <Button onClick={() => setVinForm(false)}>Back</Button> 
           </div>
@@ -112,7 +113,7 @@ export default function AddVehicleForm(props){
             onChange={(e) => setLicensePlate(e.target.value)}
           />
           <h2>Dont know your license plate?</h2>
-         <Button onClick={() => props.setShowAddForm ? props.setShowAddForm(false) : props.setAdding(false)}>Back</Button> <Button type='submit'>Continue</Button>
+         <Button onClick={() => props.setShowAddForm ? props.setShowAddForm(false) : props.setAdding(false)}>Back</Button> <Button onClick={()=> setImage} type='submit'>Continue</Button>
         </Form>
         <Button onClick={() => setVinForm(true)}>ADD BY VIN</Button> <Button onClick={() => setMakeModelForm(true)}>ADD BY MAKE, YEAR, AND MODEL</Button>
         </div>

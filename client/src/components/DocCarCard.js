@@ -13,7 +13,7 @@ function DocCarCard ({v}) {
       <>
       <Card bg="dark" text='white' max-width='300rem'style={styles.card}>
         {/* <Card.Img variant="top" key={v.id} src={'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQOxaKlejQjrB7wfSvhmaaoXUCVBXEfKYdMDQ&usqp=CAU'} />  default image from dre?*/} 
-        <Card.Img variant="top" key={v.id} src={'https://www.carhuddle.com/images/default/car-default.jpg'} />
+        <Card.Img style={styles.image} variant="top" key={v.id} src={v.image} />
         <Card.Body>
           <Card.Title style={{fontFamily: 'Lato ' }}>{v.year} {v.make} {v.model} </Card.Title>
           <Button  onClick={handleShow} style={styles.buttonStyle}>
@@ -77,4 +77,10 @@ const styles = {
       borderRadius: '10px',
       boxShadow: '1px 1px 6px 5px #eeeeee',
   },
+  image: {
+    minHeight: '300px',
+    // minWidth: '300px',
+    // maxHeight: '300px',
+    // maxWidth: '300px',
+  }
 }
