@@ -118,5 +118,6 @@ const styles = {
         marginRight: 'auto',
         whiteSpace: 'nowrap',
         fontFamily: 'Lato',
+        cursor: 'pointer',
     }
 }

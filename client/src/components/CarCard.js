@@ -52,5 +52,6 @@ const styles = {
          marginLeft: 'auto',
          marginRight: 'auto',
          whiteSpace: 'nowrap',
+         cursor: 'pointer',
      }
 }

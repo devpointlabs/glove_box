@@ -6,7 +6,7 @@ function ContactUs (){
     <div style={styles.page}>
       <Container style={{maxWidth: '40%', fontFamily: 'Lato '}} >
         <br/>
-        <Card  >
+        <Card  style={styles.card}>
         <Card.Header align='center' as='h1' style={{fontFamily: 'Lato ', fontWeight: 'bold' }}>Contact Us</Card.Header>
           <Card.Body>
           <div style={{fontFamily: 'Lato '}}>
@@ -68,5 +68,10 @@ const styles = {
       marginLeft: 'auto',
       marginRight: 'auto',
       whiteSpace: 'nowrap',
+  },
+  card: {
+    border: '2px solid white',
+    borderRadius: '10px',
+    boxShadow: '1px 1px 6px 5px #eeeeee',
   }
 }

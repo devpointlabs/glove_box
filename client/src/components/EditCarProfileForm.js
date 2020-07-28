@@ -194,7 +194,7 @@ const EditCarProfileForm = (props) => {
         <br/>
       <h5>Change Or Add Car Photo</h5>
       <FilePond
-            files={file}
+            // files={file}
             allowMultiple={false}
             onupdatefiles={setFileHandler}
             labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
