@@ -42,7 +42,6 @@ const CarProfile = (props) => {
       <br />
       <Button name='edit outline' size='large' icon basic onClick={() => setEditing(!editing)} style={{float: 'right'}}> <Icon name="edit outline"/></Button>
       <Button name='edit outline' silze='large' icon basic onClick={() => props.setEditing(false)}style={{float: 'left'}}> <Icon name="arrow left"/></Button>
-      {/* <img src={vehicle.picture} onError={(e)=>{e.target.onerror = null; e.target.src='add vehicle url here'}}/> tried adding default vehicle image but wanst working */}
       <img width={525} height={350} align='center'src={props.car.image} alt='user_vehicle'/> 
       <br />
       <br />
