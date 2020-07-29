@@ -36,6 +36,7 @@ export default function AddVehicleForm(props){
         } else {
           history.push('/dashboard')
         }
+
       })
       .catch(error => console.log(error))
 
@@ -49,6 +50,7 @@ export default function AddVehicleForm(props){
       } else {
         addVehicle()
       } 
+      props.handleClose()
     }
 
     const formDisplay = () => {

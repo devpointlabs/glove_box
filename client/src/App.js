@@ -25,9 +25,9 @@ function App() {
   return (
     <div className="App">
       <FetchUser>
-        {user && <NavbarComponent />  }
+        {user && <NavbarComponent />}
         <div style={{minHeight:'86vh'}}>
-          <Switch >
+          <Switch>
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/register' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
