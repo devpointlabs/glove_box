@@ -13,11 +13,11 @@ function ContactUs (){
             <br/>
             <h3>Developer Team</h3>
             <hr style={{width: 400}}/>
-            <p>James Riches: jameseldonriches@gmail.com </p>
             <p>Ryan Ashworth: ryanashworth93@yahoo.com </p>
             <p>Maxwell Sultan: maxwellkentsultan@gmail.com </p>
-            <p>Caden Biddinger: cadenbiddinger@yahoo.com</p>
             <p>Andre Leveille: andre.joe.leveille@gmail.com </p>
+            <p>Caden Biddinger: cadenbiddinger@yahoo.com</p>
+            <p>James Riches: jameseldonriches@gmail.com </p>
             <br/>
             <h4>DevPoint Labs</h4>
             <hr style={{width: 400}}/>
