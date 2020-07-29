@@ -30,7 +30,7 @@ function FileShow ({v, eventKey}) {
     return filterRecords.map((r) => ( 
       <>
        <div style={{display: 'flex'}}>
-        <a href={r.image}>
+        <a href={r.image} target="_blank">
           <Image display='flex' cloudName='cloud_name' publicId={r.image} width='400' popup={true }overwrite={true}/>
         </a>
         <Button onClick={() => deleteRecord(r)} style={styles.buttonStyle}>Delete Document</Button>

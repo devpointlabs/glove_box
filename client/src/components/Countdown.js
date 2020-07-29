@@ -38,7 +38,7 @@ class Countdown extends React.Component {
             {this.countdownShow ()}
             </Card.Text>
             <Card.Text style={{color: 'black'}}>
-              Sign up for a <a style={{fontWeight: 'bold'}} href='/premium'>Premium</a> subscription 
+              Sign up for a <Link style={{fontWeight: 'bold'}} to='/premium'>Premium</Link> subscription 
             </Card.Text> 
           </Card.Body>
         </Card>

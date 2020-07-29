@@ -109,7 +109,7 @@ function Premium (){
        
         <br />
         
-          <p style={{fontSize: '13px'}}>By subscribing, you agree to the <a href="">Terms and Conditions</a> , including the <a href="." >Cancellation and Refund Policy</a>.
+          <p style={{fontSize: '13px'}}>By subscribing, you agree to the Terms and Condition , including the Cancellation and Refund Policy.
           Your subscription will renew automatically, and you will be charged in advance. You may cancel at any time. The cancellation goes into effect at the start of the following billing cycle.  </p>
        
         <hr style={{marginTop: '30px', marginBottom: '30px'}}/>
