@@ -46,7 +46,6 @@ const styles = {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      // backgroundColor: '#F7F7F7',
       backgroundColor: '#1C2226',
       padding: '100px',
       flexDirection:'column',

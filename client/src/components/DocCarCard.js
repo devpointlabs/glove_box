@@ -79,8 +79,5 @@ const styles = {
   },
   image: {
     minHeight: '300px',
-    // minWidth: '300px',
-    // maxHeight: '300px',
-    // maxWidth: '300px',
   }
 }

@@ -66,16 +66,11 @@ const ProfileForm = () => {
     }
 
     if (oldPassword && newPassword) {
-      // * implement verifcation of oldpassword in backend
-      // updatedUser.oldPassword = oldPassword
-      // updatedUser.newPassword = newPassword
-
-      // * meanwhile
       updatedUser.password = newPassword
     }
 
     axios
-      .put(`/api/users/${user.id}`, updatedUser) //Post = create new, Put = replaces known values
+      .put(`/api/users/${user.id}`, updatedUser)
       .then(res => handleUpdatePersonalInfo(profile))
   }
 
@@ -163,7 +158,6 @@ const ProfileForm = () => {
             <Form.Control
               placeholder="2020/01/01"
               name="Date of Birth"
-              // type='datetime'
               value={birth_date}
               onChange={(e) => setBirthday(e.target.value)}
             />
