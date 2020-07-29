@@ -11,8 +11,8 @@ export default function CarCard(props) {
         <div style={styles.card}>
         <img src={props.car.image ?  props.car.image : defaultImage} style={{width:'50%'}}/>
         <div style={styles.right}>
-            <h1 style={{fontSize:'30px', whiteSpace:'nowrap'}}><strong>{props.car.year} {props.car.make} {props.car.model}</strong></h1>
-            <h3 style={{fontSize:'20px'}}>Unlock your vehicles estimated trade-in value and up-to-date recalls when you add your liscense plate.</h3>
+            <h1 style={{fontSize:'2em', whiteSpace:'nowrap', textAlign:'center'}}><strong>{props.car.year} {props.car.make} {props.car.model}</strong></h1>
+            <h3 style={{fontSize:'1.5em'}}>Unlock your vehicles estimated trade-in value and up-to-date recalls when you add your liscense plate.</h3>
             <button style={styles.buttonStyle} onClick={() => setEditing(!editing)}><strong>EDIT VEHICLE</strong></button>
 
         </div>
@@ -38,7 +38,7 @@ const styles = {
          justifyContent:'space-around',
          minWidth: '45%',
          maxWidth:'50%',
-         padding: '20px 60px',
+         padding: '1em 2em',
          backgroundColor: 'white',
          height:'390px',
      },

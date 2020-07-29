@@ -50,7 +50,7 @@ export default function AddVehicleForm(props){
       } else {
         addVehicle()
       } 
-      props.handleClose()
+      if (props.handleClose) props.handleClose()
     }
 
     const formDisplay = () => {
