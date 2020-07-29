@@ -44,10 +44,10 @@ export default function Dashboard() {
             for (key in car) {
         data.append(`${key}`, car[key]);
         }
-        axios.put(`/api/vehicles/${id}`, data) //update method
+        axios.put(`/api/vehicles/${id}`, data)
             .then(res => {
                 const updateCarProfile = vehicles.map(vehicle => {
-                  if (vehicle.id === res.data.id) return res.data; // we were calling res.id and not res.data.id so it was just returning vehicle until you refresh
+                  if (vehicle.id === res.data.id) return res.data;
                     else return vehicle
                 });
                 setVehicles(updateCarProfile)

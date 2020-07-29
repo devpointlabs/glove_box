@@ -18,15 +18,12 @@ export default function AddVehicleForm(props){
     const vehicle = { vin: vin, licensePlate: licensePlate, make: make, year: year, model: model, image: image  }
 
     const editVehicle = () => {
-      // edit vehicle will have id at end
       axios.put(`/api/vehicles/${props.id}`, vehicle)
       .then( response => console.log(response))
       .catch(error => console.log(error))
     }
 
     const addVehicle = () => {
-     // add will not have id at end for axios call
-    //  check routes
       axios.post("/api/vehicles", vehicle)
       .then(response => {
         console.log(response)
@@ -41,7 +38,6 @@ export default function AddVehicleForm(props){
       .catch(error => console.log(error))
 
     }
-    // .then to tell them what to do 
 
     const handleSubmit = (e) => {
       e.preventDefault()
