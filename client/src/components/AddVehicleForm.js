@@ -134,12 +134,10 @@ export default function AddVehicleForm(props){
     }
 
     return (
-      // <div style={styles.page}>
         <Card>
         <h1 align="center">Add A Vehicle</h1>
         {formDisplay()}
         </Card>
-      // </div> 
     )  
 }
 

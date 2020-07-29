@@ -92,13 +92,6 @@ export default function Dashboard() {
                 </Button>
                 </Modal.Footer>
                 </Modal>
-               
-            {/* {showAddForm && 
-            <AddVehicleForm 
-            showAddForm={showAddForm} 
-            setShowAddForm={setShowAddForm} 
-            addVehicleToUi={addVehicleToUi}
-            />} */}
             </div>
             <br/>
             <Countdown/>
