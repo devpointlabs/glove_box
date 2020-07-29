@@ -10,5 +10,7 @@ Rails.application.routes.draw do
         resources :records 
       end
   end
+
+  get "*other", to: "static#index"
 end
             
