@@ -138,6 +138,7 @@ class NavbarComponent extends React.Component {
             <Navbar.Brand>
               <img src={logo} width="80" height="80" />
             </Navbar.Brand>
+
             {/* <Nav.Link style={styles.link} eventKey="/dashboard">
               Dashboard
             </Nav.Link>

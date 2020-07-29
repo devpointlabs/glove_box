@@ -23,29 +23,27 @@ import { AuthContext } from './providers/AuthProvider'
 function App() {
   const {user} = useContext(AuthContext)
   return (
-    <>
     <div className="App">
       <FetchUser>
         {user && <NavbarComponent />  }
         <div style={{minHeight:'86vh'}}>
-        <Switch >
+          <Switch >
             <Route exact path='/' component={LandingPage} />
             <Route exact path='/register' component={Register} />
             <ProtectedRoute exact path='/dashboard' component={Dashboard} />
             <ProtectedRoute exact path='/addVehicle' component={AddVehicleForm} />
             <ProtectedRoute exact path='/emergency' component={Emergency} />
-            <Route exact path='/documents' component={Documents} />
-            <Route exact path='/profile' component={ProfileForm} /> 
+            <ProtectedRoute exact path='/documents' component={Documents} />
+            <ProtectedRoute exact path='/profile' component={ProfileForm} /> 
             <Route exact path='/login' component={Login}/>
             <Route exact path='/contact_us' component={ContactUs}/>
             <Route exact path='/premium' component={Premium}/>
             <ProtectedRoute exact path='/ThankYou' component={ThankYouAddVehicle}/>
-        </Switch>
+          </Switch>
         </div>
         <Footer/>   
       </FetchUser>
     </div>
-            </>
   );
 }
 
