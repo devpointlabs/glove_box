@@ -1,6 +1,5 @@
 import React from "react";
 import { AuthConsumer } from "./providers/AuthProvider";
-// import { Form, Segment, Header, Container } from "semantic-ui-react";
 import { Card, Button, Container, Form} from 'react-bootstrap'
 import logo from './logo/logo_transparent.png'
 
@@ -72,40 +71,6 @@ class Login extends React.Component {
       
         </Container>
     </div>
-
-
-      // <Container>
-      // <Segment basic>
-      //   <Header as="h1" textAlign="center">
-      //     Login
-      //   </Header>
-      //   <Form onSubmit={this.handleSubmit}>
-      //     <Form.Input
-      //       label="Email"
-      //       autoFocus
-      //       required
-      //       name="email"
-      //       value={email}
-      //       placeholder="Email"
-      //       onChange={this.handleChange}
-      //     />
-      //     <Form.Input
-      //       label="Password"
-      //       required
-      //       name="password"
-      //       value={password}
-      //       placeholder="Password"
-      //       type="password"
-      //       onChange={this.handleChange}
-      //     />
-      //     <Segment textAlign="center" basic>
-      //       <Button style={styles.buttonStyle} type="submit">
-      //         Sign in
-      //       </Button>
-      //     </Segment>
-      //   </Form>
-      // </Segment>
-      // </Container>
     );
   }
 }
